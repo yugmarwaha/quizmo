@@ -1,9 +1,13 @@
+export type QuestionType = "mcq" | "tf" | "fill";
 export interface Question {
   id: string;
+  type: QuestionType;
   question: string;
-  options: string[];
+  options?: string[] | null;
   answer: string;
+  explanation?: string | null;
   difficulty: "easy" | "medium" | "hard";
+  source_chunk_index?: number | null;
 }
 
 export interface Quiz {
