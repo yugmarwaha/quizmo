@@ -1,4 +1,5 @@
 import type { Quiz, UserAnswer } from "../types/quiz";
+import { Analytics } from "../components/Analytics";
 
 interface ResultsPageProps {
   quiz: Quiz;
@@ -59,6 +60,9 @@ export function ResultsPage({
         </p>
       </div>
 
+      {/* Analytics Charts */}
+      <Analytics quiz={quiz} userAnswers={userAnswers} />
+      
       {/* Performance by Difficulty */}
       <div style={{ marginBottom: "40px" }}>
         <h2 style={{ color: "#213547", marginBottom: "20px" }}>
