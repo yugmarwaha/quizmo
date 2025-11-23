@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap");
 
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 60px 20px;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
 }
 
 .header {
@@ -23,7 +23,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-   font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .subtitle {
@@ -32,7 +32,7 @@
   font-weight: 400;
   max-width: 500px;
   margin: 0 auto;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
 }
 
 .formGroup {
@@ -42,8 +42,7 @@
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   transition: all 0.2s;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
-  
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
 }
 
 .formGroup:hover {
@@ -90,7 +89,7 @@
   border: 2px solid #e2e8f0;
   border-radius: 10px;
   font-size: 0.9375rem;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
   line-height: 1.7;
   resize: vertical;
   min-height: 240px;
@@ -186,21 +185,32 @@
   vertical-align: middle;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.loadingMessage {
+  padding: 16px 20px;
+  background-color: #e0f2fe;
+  border: 1px solid #0ea5e9;
+  border-left: 4px solid #0ea5e9;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.loadingMessage p {
+  margin: 8px 0;
+  color: #0c4a6e;
+  font-size: 0.9375rem;
+  font-weight: 500;
 }
 
 @media (max-width: 640px) {
   .container {
     padding: 40px 16px;
   }
-  
+
   .header {
     margin-bottom: 40px;
   }
-  
+
   .formGroup {
     padding: 20px;
   }

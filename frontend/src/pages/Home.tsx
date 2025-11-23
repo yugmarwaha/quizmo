@@ -60,6 +60,7 @@ export function Home({ onQuizGenerated }: HomeProps) {
           value={courseId}
           onChange={(e) => setCourseId(e.target.value)}
           className={styles.select}
+          disabled={isLoading}
         >
           {COURSES.map((c) => (
             <option key={c.id || "custom"} value={c.id}>
@@ -83,6 +84,7 @@ export function Home({ onQuizGenerated }: HomeProps) {
           placeholder="Paste your lecture text here..."
           rows={12}
           className={styles.textarea}
+          disabled={isLoading}
         />
       </div>
 
@@ -93,6 +95,7 @@ export function Home({ onQuizGenerated }: HomeProps) {
           value={numQuestions}
           onChange={(e) => setNumQuestions(Number(e.target.value))}
           className={styles.select}
+          disabled={isLoading}
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
@@ -109,6 +112,16 @@ export function Home({ onQuizGenerated }: HomeProps) {
       {error && (
         <div className={styles.error}>
           <p className={styles.errorText}>{error}</p>
+        </div>
+      )}
+
+      {/* Loading Message */}
+      {isLoading && (
+        <div className={styles.loadingMessage}>
+          <p>
+            🤖 AI is analyzing your text and generating questions...
+          </p>
+          <p>This may take 10-20 seconds depending on text length.</p>
         </div>
       )}
 

@@ -3,6 +3,13 @@ from typing import List
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.schemas import (
+    GenerateQuizRequest,
+    GenerateQuizResponse,
+    GenerateRecommendationsRequest,
+    GenerateRecommendationsResponse,
+)
+from app.agent.quiz_agent import generate_quiz_agent, generate_recommendations_agent
 from app.schemas import GenerateQuizRequest, GenerateQuizResponse
 from app.agent.quiz_agent import generate_quiz_agent
 from app.auth import User, get_current_user
@@ -96,3 +103,76 @@ def get_quiz(
             detail="Quiz not found for this user.",
         )
     return quiz
+
+@app.post("/api/quizzes", response_model=GenerateQuizResponse)
+def save_quiz_to_profile(
+    quiz: GenerateQuizResponse,
+    user: User = Depends(get_current_user),
+):
+    """
+    Store a generated quiz inside the user's profile in DynamoDB.
+    """
+    saved = save_quiz_for_user(user.id, quiz)
+    return saved
+
+
+# LIST USER'S SAVED QUIZZES
+@app.get("/api/quizzes", response_model=List[GenerateQuizResponse])
+def list_my_quizzes(user: User = Depends(get_current_user)):
+    """
+    Return all quizzes saved by this user.
+    """
+    return list_quizzes_for_user(user.id)
+
+
+# GET A SPECIFIC QUIZ
+@app.get("/api/quizzes/{quiz_id}", response_model=GenerateQuizResponse)
+def get_quiz(
+    quiz_id: str,
+    user: User = Depends(get_current_user),
+):
+    """
+    Retrieve a single quiz saved in the user's profile.
+    """
+    quiz = get_quiz_for_user(user.id, quiz_id)
+    if not quiz:
+        raise HTTPException(
+            status_code=404,
+            detail="Quiz not found for this user.",
+        )
+    return quiz
+
+
+@app.post(
+    "/api/generate_recommendations", response_model=GenerateRecommendationsResponse
+)
+def generate_recommendations(req: GenerateRecommendationsRequest):
+    """
+    Generate personalized study recommendations based on quiz performance.
+
+    Input (JSON):
+      {
+        "performanceData": {
+          "quiz": { ... },
+          "userAnswers": [ ... ],
+          "totalTime": 300,
+          "scorePercentage": 75.0
+        }
+      }
+
+    Output (JSON):
+      {
+        "recommendations": [
+          {
+            "type": "study_focus",
+            "title": "Focus on Hard Questions",
+            "description": "You struggled with hard questions...",
+            "priority": "high"
+          }
+        ],
+        "overallAssessment": "Good performance with room for improvement...",
+        "improvementAreas": ["Time management", "Hard question practice"]
+      }
+    """
+    recommendations = generate_recommendations_agent(req.performanceData)
+    return recommendations

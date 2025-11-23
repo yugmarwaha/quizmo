@@ -7,7 +7,11 @@ from typing import Optional
 from openai import OpenAI
 from dotenv import load_dotenv
 
-from app.schemas import GenerateQuizResponse
+from app.schemas import (
+    GenerateQuizResponse,
+    PerformanceData,
+    GenerateRecommendationsResponse,
+)
 from app.rag_store import search_kb
 
 # Load env vars (for OPENAI_API_KEY)
@@ -19,8 +23,8 @@ if not OPENAI_API_KEY:
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# LLM model for quiz generation
-MODEL_NAME = "gpt-4o-mini"
+# LLM model for quiz generation - using latest gpt-5.1 for speed and quality
+MODEL_NAME = "gpt-5.1"
 
 
 def generate_quiz_agent(
@@ -35,48 +39,32 @@ def generate_quiz_agent(
     )
 
     # 2. Build prompts
-    system_prompt = """
-You are an AI quiz generator for university-level courses.
-Use ONLY the provided context and lecture to create accurate questions.
-If something is not covered in the context, do not invent new facts.
-Respond with valid JSON only.
-"""
+    system_prompt = """Generate university-level quiz questions from lecture content. Use provided context. Return valid JSON only."""
 
-    user_prompt = f"""
-CONTEXT FROM COURSE MATERIALS:
-{context_block or "[No extra context found]"}
+    user_prompt = f"""CONTEXT: {context_block or "None"}
 
-CURRENT LECTURE TEXT:
-{lecture_text}
+LECTURE: {lecture_text}
 
-TASK:
-- Generate a quiz with {num_questions} multiple-choice questions.
-- Each question should have:
-  - id (string)
-  - type (string, use "mcq")
-  - question (string)
-  - options (list of 4 strings)
-  - answer (exactly one of the options)
-  - difficulty ("easy", "medium", or "hard")
-- Cover a mix of recall and understanding questions.
-- Do not include explanations in the answer field.
-- Return JSON in the shape:
-  {{
-    "id": "quiz-uuid-or-title",
-    "title": "Short Quiz Title",
-    "questions": [
-      {{
-        "id": "q1",
-        "type": "mcq",
-        "question": "...",
-        "options": ["A", "B", "C", "D"],
-        "answer": "A",
-        "difficulty": "medium"
-      }},
-      ...
-    ]
-  }}
-"""
+Generate {num_questions} questions. Mix: 50% MCQ, 25% TF, 25% multi-correct.
+
+Format:
+{{
+  "id": "quiz-title",
+  "title": "Quiz Title", 
+  "questions": [
+    {{
+      "id": "q1",
+      "type": "mcq|tf|mcq_multi",
+      "question": "Question text",
+      "options": ["A","B","C","D"] or null,
+      "answer": "A" or ["A","C"] or "True",
+      "explanation": "Brief explanation",
+      "difficulty": "easy|medium|hard"
+    }}
+  ]
+}}
+
+Return JSON only."""
 
     # 3. Call OpenAI LLM and force JSON output
     response = client.chat.completions.create(
@@ -96,3 +84,117 @@ TASK:
 
     # 4. Validate/parse into your Pydantic model
     return GenerateQuizResponse.model_validate(quiz_dict)
+
+
+def generate_recommendations_agent(
+    performance_data: PerformanceData,
+) -> GenerateRecommendationsResponse:
+    """
+    Generate personalized study recommendations based on user's quiz performance.
+    """
+
+    # Calculate performance statistics
+    total_questions = len(performance_data.quiz.questions)
+    correct_answers = len([a for a in performance_data.userAnswers if a.isCorrect])
+    incorrect_answers = total_questions - correct_answers
+
+    # Performance by difficulty
+    difficulty_stats = {
+        "easy": {"correct": 0, "total": 0},
+        "medium": {"correct": 0, "total": 0},
+        "hard": {"correct": 0, "total": 0},
+    }
+
+    for question in performance_data.quiz.questions:
+        user_answer = next(
+            (a for a in performance_data.userAnswers if a.questionId == question.id),
+            None,
+        )
+        if user_answer and question.difficulty:
+            difficulty_stats[question.difficulty]["total"] += 1
+            if user_answer.isCorrect:
+                difficulty_stats[question.difficulty]["correct"] += 1
+
+    # Time analytics
+    avg_time_per_question = (
+        performance_data.totalTime / total_questions if total_questions > 0 else 0
+    )
+
+    # Build performance summary
+    performance_summary = f"""
+QUIZ PERFORMANCE SUMMARY:
+- Total Questions: {total_questions}
+- Correct Answers: {correct_answers}
+- Incorrect Answers: {incorrect_answers}
+- Score Percentage: {performance_data.scorePercentage:.1f}%
+- Total Time: {performance_data.totalTime} seconds
+- Average Time per Question: {avg_time_per_question:.1f} seconds
+
+PERFORMANCE BY DIFFICULTY:
+"""
+
+    for difficulty, stats in difficulty_stats.items():
+        if stats["total"] > 0:
+            percentage = (stats["correct"] / stats["total"]) * 100
+            performance_summary += f"- {difficulty.capitalize()}: {stats['correct']}/{stats['total']} ({percentage:.1f}%)\n"
+        else:
+            performance_summary += f"- {difficulty.capitalize()}: No questions\n"
+
+    # Build prompts for AI
+    system_prompt = """
+You are an AI educational assistant that provides personalized study recommendations.
+Analyze the student's quiz performance and generate specific, actionable recommendations.
+Focus on identifying patterns, weaknesses, and suggesting concrete improvement strategies.
+Be encouraging and constructive in your feedback.
+"""
+
+    user_prompt = f"""
+{performance_summary}
+
+QUIZ DETAILS:
+Title: {performance_data.quiz.title}
+Questions: {len(performance_data.quiz.questions)}
+
+TASK:
+Analyze this student's quiz performance and provide personalized recommendations. Return JSON with:
+
+1. recommendations: Array of recommendation objects with:
+   - type: "study_focus" | "time_management" | "learning_strategy" | "motivation" | "next_steps"
+   - title: Brief title for the recommendation
+   - description: Detailed explanation and advice
+   - priority: "high" | "medium" | "low"
+
+2. overallAssessment: A brief overall assessment of the student's performance
+
+3. improvementAreas: Array of 2-3 key areas for improvement
+
+Generate 4-6 specific recommendations based on the performance data. Focus on:
+- Areas where the student struggled (low scores in certain difficulties)
+- Time management issues (if average time is too high/low)
+- Study strategies for improvement
+- Encouragement for strong areas
+- Next steps for continued learning
+
+Return valid JSON only.
+"""
+
+    # Call OpenAI LLM
+    response = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        response_format={"type": "json_object"},
+    )
+
+    content = response.choices[0].message.content
+    if not content:
+        raise RuntimeError(
+            "OpenAI returned empty content for recommendations generation"
+        )
+
+    recommendations_dict = json.loads(content)
+
+    # Validate/parse into Pydantic model
+    return GenerateRecommendationsResponse.model_validate(recommendations_dict)
