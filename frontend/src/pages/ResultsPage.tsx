@@ -48,7 +48,7 @@ export function ResultsPage({
               scorePercentage >= 70
                 ? "#0066CC"
                 : scorePercentage >= 50
-                ? "#FF5656"
+                ? "#28a745"
                 : "#dc3545",
             marginBottom: "10px",
           }}
@@ -217,7 +217,7 @@ export function ResultsPage({
                 padding: "20px",
                 backgroundColor: "#f8f9fa",
                 borderRadius: "8px",
-                borderLeft: `4px solid ${isCorrect ? "#0066CC" : "#FF5656"}`,
+                borderLeft: `4px solid ${isCorrect ? "#0066CC" : "#28a745"}`,
               }}
             >
               <div
@@ -258,7 +258,7 @@ export function ResultsPage({
                 <strong style={{ color: "#666" }}>Your answer: </strong>
                 <span
                   style={{
-                    color: isCorrect ? "#0066CC" : "#FF5656",
+                    color: isCorrect ? "#0066CC" : "#28a745",
                     fontWeight: "500",
                   }}
                 >
