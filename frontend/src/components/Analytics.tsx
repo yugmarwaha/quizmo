@@ -24,8 +24,8 @@ export function Analytics({ quiz, userAnswers }: AnalyticsProps) {
 
   // Data for Pie Chart (Correct vs Incorrect)
   const pieData = [
-    { name: "Correct", value: correctAnswers, color: "#0066CC" },
-    { name: "Incorrect", value: incorrectAnswers, color: "#28a745" },
+    { name: "Correct", value: correctAnswers, color: "#28a745" },
+    { name: "Incorrect", value: incorrectAnswers, color: "#dc3545" },
   ];
 
   // Data for Bar Chart (Performance by Difficulty)
@@ -134,8 +134,8 @@ export function Analytics({ quiz, userAnswers }: AnalyticsProps) {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="correct" fill="#0066CC" name="Correct" />
-              <Bar dataKey="incorrect" fill="#28a745" name="Incorrect" />
+              <Bar dataKey="correct" fill="#28a745" name="Correct" />
+              <Bar dataKey="incorrect" fill="#dc3545" name="Incorrect" />
             </BarChart>
           </ResponsiveContainer>
         </div>
