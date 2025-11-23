@@ -23,8 +23,8 @@ if not OPENAI_API_KEY:
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# LLM model for quiz generation - using gpt-4o for speed and quality
-MODEL_NAME = "gpt-4o"
+# LLM model for quiz generation - using gpt-5.1-chat-latest for speed and quality
+MODEL_NAME = "gpt-5.1-chat-latest"
 
 
 def generate_quiz_agent(
