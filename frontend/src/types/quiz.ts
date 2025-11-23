@@ -19,6 +19,7 @@ export interface Quiz {
 export interface GenerateQuizRequest {
   lectureText: string;
   courseId?: string;
+  numQuestions?: number;
 }
 
 export interface UserAnswer {
