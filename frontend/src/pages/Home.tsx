@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { generateQuiz } from "../services/api";
 import type { Quiz } from "../types/quiz";
+import styles from "./Home.module.css";
 
 interface HomeProps {
   onQuizGenerated: (quiz: Quiz) => void;
 }
 
-// You can tweak these IDs to match your knowledge_base folders
 const COURSES = [
   { id: "cs540", name: "CS 540 – Intro to AI" },
   { id: "econ101", name: "Econ 101 – Microeconomics" },
-  { id: "", name: "Custom / Not in list" }, // sends no courseId → no RAG, just lectureText
+  { id: "", name: "Custom / Not in list" },
 ];
 
 export function Home({ onQuizGenerated }: HomeProps) {
   const [lectureText, setLectureText] = useState("");
-  const [numQuestions, setNumQuestions] = useState(10); // currently just UI hint
+  const [numQuestions, setNumQuestions] = useState(10);
   const [courseId, setCourseId] = useState<string>("cs540");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -30,8 +30,11 @@ export function Home({ onQuizGenerated }: HomeProps) {
     setError("");
 
     try {
-      // If courseId is "", send undefined so backend treats it as “no course”
-      const quiz = await generateQuiz(lectureText, courseId || undefined);
+      const quiz = await generateQuiz(
+        lectureText,
+        courseId || undefined,
+        numQuestions
+      );
       onQuizGenerated(quiz);
     } catch (err) {
       setError("Failed to generate quiz. Make sure your backend is running.");
@@ -42,19 +45,21 @@ export function Home({ onQuizGenerated }: HomeProps) {
   };
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
-      <h1>AI Quiz Generator</h1>
-      <p>Paste your lecture notes or transcript below</p>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>AI Quiz Generator</h1>
+        <p className={styles.subtitle}>
+          Paste your lecture notes or transcript below
+        </p>
+      </div>
 
       {/* Course selector */}
-      <div style={{ marginBottom: "16px" }}>
-        <label style={{ display: "block", marginBottom: "4px" }}>
-          Course
-        </label>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Course</label>
         <select
           value={courseId}
           onChange={(e) => setCourseId(e.target.value)}
-          style={{ padding: "8px", minWidth: "250px" }}
+          className={styles.select}
         >
           {COURSES.map((c) => (
             <option key={c.id || "custom"} value={c.id}>
@@ -62,60 +67,58 @@ export function Home({ onQuizGenerated }: HomeProps) {
             </option>
           ))}
         </select>
-        <div style={{ fontSize: "12px", color: "#555", marginTop: "4px" }}>
-          • Picks RAG context from that course.  
-          • Choose "Custom" if it’s not in the list (uses only your pasted text).
-        </div>
+        {/* <div className={styles.hint}>
+          • Picks RAG context from that course.
+          <br />• Choose "Custom" if it's not in the list (uses only your pasted
+          text).
+        </div> */}
       </div>
 
-      <textarea
-        value={lectureText}
-        onChange={(e) => setLectureText(e.target.value)}
-        placeholder="Paste your lecture text here..."
-        rows={10}
-        style={{
-          width: "100%",
-          padding: "10px",
-          fontSize: "14px",
-          marginBottom: "20px",
-        }}
-      />
+      {/* Textarea */}
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Lecture Text</label>
+        <textarea
+          value={lectureText}
+          onChange={(e) => setLectureText(e.target.value)}
+          placeholder="Paste your lecture text here..."
+          rows={12}
+          className={styles.textarea}
+        />
+      </div>
 
-      <div style={{ marginBottom: "20px" }}>
-        <label>Number of questions: </label>
+      {/* Number of questions */}
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Number of questions</label>
         <select
           value={numQuestions}
           onChange={(e) => setNumQuestions(Number(e.target.value))}
-          style={{ padding: "5px", marginLeft: "10px" }}
+          className={styles.select}
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={15}>15</option>
           <option value={20}>20</option>
         </select>
-        <div style={{ fontSize: "12px", color: "#555", marginTop: "4px" }}>
+        {/* <div className={styles.hint}>
           (Right now the backend always returns ~8–10 questions; we can wire
           this number into the prompt later if you want.)
-        </div>
+        </div> */}
       </div>
 
+      {/* Error */}
       {error && (
-        <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
+        <div className={styles.error}>
+          <p className={styles.errorText}>{error}</p>
+        </div>
       )}
 
+      {/* Button */}
       <button
         onClick={handleGenerate}
         disabled={isLoading}
-        style={{
-          padding: "12px 24px",
-          fontSize: "16px",
-          backgroundColor: isLoading ? "#ccc" : "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: isLoading ? "not-allowed" : "pointer",
-        }}
+        className={styles.button}
       >
+        {isLoading && <span className={styles.loadingSpinner}></span>}
         {isLoading ? "Generating Quiz..." : "Generate Quiz"}
       </button>
     </div>

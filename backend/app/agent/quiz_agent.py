@@ -28,6 +28,7 @@ model = genai.GenerativeModel(MODEL_NAME)
 def generate_quiz_agent(
     lecture_text: str,
     course_id: Optional[str] = None,
+    num_questions: Optional[int] = 10,
 ) -> GenerateQuizResponse:
     # 1. Use RAG to get relevant context
     kb_chunks = search_kb(lecture_text, top_k=5, course_id=course_id)
@@ -51,7 +52,7 @@ CURRENT LECTURE TEXT:
 {lecture_text}
 
 TASK:
-- Generate a quiz with 8–10 multiple-choice questions.
+- Generate a quiz with {num_questions} multiple-choice questions.
 - Each question should have:
   - id (string)
   - type (string, use "mcq")

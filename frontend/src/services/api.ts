@@ -16,14 +16,15 @@ const USE_MOCK = false;
 
 export const generateQuiz = async (
   lectureText: string,
-  courseId?: string
+  courseId?: string,
+  numQuestions?: number
 ): Promise<Quiz> => {
   if (USE_MOCK) {
     await new Promise((resolve) => setTimeout(resolve, 1500));
     return mockQuiz;
   }
 
-  const request: GenerateQuizRequest = { lectureText, courseId };
+  const request: GenerateQuizRequest = { lectureText, courseId, numQuestions };
 
   try {
     const response = await apiClient.post<Quiz>("/api/generate_quiz", request);

@@ -21,6 +21,7 @@ app.add_middleware(
 def root():
     return {"status": "ok", "message": "Single-user quiz backend running"}
 
+
 @app.post("/api/generate_quiz", response_model=GenerateQuizResponse)
 def generate_quiz(req: GenerateQuizRequest):
     """
@@ -46,5 +47,7 @@ def generate_quiz(req: GenerateQuizRequest):
         ]
       }
     """
-    quiz = generate_quiz_agent(req.lectureText, course_id=req.courseId)
+    quiz = generate_quiz_agent(
+        req.lectureText, course_id=req.courseId, num_questions=req.numQuestions
+    )
     return quiz
