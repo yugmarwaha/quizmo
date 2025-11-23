@@ -2,8 +2,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.schemas import GenerateQuizRequest, GenerateQuizResponse
-from app.agent.quiz_agent import generate_quiz_agent
+from app.schemas import (
+    GenerateQuizRequest,
+    GenerateQuizResponse,
+    GenerateRecommendationsRequest,
+    GenerateRecommendationsResponse,
+)
+from app.agent.quiz_agent import generate_quiz_agent, generate_recommendations_agent
 
 app = FastAPI()
 
@@ -51,3 +56,38 @@ def generate_quiz(req: GenerateQuizRequest):
         req.lectureText, course_id=req.courseId, num_questions=req.numQuestions
     )
     return quiz
+
+
+@app.post(
+    "/api/generate_recommendations", response_model=GenerateRecommendationsResponse
+)
+def generate_recommendations(req: GenerateRecommendationsRequest):
+    """
+    Generate personalized study recommendations based on quiz performance.
+
+    Input (JSON):
+      {
+        "performanceData": {
+          "quiz": { ... },
+          "userAnswers": [ ... ],
+          "totalTime": 300,
+          "scorePercentage": 75.0
+        }
+      }
+
+    Output (JSON):
+      {
+        "recommendations": [
+          {
+            "type": "study_focus",
+            "title": "Focus on Hard Questions",
+            "description": "You struggled with hard questions...",
+            "priority": "high"
+          }
+        ],
+        "overallAssessment": "Good performance with room for improvement...",
+        "improvementAreas": ["Time management", "Hard question practice"]
+      }
+    """
+    recommendations = generate_recommendations_agent(req.performanceData)
+    return recommendations

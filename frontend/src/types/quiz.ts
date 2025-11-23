@@ -28,3 +28,34 @@ export interface UserAnswer {
   isCorrect: boolean;
   timeSpent?: number; // in seconds
 }
+
+export interface PerformanceData {
+  quiz: Quiz;
+  userAnswers: UserAnswer[];
+  totalTime: number;
+  scorePercentage: number;
+}
+
+export type RecommendationType =
+  | "study_focus"
+  | "time_management"
+  | "learning_strategy"
+  | "motivation"
+  | "next_steps";
+
+export interface Recommendation {
+  type: RecommendationType;
+  title: string;
+  description: string;
+  priority: "high" | "medium" | "low";
+}
+
+export interface GenerateRecommendationsRequest {
+  performanceData: PerformanceData;
+}
+
+export interface GenerateRecommendationsResponse {
+  recommendations: Recommendation[];
+  overallAssessment: string;
+  improvementAreas: string[];
+}
