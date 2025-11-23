@@ -37,8 +37,9 @@ class GenerateQuizRequest(BaseModel):
     lectureText: str
     # used to keep RAG separated by course
     courseId: Optional[str] = None
+    # number of questions to generate
+    numQuestions: Optional[int] = 10
 
 
 class GenerateQuizResponse(Quiz):
     pass
-
