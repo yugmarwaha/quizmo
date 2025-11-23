@@ -41,5 +41,42 @@ class GenerateQuizRequest(BaseModel):
     numQuestions: Optional[int] = 10
 
 
+class UserAnswer(BaseModel):
+    questionId: str
+    selectedAnswer: Union[str, List[str]]
+    isCorrect: bool
+    timeSpent: Optional[int] = None
+
+
+class PerformanceData(BaseModel):
+    quiz: Quiz
+    userAnswers: List[UserAnswer]
+    totalTime: int
+    scorePercentage: float
+
+
+class Recommendation(BaseModel):
+    type: Literal[
+        "study_focus",
+        "time_management",
+        "learning_strategy",
+        "motivation",
+        "next_steps",
+    ]
+    title: str
+    description: str
+    priority: Literal["high", "medium", "low"]
+
+
+class GenerateRecommendationsRequest(BaseModel):
+    performanceData: PerformanceData
+
+
+class GenerateRecommendationsResponse(BaseModel):
+    recommendations: List[Recommendation]
+    overallAssessment: str
+    improvementAreas: List[str]
+
+
 class GenerateQuizResponse(Quiz):
     pass

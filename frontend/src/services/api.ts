@@ -1,5 +1,10 @@
 import axios from "axios";
-import type { Quiz, GenerateQuizRequest } from "../types/quiz";
+import type {
+  Quiz,
+  GenerateQuizRequest,
+  GenerateRecommendationsRequest,
+  GenerateRecommendationsResponse,
+} from "../types/quiz";
 import { mockQuiz } from "./mockData";
 
 const API_BASE = "http://localhost:8000";
@@ -31,6 +36,23 @@ export const generateQuiz = async (
     return response.data;
   } catch (err) {
     console.error("Failed to generate quiz", err);
+    throw err;
+  }
+};
+
+export const generateRecommendations = async (
+  performanceData: GenerateRecommendationsRequest["performanceData"]
+): Promise<GenerateRecommendationsResponse> => {
+  const request: GenerateRecommendationsRequest = { performanceData };
+
+  try {
+    const response = await apiClient.post<GenerateRecommendationsResponse>(
+      "/api/generate_recommendations",
+      request
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Failed to generate recommendations", err);
     throw err;
   }
 };

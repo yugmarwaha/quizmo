@@ -1,5 +1,11 @@
-import type { Quiz, UserAnswer } from "../types/quiz";
+import { useState, useEffect } from "react";
+import type {
+  Quiz,
+  UserAnswer,
+  GenerateRecommendationsResponse,
+} from "../types/quiz";
 import { Analytics } from "../components/Analytics";
+import { generateRecommendations } from "../services/api";
 
 interface ResultsPageProps {
   quiz: Quiz;
@@ -32,6 +38,33 @@ export function ResultsPage({
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
+
+  // Recommendations state
+  const [recommendations, setRecommendations] =
+    useState<GenerateRecommendationsResponse | null>(null);
+  const [loadingRecommendations, setLoadingRecommendations] = useState(true);
+
+  // Fetch recommendations on component mount
+  useEffect(() => {
+    const fetchRecommendations = async () => {
+      try {
+        const performanceData = {
+          quiz,
+          userAnswers,
+          totalTime,
+          scorePercentage,
+        };
+        const response = await generateRecommendations(performanceData);
+        setRecommendations(response);
+      } catch (error) {
+        console.error("Failed to fetch recommendations:", error);
+      } finally {
+        setLoadingRecommendations(false);
+      }
+    };
+
+    fetchRecommendations();
+  }, [quiz, userAnswers, totalTime, scorePercentage]);
 
   return (
     <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
@@ -288,6 +321,136 @@ export function ResultsPage({
             </div>
           );
         })}
+      </div>
+
+      {/* Personalized Recommendations */}
+      <div style={{ marginBottom: "40px" }}>
+        <h2 style={{ color: "#213547", marginBottom: "20px" }}>
+          Personalized Recommendations 🤖
+        </h2>
+
+        {loadingRecommendations ? (
+          <div style={{ textAlign: "center", padding: "40px" }}>
+            <p style={{ color: "#666" }}>
+              Generating personalized recommendations...
+            </p>
+          </div>
+        ) : recommendations ? (
+          <>
+            {/* Overall Assessment */}
+            <div
+              style={{
+                backgroundColor: "#f8f9fa",
+                padding: "20px",
+                borderRadius: "8px",
+                marginBottom: "20px",
+                borderLeft: "4px solid #0066CC",
+              }}
+            >
+              <h3 style={{ color: "#213547", marginBottom: "10px" }}>
+                Overall Assessment
+              </h3>
+              <p style={{ color: "#213547", lineHeight: "1.6" }}>
+                {recommendations.overallAssessment}
+              </p>
+            </div>
+
+            {/* Improvement Areas */}
+            {recommendations.improvementAreas.length > 0 && (
+              <div style={{ marginBottom: "20px" }}>
+                <h3 style={{ color: "#213547", marginBottom: "15px" }}>
+                  Key Areas for Improvement
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "10px",
+                  }}
+                >
+                  {recommendations.improvementAreas.map((area, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        backgroundColor: "#28a745",
+                        color: "white",
+                        padding: "8px 16px",
+                        borderRadius: "20px",
+                        fontSize: "14px",
+                        fontWeight: "500",
+                      }}
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Recommendations List */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              {recommendations.recommendations.map((rec, index) => (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: "#f8f9fa",
+                    padding: "20px",
+                    borderRadius: "8px",
+                    borderLeft: `4px solid ${
+                      rec.priority === "high"
+                        ? "#dc3545"
+                        : rec.priority === "medium"
+                        ? "#ffc107"
+                        : "#28a745"
+                    }`,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <h4 style={{ color: "#213547", margin: 0, flex: 1 }}>
+                      {rec.title}
+                    </h4>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        textTransform: "uppercase",
+                        color:
+                          rec.priority === "high"
+                            ? "#dc3545"
+                            : rec.priority === "medium"
+                            ? "#ffc107"
+                            : "#28a745",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {rec.priority}
+                    </span>
+                  </div>
+                  <p style={{ color: "#213547", lineHeight: "1.6", margin: 0 }}>
+                    {rec.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div style={{ textAlign: "center", padding: "40px" }}>
+            <p style={{ color: "#666" }}>
+              Unable to generate recommendations at this time.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Actions */}
