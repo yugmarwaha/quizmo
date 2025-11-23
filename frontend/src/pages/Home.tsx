@@ -9,7 +9,7 @@ interface HomeProps {
 
 const COURSES = [
   { id: "cs540", name: "CS 540 – Intro to AI" },
-  { id: "econ101", name: "Econ 101 – Microeconomics" },
+  { id: "soc125", name: "Sociology 125" },
   { id: "", name: "Custom / Not in list" },
 ];
 
