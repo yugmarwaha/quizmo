@@ -250,7 +250,7 @@ export function ResultsPage({
                 padding: "20px",
                 backgroundColor: "#f8f9fa",
                 borderRadius: "8px",
-                borderLeft: `4px solid ${isCorrect ? "#0066CC" : "#28a745"}`,
+                borderLeft: `4px solid ${isCorrect ? "#28a745" : "#dc3545"}`,
               }}
             >
               <div
@@ -291,7 +291,7 @@ export function ResultsPage({
                 <strong style={{ color: "#666" }}>Your answer: </strong>
                 <span
                   style={{
-                    color: isCorrect ? "#0066CC" : "#28a745",
+                    color: isCorrect ? "#28a745" : "#dc3545",
                     fontWeight: "500",
                   }}
                 >
@@ -302,7 +302,7 @@ export function ResultsPage({
               {!isCorrect && (
                 <div>
                   <strong style={{ color: "#666" }}>Correct answer: </strong>
-                  <span style={{ color: "#0066CC", fontWeight: "500" }}>
+                  <span style={{ color: "#28a745", fontWeight: "500" }}>
                     {Array.isArray(question.answer)
                       ? question.answer.join(", ")
                       : question.answer}
@@ -372,8 +372,8 @@ export function ResultsPage({
                     <span
                       key={index}
                       style={{
-                        backgroundColor: "#28a745",
-                        color: "white",
+                        backgroundColor: "#ffc107",
+                        color: "#000",
                         padding: "8px 16px",
                         borderRadius: "20px",
                         fontSize: "14px",
