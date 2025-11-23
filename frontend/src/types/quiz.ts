@@ -1,10 +1,10 @@
-export type QuestionType = "mcq" | "tf" | "fill";
+export type QuestionType = "mcq" | "tf" | "mcq_multi" | "fill";
 export interface Question {
   id: string;
   type: QuestionType;
   question: string;
   options?: string[] | null;
-  answer: string;
+  answer: string | string[];
   explanation?: string | null;
   difficulty: "easy" | "medium" | "hard";
   source_chunk_index?: number | null;

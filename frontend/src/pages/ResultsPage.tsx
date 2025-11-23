@@ -62,7 +62,7 @@ export function ResultsPage({
 
       {/* Analytics Charts */}
       <Analytics quiz={quiz} userAnswers={userAnswers} />
-      
+
       {/* Performance by Difficulty */}
       <div style={{ marginBottom: "40px" }}>
         <h2 style={{ color: "#213547", marginBottom: "20px" }}>
@@ -197,7 +197,9 @@ export function ResultsPage({
                 <div>
                   <strong style={{ color: "#666" }}>Correct answer: </strong>
                   <span style={{ color: "#28a745", fontWeight: "500" }}>
-                    {question.answer}
+                    {Array.isArray(question.answer)
+                      ? question.answer.join(", ")
+                      : question.answer}
                   </span>
                 </div>
               )}

@@ -1,12 +1,12 @@
 # app/schemas.py
 from pydantic import BaseModel
-from typing import List, Optional, Literal
+from typing import List, Optional, Literal, Union
 
 
 class Question(BaseModel):
     id: str
     # what kind of question this is – default to "mcq" for now
-    type: Literal["mcq", "tf", "fill"] = "mcq"
+    type: Literal["mcq", "tf", "mcq_multi", "fill"] = "mcq"
 
     question: str
 
@@ -14,7 +14,7 @@ class Question(BaseModel):
     # TF / fill-in: options can be None
     options: Optional[List[str]] = None
 
-    answer: str
+    answer: Union[str, List[str]]
 
     # optional explanation shown after answering
     explanation: Optional[str] = None

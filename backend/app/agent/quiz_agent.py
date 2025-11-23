@@ -51,21 +51,25 @@ CURRENT LECTURE TEXT:
 
 TASK:
 - Generate a quiz with {num_questions} questions.
-- Mix of question types: approximately 70% multiple-choice (mcq) and 30% true/false (tf).
-- For MCQ questions:
+- Mix of question types: approximately 50% multiple-choice single correct (mcq), 25% true/false (tf), 25% multiple-choice multi-correct (mcq_multi).
+- For MCQ single correct questions:
   - type: "mcq"
   - options: list of 4 strings
-  - answer: exactly one of the options
+  - answer: single string, one of the options
 - For TF questions:
   - type: "tf"
   - options: null
   - answer: "True" or "False"
+- For MCQ multi-correct questions:
+  - type: "mcq_multi"
+  - options: list of 4 strings
+  - answer: list of strings, 2-3 correct options from the list
 - Each question should have:
   - id (string)
-  - type (string, "mcq" or "tf")
+  - type (string, "mcq", "tf", or "mcq_multi")
   - question (string)
-  - options (list for mcq, null for tf)
-  - answer (string)
+  - options (list for mcq/mcq_multi, null for tf)
+  - answer (string for mcq/tf, list for mcq_multi)
   - difficulty ("easy", "medium", or "hard")
 - Cover a mix of recall and understanding questions.
 - Do not include explanations in the answer field.
@@ -89,6 +93,14 @@ TASK:
         "options": null,
         "answer": "True",
         "difficulty": "easy"
+      }},
+      {{
+        "id": "q3",
+        "type": "mcq_multi",
+        "question": "...",
+        "options": ["A", "B", "C", "D"],
+        "answer": ["A", "C"],
+        "difficulty": "hard"
       }},
       ...
     ]

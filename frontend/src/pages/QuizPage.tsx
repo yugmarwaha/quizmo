@@ -12,15 +12,15 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
 
   // Track selected options for all questions (including unsubmitted ones)
   const [selectedOptions, setSelectedOptions] = useState<
-    Record<string, string>
+    Record<string, string[]>
   >({});
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const totalQuestions = quiz.questions.length;
   const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
 
-  // Get the selected option for current question
-  const selectedOption = selectedOptions[currentQuestion.id] || "";
+  // Get the selected options for current question
+  const selectedOptionArray = selectedOptions[currentQuestion.id] || [];
 
   // Check if current question was already submitted
   const isSubmitted = userAnswers.some(
@@ -29,20 +29,48 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
 
   const handleOptionSelect = (option: string) => {
     if (!isSubmitted) {
-      setSelectedOptions({
-        ...selectedOptions,
-        [currentQuestion.id]: option,
-      });
+      const currentSelected = selectedOptions[currentQuestion.id] || [];
+      if (currentQuestion.type === "mcq_multi") {
+        // Toggle for multi-select
+        const newSelected = currentSelected.includes(option)
+          ? currentSelected.filter((o) => o !== option)
+          : [...currentSelected, option];
+        setSelectedOptions({
+          ...selectedOptions,
+          [currentQuestion.id]: newSelected,
+        });
+      } else {
+        // Single select
+        setSelectedOptions({
+          ...selectedOptions,
+          [currentQuestion.id]: [option],
+        });
+      }
     }
   };
 
   const handleSubmitAnswer = () => {
-    if (!selectedOption) return;
+    if (selectedOptionArray.length === 0) return;
 
-    const isCorrect = selectedOption === currentQuestion.answer;
+    let isCorrect = false;
+    const selectedAnswer = selectedOptionArray.join(",");
+
+    if (currentQuestion.type === "mcq_multi") {
+      // For multi-correct, check if selected set matches answer set
+      const correctAnswers = Array.isArray(currentQuestion.answer)
+        ? currentQuestion.answer
+        : [currentQuestion.answer];
+      isCorrect =
+        selectedOptionArray.length === correctAnswers.length &&
+        selectedOptionArray.every((opt) => correctAnswers.includes(opt));
+    } else {
+      // For single correct
+      isCorrect = selectedOptionArray[0] === currentQuestion.answer;
+    }
+
     const newAnswer: UserAnswer = {
       questionId: currentQuestion.id,
-      selectedAnswer: selectedOption,
+      selectedAnswer,
       isCorrect,
     };
 
@@ -122,16 +150,46 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                 padding: "15px",
                 marginBottom: "10px",
                 border: "2px solid",
-                borderColor: selectedOption === option ? "#007bff" : "#dee2e6",
+                borderColor: selectedOptionArray.includes(option)
+                  ? "#007bff"
+                  : "#dee2e6",
                 borderRadius: "8px",
                 cursor: isSubmitted ? "not-allowed" : "pointer",
-                backgroundColor:
-                  selectedOption === option ? "#e7f3ff" : "white",
+                backgroundColor: selectedOptionArray.includes(option)
+                  ? "#e7f3ff"
+                  : "white",
                 opacity: isSubmitted ? 0.6 : 1,
                 color: "#213547",
               }}
             >
               <strong>{String.fromCharCode(65 + index)}.</strong> {option}
+            </div>
+          ))
+        ) : currentQuestion.type === "mcq_multi" && currentQuestion.options ? (
+          currentQuestion.options.map((option, index) => (
+            <div
+              key={index}
+              onClick={() => handleOptionSelect(option)}
+              style={{
+                padding: "15px",
+                marginBottom: "10px",
+                border: "2px solid",
+                borderColor: selectedOptionArray.includes(option)
+                  ? "#007bff"
+                  : "#dee2e6",
+                borderRadius: "8px",
+                cursor: isSubmitted ? "not-allowed" : "pointer",
+                backgroundColor: selectedOptionArray.includes(option)
+                  ? "#e7f3ff"
+                  : "white",
+                opacity: isSubmitted ? 0.6 : 1,
+                color: "#213547",
+              }}
+            >
+              <strong>{String.fromCharCode(65 + index)}.</strong> {option}
+              {selectedOptionArray.includes(option) && (
+                <span style={{ marginLeft: "10px", color: "#007bff" }}>✓</span>
+              )}
             </div>
           ))
         ) : currentQuestion.type === "tf" ? (
@@ -143,11 +201,14 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                 padding: "15px",
                 marginBottom: "10px",
                 border: "2px solid",
-                borderColor: selectedOption === option ? "#007bff" : "#dee2e6",
+                borderColor: selectedOptionArray.includes(option)
+                  ? "#007bff"
+                  : "#dee2e6",
                 borderRadius: "8px",
                 cursor: isSubmitted ? "not-allowed" : "pointer",
-                backgroundColor:
-                  selectedOption === option ? "#e7f3ff" : "white",
+                backgroundColor: selectedOptionArray.includes(option)
+                  ? "#e7f3ff"
+                  : "white",
                 opacity: isSubmitted ? 0.6 : 1,
                 color: "#213547",
                 textAlign: "center",
@@ -190,15 +251,17 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
           {!isSubmitted ? (
             <button
               onClick={handleSubmitAnswer}
-              disabled={!selectedOption}
+              disabled={selectedOptionArray.length === 0}
               style={{
                 padding: "10px 20px",
                 fontSize: "16px",
-                backgroundColor: selectedOption ? "#28a745" : "#ccc",
+                backgroundColor:
+                  selectedOptionArray.length > 0 ? "#28a745" : "#ccc",
                 color: "white",
                 border: "none",
                 borderRadius: "4px",
-                cursor: selectedOption ? "pointer" : "not-allowed",
+                cursor:
+                  selectedOptionArray.length > 0 ? "pointer" : "not-allowed",
               }}
             >
               Submit Answer
