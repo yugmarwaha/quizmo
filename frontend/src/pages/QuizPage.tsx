@@ -113,25 +113,53 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
       </div>
 
       <div style={{ marginBottom: "30px" }}>
-        {currentQuestion.options.map((option, index) => (
-          <div
-            key={index}
-            onClick={() => handleOptionSelect(option)}
-            style={{
-              padding: "15px",
-              marginBottom: "10px",
-              border: "2px solid",
-              borderColor: selectedOption === option ? "#007bff" : "#dee2e6",
-              borderRadius: "8px",
-              cursor: isSubmitted ? "not-allowed" : "pointer",
-              backgroundColor: selectedOption === option ? "#e7f3ff" : "white",
-              opacity: isSubmitted ? 0.6 : 1,
-              color: "#213547",
-            }}
-          >
-            <strong>{String.fromCharCode(65 + index)}.</strong> {option}
-          </div>
-        ))}
+        {currentQuestion.type === "mcq" && currentQuestion.options ? (
+          currentQuestion.options.map((option, index) => (
+            <div
+              key={index}
+              onClick={() => handleOptionSelect(option)}
+              style={{
+                padding: "15px",
+                marginBottom: "10px",
+                border: "2px solid",
+                borderColor: selectedOption === option ? "#007bff" : "#dee2e6",
+                borderRadius: "8px",
+                cursor: isSubmitted ? "not-allowed" : "pointer",
+                backgroundColor:
+                  selectedOption === option ? "#e7f3ff" : "white",
+                opacity: isSubmitted ? 0.6 : 1,
+                color: "#213547",
+              }}
+            >
+              <strong>{String.fromCharCode(65 + index)}.</strong> {option}
+            </div>
+          ))
+        ) : currentQuestion.type === "tf" ? (
+          ["True", "False"].map((option) => (
+            <div
+              key={option}
+              onClick={() => handleOptionSelect(option)}
+              style={{
+                padding: "15px",
+                marginBottom: "10px",
+                border: "2px solid",
+                borderColor: selectedOption === option ? "#007bff" : "#dee2e6",
+                borderRadius: "8px",
+                cursor: isSubmitted ? "not-allowed" : "pointer",
+                backgroundColor:
+                  selectedOption === option ? "#e7f3ff" : "white",
+                opacity: isSubmitted ? 0.6 : 1,
+                color: "#213547",
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              {option}
+            </div>
+          ))
+        ) : (
+          <p>Unsupported question type</p>
+        )}
       </div>
 
       <div
