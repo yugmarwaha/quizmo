@@ -203,6 +203,15 @@ export function ResultsPage({
                   </span>
                 </div>
               )}
+
+              {question.explanation && (
+                <div style={{ marginTop: "10px" }}>
+                  <strong style={{ color: "#666" }}>Explanation: </strong>
+                  <span style={{ color: "#213547" }}>
+                    {question.explanation}
+                  </span>
+                </div>
+              )}
             </div>
           );
         })}

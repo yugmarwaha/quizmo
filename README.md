@@ -166,7 +166,7 @@ quizmo/
         "difficulty": "easy"
       },
       {
-        "id": "q2", 
+        "id": "q2",
         "type": "tf",
         "question": "Paris is the capital of France.",
         "options": null,
@@ -186,6 +186,7 @@ quizmo/
   ```
 
 **Question Types:**
+
 - `mcq`: Multiple choice with single correct answer
 - `tf`: True/False questions
 - `mcq_multi`: Multiple choice with multiple correct answers (select all that apply)
