@@ -202,6 +202,168 @@
   font-weight: 500;
 }
 
+.modeToggleContainer {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.modeToggle {
+  display: inline-flex;
+  gap: 8px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 6px;
+  background-color: #f8fafc;
+}
+
+.modeToggle button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: #64748b;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+}
+
+.modeToggle button:hover:not(:disabled) {
+  color: #334155;
+}
+
+.modeToggle button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.activeMode {
+  background-color: white !important;
+  color: #3b82f6 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.fileUploadContainer {
+  width: 100%;
+}
+
+.fileUploadArea {
+  border: 2px dashed #cbd5e0;
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.fileUploadArea:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 14px;
+}
+
+.uploadIcon {
+  width: 52px;
+  height: 52px;
+  color: #3b82f6;
+}
+
+.uploadText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+}
+
+.uploadHint {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 18px 20px;
+  background-color: #eff6ff;
+  border: 2px solid #bfdbfe;
+  border-radius: 10px;
+}
+
+.fileDetails {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.fileIcon {
+  width: 36px;
+  height: 36px;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.fileName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+  word-break: break-all;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+}
+
+.fileSize {
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin: 0;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+}
+
+.clearButton {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.clearButton:hover:not(:disabled) {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.clearButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 @media (max-width: 640px) {
   .container {
     padding: 40px 16px;

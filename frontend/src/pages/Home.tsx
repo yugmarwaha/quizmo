@@ -20,10 +20,48 @@ export function Home({ onQuizGenerated, onViewProfile }: HomeProps) {
   const [courseId, setCourseId] = useState<string>("cs540");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadMode, setUploadMode] = useState<"text" | "file">("text");
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.type !== "application/pdf") {
+        setError("Please upload a PDF file only");
+        return;
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        // 10MB limit
+        setError("File size should be less than 10MB");
+        return;
+      }
+      setSelectedFile(file);
+      setLectureText(""); // Clear text area when file is selected
+      setError("");
+    }
+  };
+
+  const handleClearFile = () => {
+    setSelectedFile(null);
+    const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = "";
+    }
+  };
+
+  const handleModeChange = (mode: "text" | "file") => {
+    setUploadMode(mode);
+    setError("");
+    if (mode === "text") {
+      setSelectedFile(null);
+    } else {
+      setLectureText("");
+    }
+  };
 
   const handleGenerate = async () => {
-    if (!lectureText.trim()) {
-      setError("Please enter some lecture text");
+    if (!lectureText.trim() && !selectedFile) {
+      setError("Please enter some lecture text or upload a PDF file");
       return;
     }
 
@@ -78,6 +116,26 @@ export function Home({ onQuizGenerated, onViewProfile }: HomeProps) {
         </p>
       </div>
 
+      {/* Mode Toggle */}
+      <div className={styles.modeToggleContainer}>
+        <div className={styles.modeToggle}>
+          <button
+            className={uploadMode === "text" ? styles.activeMode : ""}
+            onClick={() => handleModeChange("text")}
+            disabled={isLoading}
+          >
+            Paste Text
+          </button>
+          <button
+            className={uploadMode === "file" ? styles.activeMode : ""}
+            onClick={() => handleModeChange("file")}
+            disabled={isLoading}
+          >
+            Upload PDF
+          </button>
+        </div>
+      </div>
+
       {/* Course selector */}
       <div className={styles.formGroup}>
         <label className={styles.label}>Course</label>
@@ -100,17 +158,91 @@ export function Home({ onQuizGenerated, onViewProfile }: HomeProps) {
         </div> */}
       </div>
 
-      {/* Textarea */}
+      {/* Text Input or File Upload */}
       <div className={styles.formGroup}>
-        <label className={styles.label}>Lecture Text</label>
-        <textarea
-          value={lectureText}
-          onChange={(e) => setLectureText(e.target.value)}
-          placeholder="Paste your lecture text here..."
-          rows={12}
-          className={styles.textarea}
-          disabled={isLoading}
-        />
+        <label className={styles.label}>
+          {uploadMode === "text" ? "Lecture Text" : "Upload PDF File"}
+        </label>
+        {uploadMode === "text" ? (
+          <textarea
+            value={lectureText}
+            onChange={(e) => setLectureText(e.target.value)}
+            placeholder="Paste your lecture text here..."
+            rows={12}
+            className={styles.textarea}
+            disabled={isLoading}
+          />
+        ) : (
+          <div className={styles.fileUploadContainer}>
+            <div className={styles.fileUploadArea}>
+              <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,application/pdf"
+                onChange={handleFileSelect}
+                className={styles.fileInput}
+                disabled={isLoading}
+              />
+              <label htmlFor="fileInput" className={styles.fileLabel}>
+                <svg
+                  className={styles.uploadIcon}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+                <span className={styles.uploadText}>
+                  {selectedFile
+                    ? "Change PDF file"
+                    : "Click to upload PDF file"}
+                </span>
+                <span className={styles.uploadHint}>
+                  PDF files only (Max 10MB)
+                </span>
+              </label>
+            </div>
+
+            {selectedFile && (
+              <div className={styles.fileInfo}>
+                <div className={styles.fileDetails}>
+                  <svg
+                    className={styles.fileIcon}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <div>
+                    <p className={styles.fileName}>{selectedFile.name}</p>
+                    <p className={styles.fileSize}>
+                      {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={handleClearFile}
+                  className={styles.clearButton}
+                  title="Remove file"
+                  disabled={isLoading}
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Number of questions */}
