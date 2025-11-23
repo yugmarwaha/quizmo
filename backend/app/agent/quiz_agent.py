@@ -23,8 +23,8 @@ if not OPENAI_API_KEY:
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# LLM model for quiz generation - using latest gpt-5.1 for speed and quality
-MODEL_NAME = "gpt-5.1"
+# LLM model for quiz generation - using gpt-4o for speed and quality
+MODEL_NAME = "gpt-4o"
 
 
 def generate_quiz_agent(
@@ -39,13 +39,13 @@ def generate_quiz_agent(
     )
 
     # 2. Build prompts
-    system_prompt = """Generate university-level quiz questions from lecture content. Use provided context. Return valid JSON only."""
+    system_prompt = """Generate quiz questions directly from the provided text content. Use the context only as supplementary information if relevant. Return valid JSON only."""
 
     user_prompt = f"""CONTEXT: {context_block or "None"}
 
-LECTURE: {lecture_text}
+LECTURE TEXT: {lecture_text}
 
-Generate {num_questions} questions. Mix: 50% MCQ, 25% TF, 25% multi-correct.
+Generate {num_questions} questions based primarily on the LECTURE TEXT above. Use CONTEXT only if it provides additional relevant information. Mix: 50% MCQ, 25% TF, 25% multi-correct.
 
 Format:
 {{
