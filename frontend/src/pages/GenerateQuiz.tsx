@@ -48,7 +48,7 @@ export function HostView({ quizId, questions }: HostViewProps) {
       </p>
       <h3>{currentQuestion.question}</h3>
       <div>
-        {currentQuestion.options.map((option, idx) => (
+        {currentQuestion.options?.map((option, idx) => (
           <div
             key={idx}
             style={{
@@ -71,4 +71,4 @@ export function HostView({ quizId, questions }: HostViewProps) {
   );
 }
 
-export default HostView; 
+export default HostView;
