@@ -8,13 +8,16 @@ interface QuizPageProps {
 
 export function QuizPage({ quiz, onComplete }: QuizPageProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
 
-  // Track selected options for all questions (including unsubmitted ones)
+  // Track selected options for all questions
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string[]>
   >({});
-  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
+
+  // Track time spent on each question
+  const [questionStartTimes, setQuestionStartTimes] = useState<
+    Record<string, number>
+  >({});
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const totalQuestions = quiz.questions.length;
@@ -23,73 +26,68 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
   // Get the selected options for current question
   const selectedOptionArray = selectedOptions[currentQuestion.id] || [];
 
-  // Check if current question was already submitted
-  const isSubmitted = userAnswers.some(
-    (a) => a.questionId === currentQuestion.id
-  );
-
-  // Update question start time when question changes
+  // Initialize start time for current question if not set
   useEffect(() => {
-    if (!isSubmitted) {
-      setQuestionStartTime(Date.now());
+    if (!questionStartTimes[currentQuestion.id]) {
+      setQuestionStartTimes({
+        ...questionStartTimes,
+        [currentQuestion.id]: Date.now(),
+      });
     }
-  }, [currentQuestionIndex, isSubmitted]);
+  }, [currentQuestionIndex, currentQuestion.id, questionStartTimes]);
 
   const handleOptionSelect = (option: string) => {
-    if (!isSubmitted) {
-      const currentSelected = selectedOptions[currentQuestion.id] || [];
-      if (currentQuestion.type === "mcq_multi") {
-        // Toggle for multi-select
-        const newSelected = currentSelected.includes(option)
-          ? currentSelected.filter((o) => o !== option)
-          : [...currentSelected, option];
-        setSelectedOptions({
-          ...selectedOptions,
-          [currentQuestion.id]: newSelected,
-        });
-      } else {
-        // Single select
-        setSelectedOptions({
-          ...selectedOptions,
-          [currentQuestion.id]: [option],
-        });
-      }
-    }
-  };
-
-  const handleSubmitAnswer = () => {
-    if (selectedOptionArray.length === 0) return;
-
-    const timeSpent = Math.floor((Date.now() - questionStartTime) / 1000);
-
-    let isCorrect = false;
-    const selectedAnswer = selectedOptionArray.join(",");
-
+    const currentSelected = selectedOptions[currentQuestion.id] || [];
     if (currentQuestion.type === "mcq_multi") {
-      // For multi-correct, check if selected set matches answer set
-      const correctAnswers = Array.isArray(currentQuestion.answer)
-        ? currentQuestion.answer
-        : [currentQuestion.answer];
-      isCorrect =
-        selectedOptionArray.length === correctAnswers.length &&
-        selectedOptionArray.every((opt) => correctAnswers.includes(opt));
+      // Toggle for multi-select
+      const newSelected = currentSelected.includes(option)
+        ? currentSelected.filter((o) => o !== option)
+        : [...currentSelected, option];
+      setSelectedOptions({
+        ...selectedOptions,
+        [currentQuestion.id]: newSelected,
+      });
     } else {
-      // For single correct
-      isCorrect = selectedOptionArray[0] === currentQuestion.answer;
+      // Single select
+      setSelectedOptions({
+        ...selectedOptions,
+        [currentQuestion.id]: [option],
+      });
     }
-
-    const newAnswer: UserAnswer = {
-      questionId: currentQuestion.id,
-      selectedAnswer,
-      isCorrect,
-      timeSpent,
-    };
-
-    setUserAnswers([...userAnswers, newAnswer]);
   };
 
   const handleNext = () => {
     if (isLastQuestion) {
+      // Calculate answers for all questions when submitting quiz
+      const userAnswers: UserAnswer[] = quiz.questions.map((question) => {
+        const selectedAnswer = (selectedOptions[question.id] || []).join(",");
+        const startTime = questionStartTimes[question.id] || Date.now();
+        const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+
+        let isCorrect = false;
+        const selectedOptionArray = selectedOptions[question.id] || [];
+
+        if (selectedOptionArray.length > 0) {
+          if (question.type === "mcq_multi") {
+            const correctAnswers = Array.isArray(question.answer)
+              ? question.answer
+              : [question.answer];
+            isCorrect =
+              selectedOptionArray.length === correctAnswers.length &&
+              selectedOptionArray.every((opt) => correctAnswers.includes(opt));
+          } else {
+            isCorrect = selectedOptionArray[0] === question.answer;
+          }
+        }
+
+        return {
+          questionId: question.id,
+          selectedAnswer,
+          isCorrect,
+          timeSpent,
+        };
+      });
+
       onComplete(userAnswers);
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -165,11 +163,10 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                   ? "#0066CC"
                   : "#dee2e6",
                 borderRadius: "8px",
-                cursor: isSubmitted ? "not-allowed" : "pointer",
+                cursor: "pointer",
                 backgroundColor: selectedOptionArray.includes(option)
                   ? "#e7f3ff"
                   : "white",
-                opacity: isSubmitted ? 0.6 : 1,
                 color: "#213547",
               }}
             >
@@ -189,11 +186,10 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                   ? "#0066CC"
                   : "#dee2e6",
                 borderRadius: "8px",
-                cursor: isSubmitted ? "not-allowed" : "pointer",
+                cursor: "pointer",
                 backgroundColor: selectedOptionArray.includes(option)
                   ? "#e7f3ff"
                   : "white",
-                opacity: isSubmitted ? 0.6 : 1,
                 color: "#213547",
               }}
             >
@@ -216,11 +212,10 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                   ? "#0066CC"
                   : "#dee2e6",
                 borderRadius: "8px",
-                cursor: isSubmitted ? "not-allowed" : "pointer",
+                cursor: "pointer",
                 backgroundColor: selectedOptionArray.includes(option)
                   ? "#e7f3ff"
                   : "white",
-                opacity: isSubmitted ? 0.6 : 1,
                 color: "#213547",
                 textAlign: "center",
                 fontWeight: "bold",
@@ -258,42 +253,20 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
           Previous
         </button>
 
-        <div style={{ display: "flex", gap: "10px" }}>
-          {!isSubmitted ? (
-            <button
-              onClick={handleSubmitAnswer}
-              disabled={selectedOptionArray.length === 0}
-              style={{
-                padding: "10px 20px",
-                fontSize: "16px",
-                backgroundColor:
-                  selectedOptionArray.length > 0 ? "#0066CC" : "#ccc",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor:
-                  selectedOptionArray.length > 0 ? "pointer" : "not-allowed",
-              }}
-            >
-              Submit Answer
-            </button>
-          ) : (
-            <button
-              onClick={handleNext}
-              style={{
-                padding: "10px 20px",
-                fontSize: "16px",
-                backgroundColor: "#0066CC",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              {isLastQuestion ? "Finish Quiz" : "Next Question"}
-            </button>
-          )}
-        </div>
+        <button
+          onClick={handleNext}
+          style={{
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#0066CC",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          {isLastQuestion ? "Submit Quiz" : "Next"}
+        </button>
       </div>
     </div>
   );
