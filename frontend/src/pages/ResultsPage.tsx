@@ -23,15 +23,15 @@ export function ResultsPage({
     hard: { correct: 0, total: 0 },
   };
 
-  quiz.questions.forEach((question) => {
-    const userAnswer = userAnswers.find((a) => a.questionId === question.id);
-    if (userAnswer) {
-      performanceByDifficulty[question.difficulty].total++;
-      if (userAnswer.isCorrect) {
-        performanceByDifficulty[question.difficulty].correct++;
-      }
-    }
-  });
+  // Calculate time analytics
+  const totalTime = userAnswers.reduce((sum, a) => sum + (a.timeSpent || 0), 0);
+  const averageTime = totalTime / totalQuestions;
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
 
   return (
     <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
@@ -46,9 +46,9 @@ export function ResultsPage({
             fontWeight: "bold",
             color:
               scorePercentage >= 70
-                ? "#28a745"
+                ? "#0066CC"
                 : scorePercentage >= 50
-                ? "#ffc107"
+                ? "#FF5656"
                 : "#dc3545",
             marginBottom: "10px",
           }}
@@ -70,9 +70,9 @@ export function ResultsPage({
         </h2>
         <div
           style={{
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gap: "20px",
-            justifyContent: "space-around",
           }}
         >
           {(
@@ -125,6 +125,79 @@ export function ResultsPage({
         </div>
       </div>
 
+      {/* Time Analytics */}
+      <div style={{ marginBottom: "40px" }}>
+        <h2 style={{ color: "#213547", marginBottom: "20px" }}>
+          Time Analytics
+        </h2>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "20px",
+          }}
+        >
+          <div
+            style={{
+              flex: 1,
+              padding: "20px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "8px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "12px",
+                textTransform: "uppercase",
+                color: "#666",
+                marginBottom: "10px",
+              }}
+            >
+              Total Time
+            </div>
+            <div
+              style={{
+                fontSize: "32px",
+                fontWeight: "bold",
+                color: "#213547",
+              }}
+            >
+              {formatTime(totalTime)}
+            </div>
+          </div>
+          <div
+            style={{
+              flex: 1,
+              padding: "20px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "8px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "12px",
+                textTransform: "uppercase",
+                color: "#666",
+                marginBottom: "10px",
+              }}
+            >
+              Average per Question
+            </div>
+            <div
+              style={{
+                fontSize: "32px",
+                fontWeight: "bold",
+                color: "#213547",
+              }}
+            >
+              {formatTime(Math.round(averageTime))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Question Review */}
       <div style={{ marginBottom: "40px" }}>
         <h2 style={{ color: "#213547", marginBottom: "20px" }}>
@@ -144,7 +217,7 @@ export function ResultsPage({
                 padding: "20px",
                 backgroundColor: "#f8f9fa",
                 borderRadius: "8px",
-                borderLeft: `4px solid ${isCorrect ? "#28a745" : "#dc3545"}`,
+                borderLeft: `4px solid ${isCorrect ? "#0066CC" : "#FF5656"}`,
               }}
             >
               <div
@@ -185,7 +258,7 @@ export function ResultsPage({
                 <strong style={{ color: "#666" }}>Your answer: </strong>
                 <span
                   style={{
-                    color: isCorrect ? "#28a745" : "#dc3545",
+                    color: isCorrect ? "#0066CC" : "#FF5656",
                     fontWeight: "500",
                   }}
                 >
@@ -196,7 +269,7 @@ export function ResultsPage({
               {!isCorrect && (
                 <div>
                   <strong style={{ color: "#666" }}>Correct answer: </strong>
-                  <span style={{ color: "#28a745", fontWeight: "500" }}>
+                  <span style={{ color: "#0066CC", fontWeight: "500" }}>
                     {Array.isArray(question.answer)
                       ? question.answer.join(", ")
                       : question.answer}
@@ -224,7 +297,7 @@ export function ResultsPage({
           style={{
             padding: "12px 24px",
             fontSize: "16px",
-            backgroundColor: "#007bff",
+            backgroundColor: "#0066CC",
             color: "white",
             border: "none",
             borderRadius: "4px",
