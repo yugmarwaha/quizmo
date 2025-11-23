@@ -5,25 +5,47 @@ from dataclasses import dataclass
 from typing import List, Optional
 
 import numpy as np
-import google.generativeai as genai
+from openai import OpenAI
 from dotenv import load_dotenv
+from pinecone import Pinecone  # NEW
 
 # Load environment variables from .env if present
 load_dotenv()
 
-# Configure Gemini client with API key from env
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
     raise RuntimeError(
-        "GEMINI_API_KEY not set. Set it in your environment or .env file."
+        "OPENAI_API_KEY not set. Set it in your environment or .env file."
     )
 
-genai.configure(api_key=GEMINI_API_KEY)
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+if not PINECONE_API_KEY:
+    raise RuntimeError(
+        "PINECONE_API_KEY not set. Set it in your environment or .env file."
+    )
+
+# If you're using a serverless index, Pinecone console will show a "host" URL.
+# Put that URL in your .env as PINECONE_INDEX_HOST.
+PINECONE_INDEX_HOST = os.getenv("PINECONE_INDEX_HOST")
+if not PINECONE_INDEX_HOST:
+    raise RuntimeError(
+        "PINECONE_INDEX_HOST not set. Get the host from Pinecone console and "
+        "set PINECONE_INDEX_HOST in your environment or .env file."
+    )
+
+# Name is optional here but nice to have for logging
+PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "quiz-questions")
+
+client = OpenAI(api_key=OPENAI_API_KEY)
+
+# Pinecone client + index
+pc = Pinecone(api_key=PINECONE_API_KEY)
+kb_index = pc.Index(host=PINECONE_INDEX_HOST)
 
 KB_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "knowledge_base")
 
-# You can also use "text-embedding-004" if available on your account
-EMBED_MODEL = "models/embedding-001"
+# Recommended OpenAI embedding model
+EMBED_MODEL = "text-embedding-3-small"
 
 
 @dataclass
@@ -31,31 +53,30 @@ class KBChunk:
     id: str
     source: str
     text: str
-    embedding: np.ndarray
+    embedding: Optional[np.ndarray] 
     course_id: Optional[str]
 
 
-_KB: List[KBChunk] = []
 _BUILT = False
 
 
 def embed_text(text: str) -> np.ndarray:
-    """Get embedding vector for a piece of text using Gemini."""
-    # For long text, you might want to truncate or summarize first,
-    # but for now we just send the whole chunk.
-    result = genai.embed_content(
+    """Get embedding vector for a piece of text using OpenAI embeddings."""
+    resp = client.embeddings.create(
         model=EMBED_MODEL,
-        content=text,
-        task_type="retrieval_document",
+        input=text,
     )
-    # google-generativeai returns a dict with "embedding" = list[float]
-    vec = np.array(result["embedding"], dtype="float32")
+    vec = np.array(resp.data[0].embedding, dtype="float32")
     return vec
 
 
 def build_kb():
-    """Load all course text files, chunk, embed, and cache in memory."""
-    global _KB, _BUILT
+    """
+    Load all course text files, chunk, embed, and upsert into Pinecone.
+
+    This runs once per process (guarded by _BUILT).
+    """
+    global _BUILT
     if _BUILT:
         return
 
@@ -64,12 +85,16 @@ def build_kb():
         _BUILT = True
         return
 
-    print(f"[RAG] Building KB from {KB_DIR} ...")
+    print(f"[RAG] Building KB from {KB_DIR} into Pinecone index '{PINECONE_INDEX_NAME}' ...")
 
-    chunk_size = 800
-    overlap = 200
+    # Tuned for small demo KB (~10 files)
+    chunk_size = 1500          # bigger chunks → fewer total chunks
+    overlap = 200              # small overlap to keep continuity
+    max_chunks_per_file = 10   # hard cap per file for speed/cost
 
-    # Loop over course directories (e.g. knowledge_base/cs540/*.txt)
+    total_chunks = 0
+    total_files = 0
+
     for course_dir in os.listdir(KB_DIR):
         course_path = os.path.join(KB_DIR, course_dir)
         if not os.path.isdir(course_path):
@@ -78,6 +103,8 @@ def build_kb():
         course_id = course_dir  # e.g. "cs540"
 
         for path in glob.glob(os.path.join(course_path, "*.txt")):
+            total_files += 1
+            print(f"[RAG] Embedding file {total_files}: {path}")
             with open(path, "r", encoding="utf-8") as f:
                 full_text = f.read()
 
@@ -85,48 +112,86 @@ def build_kb():
 
             start = 0
             idx = 0
-            while start < len(full_text):
+            vectors_to_upsert = []
+
+            while start < len(full_text) and idx < max_chunks_per_file:
                 end = start + chunk_size
                 chunk_text = full_text[start:end]
+
                 if chunk_text.strip():
                     chunk_id = f"{course_id}-{source_name}-chunk-{idx}"
                     emb = embed_text(chunk_text)
-                    _KB.append(
-                        KBChunk(
-                            id=chunk_id,
-                            source=source_name,
-                            text=chunk_text,
-                            embedding=emb,
-                            course_id=course_id,
+
+                    vectors_to_upsert.append(
+                        (
+                            chunk_id,
+                            emb.tolist(),
+                            {
+                                "course_id": course_id,
+                                "source": source_name,
+                                "text": chunk_text,
+                            },
                         )
                     )
-                    idx += 1
-                start = end - overlap  # slide window with overlap
 
-    print(f"[RAG] Built KB with {len(_KB)} chunks.")
+                    idx += 1
+                    total_chunks += 1
+                    if total_chunks % 10 == 0:
+                        print(f"[RAG] Prepared {total_chunks} chunks so far...")
+
+                # slide window with overlap
+                start = end - overlap
+
+            if vectors_to_upsert:
+                kb_index.upsert(vectors=vectors_to_upsert)
+                print(
+                    f"[RAG] Upserted {len(vectors_to_upsert)} chunks from {source_name} to Pinecone."
+                )
+
+    print(f"[RAG] Built KB with {total_chunks} chunks from {total_files} files (Pinecone).")
     _BUILT = True
 
 
-def search_kb(query: str, top_k: int = 5, course_id: Optional[str] = None) -> List[KBChunk]:
-    """Return top_k KB chunks most similar to the query, optionally filtered by course."""
+def search_kb(
+    query: str,
+    top_k: int = 5,
+    course_id: Optional[str] = None,
+) -> List[KBChunk]:
+    """
+    Return top_k KB chunks most similar to the query, using Pinecone.
+    Optionally filter by course_id.
+    """
+    # Make sure we've loaded & indexed the KB
     build_kb()
 
-    # Filter chunks by course_id if provided
-    if course_id:
-        candidates = [c for c in _KB if c.course_id == course_id]
-    else:
-        candidates = _KB
+    # Embed the query (lecture transcript or portion of it)
+    q_emb = embed_text(query).tolist()
 
-    if not candidates:
-        return []
+    # Filter by course_id if provided
+    pinecone_filter = {"course_id": course_id} if course_id else None
 
-    q_emb = embed_text(query)
+    res = kb_index.query(
+        vector=q_emb,
+        top_k=top_k,
+        include_metadata=True,
+        filter=pinecone_filter,
+    )
 
-    kb_matrix = np.stack([c.embedding for c in candidates], axis=0)
-    q_norm = np.linalg.norm(q_emb) + 1e-8
-    kb_norms = np.linalg.norm(kb_matrix, axis=1) + 1e-8
-    sims = (kb_matrix @ q_emb) / (kb_norms * q_norm)
+    # Depending on SDK version, res may be a dict or object; handle both.
+    matches = getattr(res, "matches", None) or res.get("matches", [])
 
-    top_idx = np.argsort(-sims)[:top_k]
+    chunks: List[KBChunk] = []
+    for m in matches:
+        # m.metadata may be dict or attribute; handle dict case
+        md = getattr(m, "metadata", None) or {}
+        chunks.append(
+            KBChunk(
+                id=getattr(m, "id", None) or md.get("id", ""),
+                source=md.get("source", ""),
+                text=md.get("text", ""),
+                embedding=None,  # not needed downstream
+                course_id=md.get("course_id"),
+            )
+        )
 
-    return [candidates[i] for i in top_idx]
+    return chunks

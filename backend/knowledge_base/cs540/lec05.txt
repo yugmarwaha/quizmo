@@ -1,0 +1,188 @@
+CS 540 Introduction to Artificial Intelligence
+Natural Language Processing (before LLMs)
+University of Wisconsin-Madison
+Spring 2024
+What is NLP?
+Combining computing with human language. Want to:
+– Answer questions
+– Summarize or extract information
+– Translate between languages
+– Generate dialogue/language
+– Write stories automatically
+Why is it hard?
+Many reasons:
+– Ambiguity: “Mary saw the duck with the telescope in the
+park”. Several meanings.
+– Understanding of the world
+• “Bob and Joe are fathers”.
+• “Bob and Joe are brothers”.
+Approaches to NLP
+A brief history
+– Symbolic NLP: 50’s to 90’s
+– Statistical/Probabilistic: 90’s to present
+• Neural nets: 2010’s to present
+• Large Language Model (LLM): GPT etc.
+Lots of progress!
+Lots more to work to do
+ELIZA program
+Outline
+• Introduction to language models
+– n-grams, training, evaluation, generation
+• Word representations
+– One-hot, word embeddings, transformer-based
+Language Models
+• Basic idea: use probabilistic models to assign a
+probability to a sentence W
+• Goes back to Shannon
+– Information theory: letters
+Training The Model
+Recall the chain rule of probability:
+• How do we estimate these probabilities?
+– I.e., “training” in machine learning.
+• From data (text corpus)
+– Can’t estimate reliably for long histories.
+Training: Make Assumptions
+• Markov assumption with shorter history:
+• Present doesn’t depend on whole past
+– Just recent past, i.e., context.
+– What’s k=0?
+k=0: Unigram Model
+• Full independence assumption:
+– (Present doesn’t depend on the past)
+The English letter frequency wheel
+Unigram word model
+Example (from Dan Jurafsky’s notes)
+fifth, an, of, futures, the, an, incorporated, a,
+a, the, inflation, most, dollars, quarter, in, is,
+mass thrift, did, eighty, said, hard, 'm, july,
+bullish that, or, limited, the
+k=1: Bigram Model
+• Markov Assumption:
+– (Present depends on immediate past)
+texaco, rose, one, in, this, issue,
+is, pursuing, growth, in, a, boiler,
+house, said, mr., gurria, mexico, 's,
+motion, control, proposal, without,
+permission, from, five, hundred,
+fifty, five, yen outside, new, car,
+parking, lot, of, the, agreement,
+reached this, would, be, a, record,
+november
+k=n-1: n-gram Model
+Can do trigrams, 4-grams, and so on
+• More expressive as n goes up
+• Harder to estimate
+Training: just count? I.e, for bigram:
+Simple “generative AI” from letter bigram
+(Markov Chain)
+n-gram Training
+Issues:
+• 1. Multiply tiny numbers?
+– Solution: use logs; add instead of multiply
+• 2. n-grams with zero probability?
+– Solution: smoothing
+Dan Klein
+Break & Quiz
+Q 1.1: Which of the below are bigrams from the sentence
+“It is cold outside today”.
+• A. It is
+• B. cold today
+• C. is cold
+• D. A & C
+Break & Quiz
+Q 1.1: Which of the below are bigrams from the sentence
+“It is cold outside today”.
+• A. It is
+• B. cold today
+• C. is cold
+• D. A & C
+Break & Quiz
+Q 1.2: Smoothing is increasingly useful for n-grams
+when
+• A. n gets larger
+• B. n gets smaller
+• C. always the same
+• D. n larger than 10
+Break & Quiz
+Q 1.2: Smoothing is increasingly useful for n-grams
+when
+• A. n gets larger
+• B. n gets smaller
+• C. always the same
+• D. n larger than 10
+Evaluating Language Models
+How do we know we’ve done a good job?
+• Observation
+• Train/test on separate data & measure metrics
+• Metrics:
+– 1. Extrinsic evaluation
+– 2. Perplexity
+Extrinsic Evaluation
+How do we know we’ve done a good job?
+• Pick a task and use the model to do the task
+• For two models, M1, M2, compare the accuracy for
+each task
+– Ex: Q/A system: how many questions right. Translation: how many
+words translated correctly
+• Downside: slow; may change relatively
+Intrinsic Evaluation: Perplexity
+Perplexity is a measure of uncertainty
+Compute average PP(W) for all W from a dataset
+Lower is better! Examples:
+• WSJ corpus; 40 million words for training:
+– Unigram: 962, Bigram 170, Trigram 109
+Further NLP Tasks
+Language modeling is not the only NLP task:
+– Part-of-speech tagging, parsing, etc.
+– Question-answering, translation, summarization,
+classification (e.g., sentiment analysis), generation, etc.
+Break & Quiz
+Q 2.1: What is the perplexity for a sequence of n digits 0-
+9? All occur independently with equal probability.
+• A. 10
+• B. 1/10
+• C. 10n
+• D. 0
+Break & Quiz
+Q 2.1: What is the perplexity for a sequence of n digits 0-
+9? All occur independently with equal probability.
+• A. 10
+• B. 1/10
+• C. 10n
+• D. 0 (P(w1)*P(w2)...*P(w10))(-1/10)= ((1/10)*(1/10)*....(1/10))(-1/10) = 10
+Representing Words
+Remember value of random variables (RVs)
+• Easier to work with than objects like ‘dog’
+Traditional representation: one-hot vectors
+– Dimension: # of words in vocabulary
+– Relationships between words?
+Smarter Representations
+Distributional semantics: account for relationships
+• Reps should be close/similar to other words that
+appear in a similar context
+Dense vectors:
+AKA word embeddings
+Training Word Embeddings
+Many approaches (super popular 2010-present)
+• Word2vec: a famous approach
+• What’s our likelihood?
+Windows of length
+2a
+Our word vectors
+All positions
+Training Word Embeddings
+Word2vec likelihood
+• Maximize this; what’s the probability?
+– Two vectors per word. vw, uw for center/context
+(o is context word, c is center)
+Similarity
+Word Embeddings
+Saurabh Pal – Implementing Word2Vec in Tensorflow
+Beyond “Shallow” Embeddings
+• Transformers: special model architectures based on
+attention
+– Sophisticated types of neural networks
+• Pretrained models
+– Based on transformers: BERT, GPT
+– Include context!
+• Fine-tune for desired task

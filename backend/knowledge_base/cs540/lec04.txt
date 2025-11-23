@@ -1,0 +1,357 @@
+CS 540 Introduction to Artificial Intelligence
+Logic
+University of Wisconsin-Madison
+Spring 2024
+Announcements
+• HW 1 was due.
+• HW 2 due on Thursday---start if you haven’t!
+– Ask on Piazza.
+Tuesday Feb. 6 Logic
+Thursday Feb. 8 NLP
+• Class roadmap:
+Tuesday Feb. 13 ML Introduction
+Thursday Feb. 15 ML Unsupervised I
+Tuesday Feb. 20 ML Unsupervised II
+Logic & AI
+Why are we studying logic?
+• Traditional approach to AI (’50s-
+’80s)
+–
+“Symbolic AI”
+– The Logic Theorist – 1956
+• Proved a bunch of theorems!
+• Logic also the language of:
+– Knowledge rep., databases, etc.
+Symbolic vs Connectionist
+Rival approach: connectionist
+• Probabilistic models
+• Neural networks
+• Extremely popular last 20
+years
+Stanford CS231n
+M. Minsky
+Symbolic vs Connectionist
+Which is better?
+• Future: combination; best-of-both-
+worlds.
+– “Neurosymbolic AI”
+– Example: Markov Logic Networks
+Outline
+• Introduction to logic
+– Arguments, validity, soundness
+• Propositional logic
+– Sentences, semantics, inference
+• First order logic (FOL)
+– Predicates, objects, formulas, quantifiers
+Basic Logic
+• Arguments, premises, conclusions
+– Argument: a set of sentences (premises) + a
+sentence (a conclusion)
+– Validity: argument is valid iff it’s necessary that
+if all premises are true, the conclusion is true
+– Soundness: argument is sound iff valid &
+premises true
+– Entailment: when valid arg., premises entail
+conclusion
+Propositional Logic Basics
+Logic Vocabulary:
+• Sentences, symbols, connectives, parentheses
+– Symbols: P, Q, R, … (atomic sentences)
+– Connectives:
+∧ and [conjunction]
+∨ or [disjunction]
+⇒ implies [implication]
+⇔ is equivalent [biconditional]
+¬ not [negation]
+– Literal: P or negation ¬P
+Propositional Logic Basics
+Examples:
+• (P ∨ Q) ⇒ S
+– “If it is cold or it is raining, then I need a jacket”
+• Q ⇒ P
+– “If it is raining, then it is cold”
+• ¬R
+– “It is not hot”
+Propositional Logic Basics
+Several rules in place
+• Precedence: ¬
+, ∧, ∨, ⇒, ⇔
+• Use parentheses when needed
+• Sentences: well-formed or not
+well-formed:
+– P ⇒ Q ⇒ S not well-formed (not
+associative!)
+Sentences & Semantics
+• Sentences: built up from symbols with connectives
+- Interpretation: assigning True / False
+to symbols (a row in truth table)
+- Semantics: interpretations for which
+sentence evaluates to True
+- Model: (of a set of sentences)
+interpretation for which all sentences
+are True
+Another kind of model :)
+Evaluating a Sentence
+• Example:
+• Note:
+– If P is false, P ⇒ Q is true regardless of Q (“5 is even implies 6
+is odd” is True!)
+– Causality not needed: “5 is odd implies the Sun is a star” is
+True!)
+Evaluating a Sentence: Truth Table
+• Ex:
+P Q R¬P Q∧R¬P∨Q∧R¬P∨Q∧R⇒Q
+0 0 0 1 0 1 0
+0 0 1 1 0 1 0
+0 1 0 1 0 1 1
+0 1 1 1 1 1 1
+1 0 0 0 0 0 1
+1 0 1 0 0 0 1
+1 1 0 0 0 0 1
+1 1 1 0 1 1 1
+• Satisfiable
+– There exists some interpretation where the sentence is
+true.
+Break & Quiz
+Q 1.1: Suppose P is false, Q is true, and R is true. Does this assignment
+satisfy
+(i) (ii) ¬(¬p → ¬q) ∧ r
+(¬p ∨ ¬q) → (p ∨ ¬r)
+• A. Both
+• B. Neither
+• C. Just (i)
+• D. Just (ii)
+Break & Quiz
+Q 1.1: Suppose P is false, Q is true, and R is true. Does this assignment
+satisfy
+(i) (ii) ¬(¬p → ¬q) ∧ r
+(¬p ∨ ¬q) → (p ∨ ¬r)
+• A. Both
+• B. Neither
+• C. Just (i)
+• D. Just (ii)
+Break & Quiz
+Q 1.1: Suppose P is false, Q is true, and R is true. Does this assignment
+satisfy
+(i) (ii) ¬(¬p → ¬q) ∧ r
+(¬p ∨ ¬q) → (p ∨ ¬r)
+Plug interpretation into each
+sentence.
+• A. Both
+• B. Neither
+• C. Just (i)
+• D. Just (ii)
+For (i): (¬p → ¬q) will be false so
+¬(¬p → ¬q) will be true and r is true
+by assignment.
+For (ii): (¬p ∨ ¬q) is true and (p ∨ ¬r)
+is false which makes the implication
+false.
+Break & Quiz
+Q 1.2: Let A =“Aldo is Italian” and B =“Bob is English”.
+Formalize “Aldo is Italian or if Aldo isn’t Italian then Bob is
+English”.
+• a. A ∨ (¬A → B)
+• b. A ∨ B
+• c. A ∨ (A → B)
+• d. A → B
+Break & Quiz
+Q 1.2: Let A =“Aldo is Italian” and B =“Bob is English”
+.
+Formalize “Aldo is Italian or if Aldo isn’t Italian then Bob is
+English”
+.
+• a. A ∨ (¬A → B)
+• b. A ∨ B (equivalent!)
+• c. A ∨ (A → B)
+• d. A → B
+Break & Quiz
+Q 1.2: Let A =“Aldo is Italian” and B =“Bob is English”.
+Formalize “Aldo is Italian or if Aldo isn’t Italian then Bob is
+English”.
+• a. A ∨ (¬A → B)
+• b. A ∨ B (equivalent!)
+• c. A ∨ (A → B)
+• d. A → B
+Knowledge Bases
+• Knowledge Base (KB): A set of sentences {A1, …, An}
+– Like a long sentence, connect with conjunction
+– KB: A1 ∧ A2 ∧ … ∧ An
+Model of a KB: interpretations
+where all sentences are True
+Goal: inference to discover new
+sentences
+Entailment
+Entailment: a sentence B logically follows from A
+• Write A ⊨ B
+• A ⊨ B iff in every interpretation where A is true, B is
+also true All interpretations
+B is true
+A is true
+Inference
+• Given a set of sentences (a KB), logical inference
+creates new sentences
+– Compare to prob. inference!
+• Challenges:
+– Soundness
+– Completeness
+– Efficiency
+Methods of Inference: 1. Enumeration
+• Enumerate all interpretations;
+look at the truth table
+–
+“Model checking”
+• Downside: 2n interpretations
+for n symbols
+Wiki
+Methods of Inference: 2. Using Rules
+• Modus Ponens: (A ⇒ B, A) ⊨ B
+• And-elimination
+• Other rules on the next page
+– Commutativity, associativity, de Morgan’s laws,
+distribution for conjunction/disjunction
+Logical equivalences
+You can use these equivalences to modify sentences.
+Methods of Inference: 3. Resolution
+• Convert to special form and use a single rule
+• Conjunctive Normal Form (CNF)
+(¬A ∨ B ∨ C) ∧ (¬B ∨ A) ∧ (¬C ∨ A)
+a clause
+Conjunction of clauses; each clause disjunction of literals
+• Simple rules for converting to CNF
+Conjunctive Normal Form (CNF)
+(¬B1,1 ∨ P1,2 ∨ P2,1) ∧ (¬P1,2 ∨ B1,1) ∧ (¬P2,1 ∨ B1,1)
+– Replace all ⇔ using biconditional elimination
+– Replace all ⇒ using implication elimination
+– Move all negations inward using
+-double-negation elimination
+-de Morgan's rule
+– Apply distributivity of ∨ over ∧
+Convert example sentence into CNF
+B1,1 ⇔ (P1,2 ∨ P2,1) starting sentence
+(B1,1 ⇒ (P1,2 ∨ P2,1)) ∧ ((P1,2 ∨ P2,1) ⇒ B1,1 )
+biconditional elimination
+(¬B1,1 ∨ P1,2 ∨ P2,1) ∧ (¬(P1,2 ∨ P2,1) ∨ B1,1 )
+implication elimination
+(¬B1,1 ∨ P1,2 ∨ P2,1) ∧ ((¬P1,2 ∧ ¬P2,1) ∨ B1,1 )
+move negations inward
+(¬B1,1 ∨ P1,2 ∨ P2,1) ∧ (¬P1,2 ∨ B1,1) ∧ (¬P2,1 ∨ B1,1)
+distribute ∨ over ∧
+Resolution Steps
+• Given KB and β (query)
+• Add ¬ β to KB, show this leads to empty
+(False. Proof by contradiction)
+• Everything needs to be in CNF
+• Example KB:
+– B1,1 ⇔ (P1,2 ∨ P2,1)
+– ¬B1,1
+• Example query:¬P1,2
+Resolution Preprocessing
+• Add ¬ β to KB, convert to CNF:
+a1: (¬B1,1 ∨ P1,2 ∨ P2,1)
+a2: (¬P1,2 ∨ B1,1)
+a3: (¬P2,1 ∨ B1,1)
+b: ¬B1,1
+c: P1,2
+• Want to reach goal: empty
+Resolution
+• Take any two clauses where one
+contains some symbol, and the other
+contains its complement (negative)
+P∨Q∨R ¬Q∨S∨T
+• Merge (resolve) them, throw away the
+symbol and its complement
+P∨R∨S∨T
+• If two clauses resolve and there’s no
+symbol left, you have reached empty
+(False). KB |= β
+• If no new clauses can be added, KB does
+not entail β
+Resolution Example
+a1: (¬B1,1 ∨ P1,2 ∨ P2,1)
+a2: (¬P1,2 ∨ B1,1)
+a3: (¬P2,1 ∨ B1,1)
+b: ¬B1,1
+c: P1,2
+Resolution Example
+a1: (¬B1,1 ∨ P1,2 ∨ P2,1)
+a2: (¬P1,2 ∨ B1,1)
+a3: (¬P2,1 ∨ B1,1)
+b: ¬B1,1
+c: P1,2
+Step 1: resolve a2, c: B1,1
+Step 2: resolve above and b: empty
+Break & Quiz
+Q 2.1: Which has more rows: a truth table on n symbols, or a
+joint distribution table on n binary random variables?
+• A. Truth table
+• B. Distribution
+• C. Same size
+• D. It depends
+Break & Quiz
+Q 2.1: Which has more rows: a truth table on n symbols, or a
+joint distribution table on n binary random variables?
+• A. Truth table
+• B. Distribution
+• C. Same size
+• D. It depends
+First Order Logic (FOL)
+Propositional logic has some limitations
+• Ex: how to say “all squares have four sides”
+• No context, hard to generalize; express facts
+FOL is a more expressive logic; works over
+• Facts, Objects, Relations, Functions
+First Order Logic Syntax
+• Term: an object in the world
+– Constant: Alice, 2, Madison, Green, …
+– Variables: x, y, a, b, c, …
+– Function(term1, …, termn)
+• Sqrt(9), Distance(Madison, Chicago)
+• Maps one or more objects to another object
+• Can refer to an unnamed object: LeftLeg(John)
+• Represents a user defined functional relation
+• A ground term is a term without variables.
+• Constants or functions of constants
+FOL Syntax
+• Atom: smallest T/F expression
+– Predicate(term1, …, termn)
+• Teacher(Jerry, you), Bigger(sqrt(2), x)
+• Convention: read “Jerry (is)Teacher(of) you”
+• Maps one or more objects to a truth value
+• Represents a user defined relation
+– term1 = term2
+• Radius(Earth)=6400km, 1=2
+• Represents the equality relation when two terms refer to the
+same object
+FOL Syntax
+• Sentence: T/F expression
+- Atom
+- Complex sentence using connectives: ∧ ∨ ¬ ⇒ ⇔
+• Less(x,22) ∧ Less(y,33)
+- Complex sentence using quantifiers ∀, ∃
+• Sentences are evaluated under an interpretation
+– Which objects are referred to by constant symbols
+– Which objects are referred to by function symbols
+– What subsets defines the predicates
+FOL Quantifiers
+• Universal quantifier: ∀
+• Sentence is true for all values of x in the domain of
+variable x.
+• Main connective typically is ⇒
+– Forms if-then rules
+–
+“all humans are mammals”
+∀x human(x)⇒ mammal(x)
+– Means if x is a human, then x is a mammal
+FOL Quantifiers
+• Existential quantifier: ∃
+• Sentence is true for some value of x in the domain
+of variable x.
+• Main connective typically is ∧
+–
+“some humans are male”
+∃x human(x) ∧ male(x)
+–Means there is an x who is a human and is a male
+•
+Break & Quiz
+•

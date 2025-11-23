@@ -4,25 +4,23 @@ import os
 import json
 from typing import Optional
 
-import google.generativeai as genai
+from openai import OpenAI
 from dotenv import load_dotenv
 
 from app.schemas import GenerateQuizResponse
 from app.rag_store import search_kb
 
-# Load env vars (for GEMINI_API_KEY)
+# Load env vars (for OPENAI_API_KEY)
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    raise RuntimeError("GEMINI_API_KEY not set in environment or .env file")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise RuntimeError("OPENAI_API_KEY not set in environment or .env file")
 
-# Configure Gemini client
-genai.configure(api_key=GEMINI_API_KEY)
+client = OpenAI(api_key=OPENAI_API_KEY)
 
-# Pick a model – flash is cheap/fast, pro is smarter but slower
-MODEL_NAME = "gemini-2.5-flash"
-model = genai.GenerativeModel(MODEL_NAME)
+# LLM model for quiz generation
+MODEL_NAME = "gpt-4o-mini"
 
 
 def generate_quiz_agent(
@@ -35,7 +33,7 @@ def generate_quiz_agent(
         f"Source: {c.source}\n{c.text}" for c in kb_chunks
     )
 
-    # 2. Build prompt that includes retrieved context + current lecture
+    # 2. Build prompts
     system_prompt = """
 You are an AI quiz generator for university-level courses.
 Use ONLY the provided context and lecture to create accurate questions.
@@ -79,18 +77,21 @@ TASK:
   }}
 """
 
-    full_prompt = system_prompt + "\n\n" + user_prompt
-
-    # 3. Call Gemini and force JSON output
-    response = model.generate_content(
-        full_prompt,
-        generation_config={
-            "response_mime_type": "application/json",
-        },
+    # 3. Call OpenAI LLM and force JSON output
+    response = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        response_format={"type": "json_object"},
     )
 
-    # response.text should be a JSON string
-    quiz_dict = json.loads(response.text)
+    content = response.choices[0].message.content
+    if not content:
+        raise RuntimeError("OpenAI returned empty content for quiz generation")
+
+    quiz_dict = json.loads(content)
 
     # 4. Validate/parse into your Pydantic model
     return GenerateQuizResponse.model_validate(quiz_dict)

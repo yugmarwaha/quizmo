@@ -1,0 +1,683 @@
+MARKETS IN THEORY AND PRACTICE
+Rogers, Soc 125 F2025, L2
+Learning Outcomes
+Stepping back:
+• Trigger warning (not warnings)
+• Clarification on Gini
+• Warning about statistics
+• A problem with humanity and what you can do about it
+Moving forward:
+• Free market ideal
+• Political consequences of taking it seriously: classical
+liberalism
+• What’s wrong with that ideal
+– Market imperfections and failures (PDs and FRPs)
+– Collective action problems
+• Political consequences of recognizing that
+Stepping back
+This whole class is a trigger
+• I’m told you are the anxious generation
+• And VERY VERY sensitive
+• And that compassion for you requires that I
+warn you, IN ADVANCE, about things that
+might upset you
+• So here’s your warning
+• THIS WHOLE CLASS IS A TRIGGER
+The Gini coefficient
+The Gini coefficient is the ratio of the area that lies between the line of equality and the Lorenz
+curve (marked 'A' in the diagram) over the total area under the line of equality (the sum of 'A'
+and 'B' in the diagram); i.e., G=A/(A+B). The Gini coefficient can range from 0 to 1; it is
+sometimes multiplied by 100 to range between 0 and 100. A low Gini coefficient indicates a
+more equal distribution, with 0 corresponding to complete equality, while higher Gini
+coefficients indicate more unequal distribution, with 1 corresponding to complete inequality.
+Line of simple (perfect) equality
+Cumulative share of population Cumulative share of incomeSimple (perfect) equality
+Simple inequality (in red)
+Actual US distribution
+Some GINI’s
+Each decile earns 20% more than previous
+Simple equality
+Recent example of important dispute
+Recent example of important disputeaka “There are lies, damn lies, and statistics”
+Measuring poverty
+Usual (Relative) Measure: Poverty is defined as having an
+income below 50% of the median equivalized (for
+household size, age of dependents) disposable household
+income in a given country.
+US (Absolute) Measure: Poverty is defined as 3X the real
+(inflation corrected) cost of a minimal diet, equivalized for
+family size
+SPM
+The Supplemental Poverty Measure (SPM) is an
+expanded poverty metric used by the U.S. Census
+Bureau to provide a more comprehensive view of
+economic hardship than the official poverty measure. It
+includes non-cash benefits from government programs
+like SNAP and housing subsidies, accounts for necessary
+expenses such as taxes, work-related costs, and medical
+expenses, and factors in geographical differences in
+housing costs. The SPM aims to supplement, not replace,
+the official measure by better illustrating how public
+programs and varying expenses affect a family's financial
+well-being
+Recent example of important dispute
+Recent example of important dispute
+What’s the (basic) problem with humanity?
+• We’ve still got late Pleistocene Era (2.58M to 11.7K years ago)
+hunter-gatherer brains but modern toys and while we
+dominate others, we don’t play well with each other. Macro
+evolution changes generally take at least 25K years (1K
+generations). We’ve been “civilized” for only about 10K (400).
+So, it’s no surprise that we act so immaturely.
+• Cultural evolution can go much quicker. Evolution gave us a
+frontal cortex. That brain gave us “culture” (religion, art,
+science, political and economic institutions). And over the
+past few hundred years, with a capitalism fueled by plant
+graveyards, that culture has made us, as a species, almost
+indescribably better off than we’ve ever been. But it’s
+produced unnecessary inequality, unfreedoms in governing,
+and threatens a Sixth Extinction.
+What’s the problem (cont)
+• Kant always asked: What can we know/What must we
+do/What may we hope for
+• We know that we’re all connected, that our species’ success
+comes from scaled cooperation, and that the fruits of
+cooperation have no real limit
+• What we must do is deepen life on just terms.
+• And, given our natures, that’s a reasonable hope
+• So what’s keeping us from doing this?
+• Partly it’s our (from a long view) adolescent natures.
+• Partly it’s abusive power and bad habits, ossified into
+oppressively limiting institutions and culture
+Some answers, and more tasks
+• But a large part of it is how all these things interact with our
+brains; here it’s good always to keep in mind the “12
+confusions”/“defects”/”sins”
+• And part of it has to do, even among people with good will,
+with confusion about possibilities
+– False necessity (“TINA”)
+– Structures and social change (revolution, reform, culturally and
+politically evolutionary “reforev”)
+• Part of it has to do with the apparent meaningless of life,
+which is probably the biggest mistake of all, since it has
+incomparable value and you can, with a little effort, give it
+meaning
+• How?
+• Love (some thing, some body)
+Stepping forward
+Markets in Theory and Practice
+Markets in theory
+1. Consumers express preferences through buying
+2. Buying gives consumers exclusive control of the good – “exclusion
+principle”
+3. If supply differs from demand, producers to adjust to the point
+that supply and demand of any given good converge at a given
+price –“law of supply and demand” (If firms fail to respond to
+consumers, they will eventually fail. This competition among firms
+generates accountability. It also spurs technical change and other
+improvements in productivity, which increases social wealth.)
+4. At equilibrium (after all trades are made), the result is – given
+natural scarcity, current levels of technology, and a given
+distribution of income – a perfect match between consumer
+preferences and production possibilities –“Pareto optimality”
+Markets have the effect of making an individual who “intends only his own
+gain” to be “led by an invisible hand to promote an end which was no part
+of his intention. Nor is it always the worse for the society that it was no part
+of it. By pursuing his own interest he frequently promotes that of the society
+more effectively than when he really intends to promote it.”
+Adam Smith, Wealth of Nations, 1776
+Adam Smith on markets and human nature
+[However selfish] man may be supposed, there are evidently
+some principles in his nature, which interest him in the
+fortunes of others, and render their happiness necessary to
+him, though he derives nothing from it, except the pleasure
+of seeing it.
+Adam Smith, The Theory of Moral Sentiments, 1759
+Huge political consequences
+• Redefined the role of the state, and the relation of
+economic and political power
+• For a very long time, political and economic power
+had effectively been fused
+• Great question of social life, especially regarding
+inequalities, is often “Sez who?” (legitimation
+question)
+— “You have more money than I do. Sez who?”
+— “You have more power than I do. Sez who?”
+• God?
+• Markets and classical liberalism say: YOU DO!
+HUGE!
+A king descended from God?
+Classical liberalism
+• Self-regulating markets
+• Limited government (“that government is best
+which governs least”)
+• Natural (not just positive) right to private property
+and its accumulation
+• Universal civil rights and civil liberties
+A popular political system of belief in ...
+For classical liberals, there are ...
+Things the state should do
+• Provide law and order
+(security, enforcement of
+contracts)
+• Provide basic public goods
+(sanitation, transportation
+and other physical
+infrastructure, general
+education)
+• Ensure competition and
+limit “negative externalities”
+or “neighborhood effects”
+And things it should not
+• Create anti-poverty programs
+or social insurance schemes
+• Subsidize higher education or
+training for workers
+• Set limits to the terms of
+contracts between employers
+and workers
+• Limit speculation or arbitrage
+• Otherwise substitute its
+judgment for that of the market
+“Free market ideal” is one in which
+1. All participants have perfect information (about their wants,
+capacities, character of goods ... and it helps if also about the
+future, each other, all possibilities and contingencies)
+2. All markets (in goods, capital, and labor) are competitive
+3. All costs are reflected in prices
+4. All preferences are given or “exogenous”
+5. Exchanges have no transaction costs, and all investment is
+divisible and fungible, permitting easy trading
+6. There is no state “interference” (taxes, subsidies, etc.) that
+distorts the above
+7. Everyone is motivated solely by maximizing personal “utility,”
+usually measured by wealth or income
+Is this plausible?
+No it’s not, but that doesn’t end the story
+• Very unworldly assumptions about information flow,
+individual capacity, power distributions, and much else –
+• “The invisible hand is invisible because it doesn’t exist”
+Joseph Stiglitz (Nobel Laureate, 2001)
+• But ask about alternatives. If you don’t want markets
+ordering the economy, what do you want? Government?
+Associations? Societies vary in the degree to which they rely
+on markets, government, and associations in running
+themselves
+• And they combine them in different ways, or order their
+importance in different permutations, with signaled
+differentiation of their logics or ruled institutions much more
+common than their robust separation
+Markets are bundles of rules
+1. What can be individually owned and traded (the genome? slaves?
+nuclear materials? babies? votes? ideas?)
+2. With what information, under what conditions (poisonous drugs?
+unsafe foods? deceptive Ponzi schemes? uninsured derivatives?
+dangerous workplaces?)
+3. On what terms (equal access to the internet? the right to bargain
+collectively and not just individually? corporate monopolies? the
+length of patent protections?)
+4. And what public goods not subject to such individual ownership
+and trading do we want (security? roads? clean air and clean
+water? healthcare? good schools? parks and playgrounds?)
+5. And how we pay for those things (taxes? user fees? other?), with
+what information (that all taxes kill growth? that jobs from
+gezillionaires?) and on what terms (does your vote count or not?)
+Markets are a desirable feature of any complex economy because (1)
+they contribute in significant ways to efficiency and (2) the opportunity
+for market exchanges positively affects at least some aspects of
+individual freedom
+But (3) “self regulating” markets are largely a fiction (markets require
+rules to work, which they can’t provide themselves), and (4) “free”
+markets (i.e, those with minimal government regulation) do not come
+even close to performing in optimally efficient ways and actually limit
+individual freedom
+So (5) what we need are both markets and different non-market
+(ideally, democratic) institutions (including but not limited to the state)
+to supplement markets, steer them toward producing more socially
+desirable results, or provide those results directly
+AS’ general argument about markets
+Capitalism – an economic system oriented to the production and
+exchange of commodities (including “free labor”) for profit, in
+which most means of doing so (“the means of production”) are
+privately owned, in which most investment is thus also privately
+controlled, and in which most adults participate in and depend on
+the functioning of the labor market, and work for someone else
+Remember, we’re generally talking about
+markets under capitalism, aka “market
+capitalism”
+Let’s unpack that
+Market capitalism: A bit of a pleonasm, but not entirely. All capitalisms
+require markets. But not all markets require capitalism.
+Production: Making something (this could be for profit or not)
+Production for exchange: Production is not for use by the producer, but
+to sell to others
+Commodities: The things you produce for exchange (commodification:
+extension of the market into spheres previously not governed by
+exchange; decommodification: Retreat from market provision)
+Profit: A much-disputed term, but for now, the positive difference
+between the cost of producing something and the return to the
+producer of it
+Investment: Something done now for future return
+Labor Market: Markets are simply institutions supporting the exchange
+of commodities; the labor market simply that for the commodity of
+“free labor”
+Moral Argument: market capitalism promotes
+increased individual and aggregate (social)
+freedom
+Pragmatic argument: market capitalism promotes
+increased individual and aggregate (social)
+efficiency and wealth creation
+Two big pro-market arguments
+The Moral Argument
+Negative Freedom: “Freedom from” – no one can physically
+force you to do things
+Positive Freedom: “Freedom to” – the actual capacity to do
+things, to realize your goals (usually requiring “freedom with”
+– the ability to combine in social action with others)
+The market is a pretty good institution for realizing negative
+freedom. But the “free” (aka unregulated) market generates
+great inequalities in positive freedom, increasing it for some
+people while reducing it for others
+Market capitalism promotes freedom
+Allocative efficiency: assigning things as precisely as possible, with
+no harm to anyone – “Pareto optimal” (Pareto)
+Dynamic efficiency: making optimal innovation (Schumpeter)
+Macro-economic efficiency: making fullest possible use of
+productive inputs to promote smooth running of the system –
+low inflation, low unemployment , etc. (Keynes)
+Resource efficiency: making maximally productive and/or
+restorative use of needed but non-renewable inputs (Daly)
+The Pragmatic Argument
+Market capitalism promotes social efficiency and wealth creation
+Four types of efficiency
+Vilfredo Pareto
+15 July 1848–19 August 1923
+Joseph Schumpeter
+8 February 1883–8 January 1950
+John Maynard Keynes
+5 June 1883–21 April 1946
+Herman Daly
+1938 –
+Optimality: the best possible outcome of a process
+Pareto Optimality: a distribution of things such that no one can
+be made better off without someone becoming worse off
+Pareto sub-optimality: a distribution of things in which at least
+one person could be made better off without anyone being
+made worse off
+Basic claim about markets: free markets generate Pareto
+optimal distributions of things exchanged on the market
+Markets primarily about allocative efficiency
+Keynesianism
+1. Economies sometimes produce much less than they could, and employ
+many fewer workers than they should, because there just isn’t enough
+spending. Such episodes can happen for a variety of reasons; the
+question is how to respond.
+2. There are normally forces that tend to push the economy back toward
+full employment. But they work slowly; a hands-off policy toward
+depressed economies means accepting a long, unnecessary period of
+pain.
+3. It is often possible to drastically shorten this period of pain and greatly
+reduce the human and financial losses by “printing money”, using the
+central bank’s power of currency creation to push interest rates down.
+4. Sometimes, however, monetary policy loses its effectiveness, especially
+when rates are close to zero. In that case temporary deficit spending can
+provide a useful boost. And conversely, fiscal austerity in a depressed
+economy imposes large economic losses.
+NB: Text in this slide and next from Paul Krugman, NYT blog, 9/16/15
+Anti-Keynesianism “bogosity”
+B1: Any economic recovery, no matter how slow and how delayed, proves
+Keynesian economics wrong. See [2] above for why that’s illiterate.
+B2: Keynesians believe that printing money solves all problems. See [3]:
+printing money can solve one specific problem, an economy operating far
+below capacity. Nobody said that it can conjure up higher productivity, or
+cure the common cold.
+B3: Keynesians always favor deficit spending, under all conditions. See [4]:
+The case for fiscal stimulus is quite restrictive, requiring both a depressed
+economy and severe limits to monetary policy. That just happens to be the
+world we’ve been living in lately.
+Market imperfections, failures, and effects
+In thinking about the function of actually existing markets,
+it’s useful to distinguish among
+– Market imperfections: ways in which existing markets
+depart from the free market ideal, particularly in their
+competitiveness
+– Market failures: ways in which even perfectly
+competitive markets are suboptimal
+– Market effects: ways in which markets, whether
+competitive or not, have effects on other social
+institutions and practices
+Six big sources of market inefficiency
+1. Faulty information, especially among consumers
+2. Concentrated (and thus unequal) market power
+3. Externalities
+4. Endogenous preferences
+5. Short time horizons
+6. Under-provision of public goods
+7. Weaken cooperation
+Sources of Market Inefficiency #1
+Faulty consumer information
+Markets only allocate products efficiently if people
+have perfect information about what they buy, but this
+is often very difficult for consumers, especially because
+firms have incentives to distort information.
+Sources of Market Inefficiency #2
+Concentrated Economic Power
+Allocative efficiency depends on perfect competition,
+but actual markets are dominated by large
+corporations and great unevenness in market
+bargaining power. Instances of monopoly,
+monopsony, and oligopoly abound.
+Sources of Market Inefficiency #3
+Externalities
+An externality is a cost or benefit of economic
+activity not reflected in market prices.
+Allocative efficiency depends on prices reflecting the
+true costs of producing things, but firms often
+systematically displace costs and risks on others by
+not including these “social costs” in the price.
+Types of externalities
+Any externality can be positive or negative, but there are
+different kinds ...
+Production externalities: activity of one producer directly affects
+the welfare of another
+Consumption externalities: activity of one consumer directly
+affects the welfare of another
+Hybrid externalities: producers directly affecting consumers in
+this way, or consumers directly affecting producers
+The essence of an externality, whatever its valence and of
+whatever kind it is, is that the activity of one market actor
+directly affects the welfare of another, as opposed to indirectly
+through the price mechanism
+Sources of Market Inefficiency #4
+Endogenous Preferences
+Pareto optimality refers to the market allocation goods
+and values according to rank ordered consumer
+preferences. But sometimes those preferences come
+from market action itself. This happens in two ways: (1)
+preference manipulation, (2) preference structuring
+Sources of Market Inefficiency #5
+Short Time Horizons
+Competition among profit-maximizing firms leads firms
+to have relatively short time-horizons. This imposes
+costs on future generations for our present production
+and consumption. You might think of this as an
+intergenerational negative externality. Global warming
+is a good example.
+Sources of Market Inefficiency #6
+Under-provision of Public Goods
+A public good is a good characterized by “non-excludability”
+and “non-rivalry”: “non-excludability” means the exclusion
+principle doesn’t apply; supply one means supplied to all;
+“non-rivalry” means that consumption by one of its benefit
+doesn’t preclude like consumption by another
+NB: Excludability depends on policy choice about rules; rivalry
+depends on production possibilities
+Profit-maximizing firms in competitive markets won’t produce
+public goods, even ones necessary to their own health, since
+they can’t make a profit from producing them
+Free-rider problem (FRP)
+• Problem in the production of public goods
+• Contribution to their provision ensures costs, but doesn’t
+guarantee gain
+• Non-contribution doesn’t preclude gain, but ensures no cost
+• If you’re economically rational, never makes sense to
+contribute
+• If everyone comes to same conclusion, no public good
+PRISONER
+X
+Silent Confess
+PRISONER
+Y
+Silent Both get 2 years
+A
+X gets 1 year
+Y gets 10 years
+B
+Confess X gets 10 years
+Y gets 1 year
+C
+Both get 5 years
+D
+THE PRISONERS’ DILEMMA
+Self-interested preference ordering for X is B>A>D>C; for Y, it is
+C>A>D>B. Whether X confesses or not, it make sense for Y to
+confess, and vice-versa. Confession is called dominant strategy
+Elements of PD
+Economic rationality – only engage in those actions the
+marginal return on which is greater than the marginal
+cost
+Strategic action – in contemplating your own action,
+take into account the actions of others
+Maximin criterion – in choosing among undesirable
+outcomes, choose to avoid the worst
+PRISONER X
+Silent Confess
+PRISONER Y
+Silent Both get 2 years
+A
+X gets 1 year
+Y gets 10 years
+B
+Confess X gets 10 years
+Y gets 1 year
+C
+Both get 5 years
+D
+THE PRISONERS’ DILEMMA
+Self-interested preference ordering for X is B>A>D>C; for Y is
+C>A>D>B. Whether X confesses or not, make sense for Y to confess,
+and vice-versa. Confession is the dominant strategy
+You provide training
+YES NO
+All others
+provide training
+YES
+$20K
+A
+$30K
+B
+NO
+-$10K
+C
+$0
+D
+FIRM TRAINING OF WORKERS
+Assume a trained worker is $30K more profitable than and
+untrained one, but costs $10K to produce. Training is a good social
+investment, but not worth undertaking individually, since your
+trained worker might leave and you might be able to poach from
+others. Your preference ordering is B>A>D>C. Result? No training.
+You
+YES NO
+Others
+YES
+$50
+A
+$100
+B
+NO
+-$50
+C
+$0
+D
+RECYCLING
+Assume recycling costs $50 per cap but at high rates of
+participation yields a per cap net benefit of $100. Preference order
+is again B>A>D>C. Who will recycle on these terms?
+FRP & PD generally:
+Negative Externalities vs. FRP/PD
+Negative externalities: I benefit from imposing costs
+on you
+Everyone is harmed, including
+me, but I’m especially harmed by altruistic behavior
+when it’s not reciprocated – i.e., when I’m suckered
+PRISONER X
+Silent Confess
+PRISONER Y
+Silent Both get 2 years
+A
+X gets 1 year
+Y gets 10 years
+B
+Confess
+X gets 10 years
+Y gets 1 year
+C
+Both get 5 years
+D
+The sucker penalty
+The cost a cooperator pays if all others defect, as compared with
+having gone along with them. Here, for X, that’s C-D, or 5 years.
+Your choice
+Graze 1 sheep Graze 2 sheep
+Everyone
+else’s choice
+Graze 1
+sheep Everyone earns $10
+A
+You earn $16
+Others earn $8
+B
+Graze 2
+sheep
+You earn $8
+Others earn $16
+C
+Everyone earns $6
+D
+Assume productivity of land declines with increased use from
+$10/sheep (2 sheep) to $8 (3 sheep) to $3 (4 sheep), with collapse
+after that. Self-interested ordering for you B>A>C>D, for everyone
+else it’s C>A>B>D
+THE TRAGEDY OF THE COMMONS
+Government provision of public goods, and/or
+requirement of contribution to them: Instead of relying
+on the market, the government acts to ensure that the
+good is available and the costs of producing it are
+shared; it restricts free-riding
+Conditional altruism: People are not purely selfish –
+they’re not just economically rational maximizers of
+their personal utility and often happy to cooperate if
+others do too (i.e., if they’re protected against being
+suckered). This is a preference ordering quite different
+from that contemplated in the FRP/PD
+Solutions to FRP/PD
+You (X)
+Graze 1/1.5 sheep Graze 2 sheep
+Everyone
+else’s choice
+Graze
+1/1.5
+sheep
+Everyone earns
+$10/$12
+A
+You earn $16
+Others earn $8
+B
+Graze 2
+sheep
+You earn $8
+Others earn $16
+C
+Everyone earns $6
+D
+THE ROMANCE/COMEDY OF THE COMMONS?
+Self-interested X preference ordering: B>A>C>D
+Conditional altruist (cooperative) X preference ordering: A>B>C>D
+They hang the man and flog the woman
+That steal the goose from off the common,
+But let the greater villain loose
+That steals the common from the goose.
+English folk poem, circa 1764
+Discourage cooperation, promote division, weaken
+collective social capacity to solve common problems
+• Market competition discourages cooperation
+• Exaggerates social differences
+• Produces disdain and envy
+• Blinds to shared humanity
+• Erodes community
+• Commercializes morally salient aspects of life – everything’s
+for sale; elimination of the “sacred”
+• Hirschman spoke of “exit” and “voice,” and also “loyalty” –
+some attachment to and motivation by community; market
+encourages exit, but voice is what’s often needed; market
+competition undermines loyalty and solidarity of all kinds
+Sources of Market Inefficiency #7
+The wealthy more likely to ...
+• Lie
+• Cheat
+• Steal
+• Break the law
+• Look at themselves in the mirror longer
+• Etc. etc.
+• See http://www.pbs.org/newshour/making-sense/does-
+wealth-breed-narcissism-t/ (For captioned version:
+https://go.wisc.edu/92h8xu)
+Markets know best, not (1)
+• Efficient when precise conditions hold: complete markets
+(markets in everything, now and the future), complete
+information (everyone must know everything, and
+therefore the same as everyone else), complete
+independence (no public goods, externalities, increasing
+returns)
+• When these conditions fails, which they inevitably do,
+there’s a case for state intervention (Bad Godesberg:
+“markets whenever possible, the state where necessary”)
+the idea was twofold: (a) let markets do what they do
+well (allocate private goods in those cases when private
+and social benefits are the same) but (b) have the state
+provide public goods, correct externalities, and regulate
+monopolies due to increasing returns
+Markets know best, not (2)
+•But politicians and institutions may have the same problem
+(Buchanan, public choice) Here lies the fundamental
+dilemma of economic liberalism, identified by Richard
+Posner: “The economist recognizes that government can do
+some things better that the free market can do but he has
+no reason to believe that democratic processes will keep
+government from exceeding the limits of optimal
+intervention.” Riddled with “special” interests of many kinds,
+all ordinarily self-serving, there’s no particular reason to
+believe that states can do things better, and lots of reasons
+for suspicion that they’ll do things worse
+Markets know best, not (3)
+•Markets are incomplete because we know that we will be making
+transactions in the future but cannot perform them all now;
+information is imperfect because we do not know everything about
+the others with whom we do business; more particularly, information
+is "endogenous" because we learn about others – their preferences,
+capacities, and beliefs – by observing their conduct in the market, and
+changing our prior beliefs in light of those observations. Here, the
+market no longer does its magic. Supply may not equal demand (even
+in equilibrium); prices do not uniquely summarize opportunity costs
+and can even misinform; externalities result from most individual
+actions; information is often asymmetric; market power is ubiquitous;
+and "rents" abound. These are no longer "imperfections," correctable
+departures from a perfect market. There is no unique, ideal market out
+there to be blemished, but lots of possible institutional arrangements,
+each with different consequences for social welfare.
+A Standoff, Inviting Citizen Deliberation
+The inefficiencies originating from incomplete markets and
+endogenous information are profound. As Joseph Stiglitz put it
+bluntly: "Once information imperfections (and the fact that
+markets are incomplete) are brought into the analysis, as surely
+they must be, there is no presumption that markets are
+efficient. (emphasis added-JR) Absent that presumption, `the
+standard neoclassical model,' the formal articulation of Adam
+Smith's invisible hand, the contention that market economies
+will ensure economic efficiency provides little guidance for the
+choice of economic systems."
+This is also huge!
+The invisible hand(s) revealed
+You don’t need to be genius to understand
+the value of cooperation
+But it helps to realize that you’re actually
+not, whatever your senses tell you, the
+center of the universe, and to try to have
+some perspective on yourself, unlike ...
+They hang the man and flog the woman
+That steal the goose from off the common,
+But let the greater villain loose
+That steals the common from the goose.
+English folk poem, circa 1764

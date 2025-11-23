@@ -1,0 +1,894 @@
+Finance, High Road, Review
+Rogers, Soc 125 F2024, L5
+Stepping Back
+Odds & Ends (O&E)
+• Nature and nurture aka genetic endowment and social
+conditioning (restraints and support)
+• Evolution (biological and cultural)
+• A promise to say something next week on
+– Neo-Darwinism, epigenetics, “evo-devo”
+• 7 deadlies (PEGLAS) and 5 uglies (FDSDS)
+• Fear and a particularly important motivation for a Pleistocene
+brain fit for scarcity
+• Economics in two stories
+– The $10 bill that isn’t there
+– The restaurant so crowded nobody goes anymore
+Last Class Learning objectives
+1. Understanding some of the many ways human
+nature and market capitalism encourages
+consumerism, and US hyper-capitalism hyper-
+consumerism
+2. Some of the consequences of that
+3. How to improve that
+4. Understanding some of the many ways market
+capitalism, especially in the US, is dysfunctional
+for health care
+5. And ways to improve that.s to improve it
+PI (Patrick Intelligence)
+How were people still covered without it being
+mandated?
+How did insurance companies function re: being
+able to deny coverage for pre-existing conditions,
+or after people got really sick, before the ACA's
+provisions?
+Just fine. Made even more money!
+They weren’t!
+Anything else?Anything else?
+Anything else?
+Sure?
+Really sure?
+Stepping Forward
+Learning Objectives for this Class
+1. Understanding why finance is so important in
+anthe economy and how the US financial system
+works
+2. Understanding recent financialization in US, its
+often disastrous consequences, and how to
+improve
+3. Understanding the high-road approach to
+development, what a high-road capitalism might
+look like, and how pursuing it might vastly
+improve things
+4. Review of Section One: Market Capitalism
+Finance
+What’s in a word?
+• Finance can be a beautiful or terrible thing
+• As a field, it’s mostly about the terms under
+which credit (money ability to do things) is
+extended, which is shaped by the risk in doing
+so
+• The term “finance” comes from the Latin finis,
+meaning “end” or “complete accounting” or
+“goal”
+Some basic concepts
+• Money
+• Fiat currency
+• Credit
+• Debt/leverage
+• Reserve requirements
+• Capital (equity)
+requirement
+• Investment
+• Capital gains
+• Securities
+• Speculation
+• Assets
+• Bubbles
+• Balance sheet recession
+• Inflation disinflation
+• Deflation
+Banks
+• A key idea: how do banks “create” money (“loanable funds”
+or “bankers’ money”/“licensed franchisee”)
+• A problem: inherent risks in loans
+• Banking panics: a run on the bank
+• Solution: deposit insurance + regulation
+• Investment banks vs. commercial banks
+• Bank speculation & Financial Crisis
+• Core solution in the 1930s: Glass-Steagall Act separating
+commercial and investment banking
+• Recurring crisis absent regulation and democracy to steer it
+Financialization of the American Economy
+Note: Corporate profits with inventory valuation and capital consumption adjustments.
+Source: Bureau of Economic Analysis (BEA), National Income and Product Accounts (NIPA), Table
+6.16. Available at http://www.bea.gov/iTable/index_nipa.cfm (accessed September 26th, 2021).
+Average
+1948 - 1979
+Average
+1980 - 2020
+0 %
+5 %
+10 %
+15 %
+20 %
+25 %
+%30
+35 %
+1948 1960 1970 1980 1990 2000 2010 2020
+Financial sector profits as share of domestic corporate profits
+Relative Financial Wage and Financial Deregulation,
+1909-2006
+Note: The relative wage in finance is the ratio of the mean wage in the financial sector to the mean wage in the nonfarm private sector (excluding finance). See the text for the
+definition of the deregulation index.
+Source: Philippon, T. and Reshef, A., 2009. "Wages and Human Capital in the U.S. Financial Industry: 1909-2006".
+NBER Working Paper No. 14644. Available at:
+https://www.nber.org/system/files/working_papers/w14644/w14644.pdf (accessed October 19th, 2019).
+Household Debt as share of GDP
+I.e, from less than 20% in 1945 to more than 100% in
+2008 to about 80% today
+Glass-Steagall (1933)
+Barred commercial Federal Reserve member banks from ...
+• dealing in non-governmental securities for customers
+• investing in non-investment grade securities for
+themselves
+• underwriting or distributing non-governmental
+securities
+• affiliating (or sharing employees) with companies
+involved in such activities
+... and reciprocally barred securities firms from taking deposits
+History of financial deregulation (1)
+History of financial deregulation (2)
+Real compensation 1948-2020
+Note: Annual compensation is calculated as total wages and salaries in each industry divided by its total full-time
+equivalent employees. Finance excludes real estate, insurance, and holding companies. Wages and salaries are
+adjusted for inflation using CPI from the Bureau of Labor Statistics.
+Source: Authors’ calculations based on data from the U.S. Bureau of Economic Analysis, National Income and
+Product Accounts, Tables 6.3 and 6.5. Available at: http://www.bea.gov/iTable/index_nipa.cfm (accessed
+September 26th, 2021).
+$0
+$20
+$40
+$60
+$80
+$100
+$120
+$140
+$160
+1948 1960 1970 1980 1990 2000 2010 2020
+Thousand 2020 US$
+Financial sector
+Nonfinancial sector
+Growth in debt derivatives
+Collateralized debt obligation – a complex finance
+product that is backed by a pool of loans and other
+assets. These underlying assets serve as collateral if the
+loan goes into default.
+Credit default swap – a financial derivative that
+allows an investor to swap or offset their credit
+risk with that of another investor. To swap the risk
+of default, the lender buys a CDS from another
+investor who agrees to reimburse them if the
+borrower defaults.
+Source: Investopedia www.investopedia.com (accessed 10/9/22)
+Housing Bubble
+• Changes in the mortgage market – ARMs (adjustable rate
+mortgages), mortgage-backed securities derivatives, weak
+oversight of underwriting practices – fueled heavy investment
+in housing, and securities of little little value
+• Investment banks got heavily into the securities end of this
+market, usually leveraging heavily to do so
+• When prices started declining, the whole structure unraveled,
+beginning with Lehman Brothers
+• Bailout needed to prevent total financial system collapse
+Real Housing Prices in the US, 1890-2022
+Note: real housing prices are indexed to year 2000=100. Data for 1953-2022 is for the average
+price during the first quarter of each year.
+Source: Robert Shiller’s Online Data. Available at http://www.econ.yale.edu/~shiller/data.htm
+(accessed August 29th, 2022). For more information on the data see Shiller, R. (2016). Irrational
+Exuberance (Princeton, NJ: Princeton University Press). p. 20.
+U.S. Mortgage Delinquency Rates 1990-2017
+Foreclosures
+Note: Data reported quarterly.
+Sources: Foreclosure data from Federal Reserve Bank of New York’s "Quarterly Report on Household Debt and
+Credit (Q2 2021)". Available at: https://www.newyorkfed.org/microeconomics/hhdc. Owner-occupied
+dwellings data from U.S. Census Bureau, Housing Vacancies and Homeownership (CPS/HVS), Historical Tables,
+Table 8. Available at: https://www.census.gov/housing/hvs/data/histtabs.html (sources accessed October
+20th, 2021).
+0.0
+1.0
+2.0
+3.0
+4.0
+5.0
+6.0
+7.0
+8.0
+2000 2005 2010 2015 2021
+Foreclosures per 1,000 owner - occupied dwellings
+Financial crisis
+How much wealth lost?
+$6 Trillion
+White vs Black
+Financial profits recovered quickly
+Note: Quarterly corporate profits with inventory valuation and capital consumption
+adjustments. In the fourth quarter of 2008 the financial sector reported a net loss of $93 billion.
+Source: Bureau of Economic Analysis (BEA), National Income and Product Accounts (NIPA), Table
+6.16. Available at: http://www.bea.gov/iTable/index_nipa.cfm (accessed September 30th, 2021).
+0 %
+5 %
+10 %
+15 %
+20 %
+25 %
+30 %
+35 %
+40 %
+45 %
+2001 2003 2005 2007 2009 2011 2013 2015 2017 2019 2021
+Financial sector's share in domestic corporate profits
+Total assets of six “too big to fail” banks as percentage
+of U.S. GDP, 1997-2020
+Notes: These are conservative estimates of the actual size of the banks, since their balance sheets exclude
+some categories of assets that should be counted (e.g.. derivatives contracts).
+Sources: Banks’ total assets data from S&P Global Market Intelligence, COMPUSTAT Daily Updates -
+Fundamentals Annual. Accessed via Wharton Research Data Services. U.S. GDP data from FRED, Federal
+Reserve Bank of St. Louis. Available at https://fred.stlouisfed.org/series/GDP (accessed September 26th,
+2021).
+Average Duration of Unemployment in the U.S.
+(weeks), 1948-2020
+Note: Monthly data for population 16 years and older. Shaded areas indicate U.S. recessions.
+Source: U.S. Bureau of Labor Statistics, Average Weeks Unemployed. Retrieved from FRED, Federal Reserve
+Bank of St. Louis. Available at: https://fred.stlouisfed.org/series/UEMPMEAN (accessed September 26th,
+2021).
+Employment losses in recent U.S. recessions
+Note: official start of recessions are July 1981, July 1990, March 2001, and December 2007.
+Source: Economic Policy Institute, The State of Working America, 12th edition, Figure 5S. Available at:
+https://www.epi.org/publication/getswa/ (accessed January 28th, 2022).
+Months since official beginning of recession
+% of employment at official beginning of recession
+-3 0 3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60 63 66 69 72 75 78
+90%
+92%
+94%
+96%
+98%
+100%
+1981 recession 2001 recession 2007 recession1990 recession
+But Employment Did Not
+Productivity and average compensation, 1948-2020
+Note: Data on compensation (wages and benefits) is for production/nonsupervisory workers in the
+private sector. Net productivity is for total economy, and calculated as output of goods and services
+less depreciation per hour worked.
+Source: Economic Policy Institute (EPI), “The Productivity-Pay Gap”, August 2021. Available at:
+https://www.epi.org/productivity-pay-gap/ (accessed October 23rd, 2021).
+40
+60
+80
+100
+120
+140
+160
+180
+1948 1955 1960 1965 1970 1975 1980 1985 1990 1995 2000 2005 2010 2015 2020
+Index (1979=100)
+Net productivity
+Hourly compensation
+Real average annual compensation (wages and
+salaries), Finance sector vs. rest of the Private Sector,
+1947-2012
+Note: Annual compensation is wages and salaries of Employees by industry, divided by total full-time equivalent employees in that industry. Finance excludes real estate and
+insurance industries. We deflate wages and salaries by using the BEA price index for Gross Domestic Product (line 1 in table 1.1.4, NIPA tables).
+Source: Author’s calculations based on data from Bureau of Economic Analysis. National Income and Product Accounts Tables. “Table 6.3 Wages and Salaries by Industry” (Last
+Revised on: August 7, 2014), “Table 6.5D. Full-Time Equivalent Employees by Industry” (Last Revised on August 7, 2014), and "Table 1.1.4. Price Indexes for Gross Domestic
+Product". Last Revised on: April 30, 2014). Available: http://www.bea.gov/iTable/index_nipa.cfm [accessed: 5.15.2014]
+Average annual bonus in the securities industry of
+New York City, 1990-2021
+Note: Data for employees of the securities industry (NAICS 523) in New York City. Data for 2020 is estimated from personal income tax withholding collection and subject
+to revisions. Historical bonuses are estimated by NY OSC utilizing data from the State Department of Labor’s Quarterly Census of Employment and Wages (QCEW) series.
+Estimates excludes stock options and other forms of deferred compensation from which taxes have not yet been withheld. Data was adjusted to 2021 dollars by using CPI-
+U annual averages.
+Source: The Office of the New York State Comptroller, March 23, 2022. “NYS Comptroller DiNapoli: Wall Street’s 2021 Bonuses Set a New Record”. Available at:
+https://www.osc.state.ny.us/press/releases/2022/03/nyscomptroller-dinapoli-wall-streets-2021-bonuses-set-new-record (accessed July 23rd, 2022).
+$0
+$50
+$100
+$150
+$200
+$250
+$300
+1990 1995 2000 2005 2010 2015 2021
+Thousands 2021 US$
+How to Fix our Financial System?
+• Restore the Glass-Steagall distinction between investment
+and commercial banks and/or playing with other people’s
+(e.g., depositors’) money
+• Strengthen and enforce Dodd-Frank regulations
+• End “too-big-to-fail” by breaking up or truly regulating the
+Monster Banks, and the “shadow banks”
+• Build a more community-rooted financial system
+• End the revolving door, pay-to-play, serve-to-lobby, and
+corrupt campaign finance system to get some accountability
+to the people
+• Recognize credit as a risk, and discourage excess formation
+Taking the high road
+Background
+10 big facts about the economy
+1. Broken social contract
+Fading American Dream
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+1940 1944 1948 1952 1956 1960 1964 1968 1972 1976 1980 1984
+Probability a child earns more than parents at 30
+Birth cohort
+2. The end of shared prosperity
+Gilded Age New Gilded Age
+Average weekly non-supervisory earnings (2020$)
+$400
+$500
+$600
+$700
+$800
+$900
+$1,000
+1947 1960 1970 1980 1990 2000 2010 2020
+2020
+US$
+Sources: Data for 1947-1963 from the U.S. Bureau of Labor Statistics, "Hours and Earnings Trends
+in Private Industry 1947-1966," pp. 12-14. Available at:
+https://fraser.stlouisfed.org/files/docs/publications/employment/1960s/empl_121967.pdf. Data for
+1964-2020 from BLS, Average Weekly Earnings of Production and Nonsupervisory Employees, Total
+Private. Available at: https://data.bls.gov/pdq/SurveyOutputServlet (sources accessed October 7th,
+2021).
+Median annual family income, 1947-2020 (2020 Dollars)
+Note: Vertical gray bars indicate periods of recession.
+Source: U.S. Census Bureau, Historical Income Tables: Families, Table F-5. Available at:
+https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-
+families.html (accessed January 2nd, 2022).
+Distribution of income during expansions between
+top 10 and bottom 90 percentiles, 1949-2019
+Note: Figures are for the years of economic expansions during each period, which include 1949-1953,
+1954-1957, 1958-1960, 1961-1969 (entire period), 1970-1973, 1975-1979, 1982-1990, 1991-2000, 2001-
+2007 (entire period), and 2009-2019 (entire period).
+Source: Authors’ calculations based on data from the World Inequality Database (WID). Available at:
+https://wid.world/country/usa/ (accessed October 25th, 2021).
+%72.4 71.0 %
+%62.6
+%44.6
+30.5 %
+%40.7
+27.6 % 29.0 %
+%37.4
+%55.4
+69.5 %
+59.3 %
+1949-1960 1961-1969 1970-1979 1982-2000 2001-2007 2009-2019
+Bottom 90% Top 10%
+Change in family income by income group
+1947-1979 vs. 1979-2020
+122 %
+%101
+113 % 115 %
+99 %
+81 %
+%6
+%21
+30 %
+45 %
+%86
+118 %
+0 %
+20 %
+%40
+60 %
+80 %
+100 %
+%120
+140 %
+Lowest fifth Second fifth Middle fifth Fourth fifth Highest fifth Top 5 percent
+1947-1979 1979-2020
+Note: Figures correspond to growth in average real income for families within each income group.
+Sources: Authors’ calculations. Data for 1947-1979 from The State of Working America, “Average
+family income, by income group, 1947–2010”. Available at:
+http://www.stateofworkingamerica.org/index.html%3Fp=29585.html; Data for 1979-2020 from
+U.S. Census Bureau, Historical Income Tables: Families, Table F-2. Available at:
+https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-
+families.html (sources accessed October 7th, 2021).
+3. Weak labor
+4. Rising labor market insecurity
+Getting to living wage jobs requires
+• Entry-level employment that prepares workers for and connects them to
+future opportunities
+• Reliable and understood methods of access to decent paying sectors &
+jobs
+• Routine career advancement through incremental moves
+But today that’s very hard given
+• Deregulation, privatization, de-unionization
+• Changes in work organization — outsourcing, contingent/temporary work,
+cellular production, etc. — in smaller establishments, generally in service
+sector
+• End of job ladders, employer-based welfare state, industry wage norms
+• Automation, AI, “end of work”
+New World
+Old World
+Old world vs. new world
+5. Internationalization: the “Great Doubling”
+Active labor force (millions)
+1980 2000
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+3,500
+Rest of World China, India, former Soviet bloc
+Capital/labor ratios roughly halved. Internet and higher investments outside US in
+education equip much less-well-compensated workers with skills and technology.
+US exports, imports and trade balance as % GDP
+Note: Data includes goods and services.
+Source: Calculations based on trade data from the Bureau of Economic Analysis, NIPA
+Tables, Table 4.1. and Table 1.1.5. Available at: http://www.bea.gov/iTable/index_nipa.cfm
+(accessed July 27th, 2022).
+-10 %
+-5 %
+0 %
+5 %
+%10
+15 %
+20 %
+1947 1960 1970 1980 1990 2000 2010 2021
+Percent of GDP
+Trade balance
+Exports
+Imports
+International income gain 1998-2008
+Here’s why politically important
+6. Environmental crisis (catastrophe?)
+The end of the Anthropocene?
+• 8M BC-1780, CO2 in atmosphere was steady at (give or take 10 parts
+per million) ~ 280ppm
+• This increased 35ppm over next 150 yrs (1930s), 15ppm over next 40
+yrs (1970s), 20ppm over next 20 (1990s), 20ppm over next ten (2005),
+close to 30 over next
+• CO2 ppm is 415.33 (10/8/22)
+• At present rates of growth, it should reach 500 ppm before mid-
+century
+• Last time that happened was the Eocene period, 50 million years ago,
+when sea levels were 300 feet higher than today.
+• Global warming already associated with massive ice sheet melting,
+extreme weather, widespread drought, population migration
+7. Fiscal exceptionalism
+8. Financialization
+9. Polarized politics
+• Incomes rise, investment moves out
+• Revenues decline
+• Public goods deteriorate
+• Middle class flees
+• Tax base erodes
+• Poverty concentrates
+10. Anti-urban bias in policy
+Iron Law of Urban Decay
+So, what should we do?
+Need a strategy
+What’s a (political) strategy?
+Many things, but minimally it’s a plan of action with a defined
+goal, clear and plausible incremental steps in getting there, with
+progress in each step making the next one more likely (aka
+“momentum”), and a basic message (interpretation) on reality
+that makes sense of it.
+What matters most is not where or how you start but that you
+start, with shared clarity on aims and means. Some courage and
+conviction help too. Anybody who says “ideas don’t matter” or
+“people don’t care about making sense of reality” is no less an
+elitist fool than someone who thinks “the best idea always wins,
+even without people fighting for it.”
+The Right’s political strategy
+Goal ... end all social constraints on capital
+Incremental steps ... deregulate business, demonize and
+starve government, crush unions, regressively
+redistribute income and wealth, etc.
+Momentum ... each step increases material insecurity,
+and reduces social capacity to relieve it
+Basic message ... “You’re on our own (YOYO!), and
+anybody who tells you different is a LIAR!”
+What’s a democratic (NB: not
+Democratic) counter to that?
+Two ways of making money in this world
+You can treat people like road kill, the earth like a
+sewer, and democratic government as something to
+weaken and mock, while you extract as many rents
+from government’s remaining power as you can
+Let’s call that the “low road”Or you can use democracy to add value, reduce
+waste, and capture and share and the benefits of
+doing both, locally
+Let’s call that the “high road”Put America on the high road
+Wealth – What makes a place rich?
+A place’s wealth is finally determined by its productivity – its use
+of its human, physical, and natural capital, and the ever-elusive
+Solow residual of “multifactor productivity”
+But productivity should be defined correctly. Productivity is a
+function both of the value ($) of goods and services produced
+and the efficiency of that production. Productivity shouldn’t be
+measured as “output per hour” but value ($) per unit of input
+And you should include all relevant factors of production in
+calculating input and resulting value – human, physical, natural,
+financial, social, etc., aka all-factors productivity
+First premises
+Values – What makes it worth fighting for?
+Shared prosperity: high and rising living standards; with benefits
+of increased productivity widely shared (through labor
+compensation, private wealth, progressive public goods) and fair
+opportunity to contribute to and receive those shares
+Democracy: an open-ended ideal of self-rule, equal respect,
+with legitimate collective/governemnt power (through elections,
+deliberation, reason giving, by reference to common good) that
+is “of ... by ... for the people” and efficient (allocative and
+dynamic efficiency)
+Sustainability: living today in a way that doesn’t limit future
+welfare, maximally efficient and restorative in use of non-
+renewable resources, minimally toxic, approximating zero waste
+“Markets vs. States” doesn’t decide
+• Markets are allocatively efficient when certain precise conditions hold:
+complete markets (markets in everything, now and in the future), complete
+information (everyone must know everything, and therefore the same as
+everyone else), complete independence (no public goods, externalities,
+endogenous preferences, increasing returns)
+• When actual market stray from these conditions, there’s a clear case for
+state intervention to restore optimality (SD: “markets whenever possible,
+the state where necessary”)
+• But politicians and institutions may have the same problem of self-serving
+sub-optimality (Buchanan, public choice) and (Posner) there’s little reason to
+believe that state action will end at improving market efficiency
+• Even perfectly competitive markets provide no decisive “magic” guidance on
+policy; ubiquitous externalities, information asymmetries and endogenous
+preferences mean prices are often deranged and supply and demand meet
+even at equilibrium; this is much more than corrigible “imperfections”
+Invisible hand is invisible because it doesn’t exist — Stiglitz
+Human nature
+Homo reciprocans – combines strong reciprocity (in the tit-for-tat sense of
+being, sequentially, nice, punishing, forgiving) with basic needs generosity (for
+the “deserving”)
+Homo economicus – relentless selfish optimizing toward outcomes
+Zero Sum → Win-win or lose-loseRational calculator → Prudent approximatorIndividual ability → Group cohesionCompetition → Cooperation
+As one people, united, we acknowledge the reality: that
+the future of the human race requires the cooperation
+of its members
+Occupy Wall Street
+People who work together will win,
+whether it be against complex football
+defenses, or the problems of modern
+society.
+Vince Lombardi
+Individual  Relational
+Out of the crooked timber of
+humanity, no straight thing was ever
+made.
+Immanuel Kant
+Selfish → Reciprocal
+It’s all about productive cooperation!
+Unit of analysis: firms/establishments
+Which industries a place competes/trades in is far less important
+than how establishments/firms in those industries compete.
+Firms disintegrated – Even in vertically integrated firms, as
+measured either by total value dollar or weight, half of supplier
+establishments ship nothing within the firm, the median ships
+less than 0.1 percent, even at 90th percentile, they ship only 38%
+Establishments differ – Better than 2/3rds (67.5%) of increase in
+earnings inequality since ’92 explained by establishment
+differences; across establishments, in all sectors, variance in
+revenue also increasing. This result recently extended on a firm
+basis to 16 OECD countries.
+Sources: Atalay, Hortascu and Syverson, 2014 ; Barth, Bryson, Davis and Freeman, 2016;
+Berlingieri, Blanchenay and Criscuolo (2017)
+High road
+“High road” denotes a (universally available and scalable) place-
+based strategy (or family of strategies) to realize the fighting
+values while increasing wealth under competitive market
+conditions
+Strategy is to use tools of democracy (in state and civil society) to
+– Reduce waste (in people, technology, and environment)
+– Add value (increase productivity, in the sense just defined)
+– Capture and share the benefits of doing both, locally
+– Repeat and extend, with experiment and learning (Or, via
+Beckett : “Ever tried. Ever failed. No matter. Try again. Fail
+again. Fail better.”)
+NB: On this view, democracy is another force of production – an
+engine of wealth creation, not just legitimacy and fairness
+Democracy as a force of production?
+Along with satisfying demands for representation and equal treatment,
+democratic institutions/practices increase wealth beyond private law
+“rule-setting”
+– They increase market efficiency by correcting market failures and
+imperfections, often precedent to providing public goods
+– By providing public goods, they can further increase social
+efficiency and individual entrepreneurship
+– By treating self-ruling citizens with equal respect, they induce
+greater effort, voluntary monitoring, information revelation,
+which increases productivity directly and increases social
+problem-solving capacity, and more innovation
+– Efficient public goods in places make density more attractive,
+yielding positive network effects and external economies of
+scale (aka “agglomeration effects”), increasing returns and yet
+more innovation
+Choice for firms/establishments
+Low Road
+Compete on price, which
+produces
+High Road
+Compete on quality/distinctiveness,
+which requires
+• Better trained and equipped workers
+• Continuous improvement/innovation
+• Approximation of “zero waste”
+• Supportive policy and public goods
+• Sweated labor, high insecurity
+• Punitive HR, poisonous LR
+• Low mobility, high inequality
+• Environmental damage
+• Little commitment to place
+• Undemocratic, extractive elites • Higher income, security, mobility
+• Reduced environmental damage
+• Greater firm commitment to place
+• More democratic, contributing elites
+... but produces
+Choice for communities
+Exclusion
+Neglect
+Divestment
+Poverty Wealth
+Connection
+Isolation
+High road
+Low road
+Inclusion
+Care (stewardship)
+Investment
+Importance of place &“the wealth of networks”
+To develop (or not) higher standards of performance and supports in meeting them.
+To choose, or not (and this is a way of stating the high road policy agency) to close off
+the low road, help pave the high road, enable those stuck on the first to roll merrily
+along the second
+Peer production networks — Of connected more easily by internet, peers can
+jointly produce things in “open source” collaboration. Often the cost and
+status reward of doing so leads people to do it for free (e.g. Wikipedia, Galaxy
+Zoo). Its basic “crowdsourcing” idea can be extended to financing (e.g.,
+Kickstarter, Prosper), advocacy (e.g., MoveOn, Avaaz, Change.org), and charity
+(e.g., Kiva) with socially productive effects
+“Backyard” growth strategies — Focusing first on your domestic productivity
+and well-being, rather than first on exports
+Internationalization of trade vs. finance — Second generally far more
+dangerous than the first, because of speed of disruption, constraint on
+domestic economic management, concentration of benefits, corruption of
+politics
+Economies of scale vs. scope — Decreasing marginal costs with greater
+volume; increasing returns from more efficient sharing, greater connection,
+joint production, “deeper” labor markets, etc. (again, organized density)
+You can measure the high road
+• Value-added / FTE ≥ 1.5 industry average
+• Average non-supervisory wage ≥ 3 Federal Minimum Wage
+• Nonsupervisory worker payroll + benefits ≥ 0.5 total value-added
+• Computer use by ≥ 2/3rds of employees
+• Employee turnover rate < 20% annually
+• Etc. etc.
+*
+For establishments/firms
+*
+• Health, wealth, wages, savings, educational attainment, equality of
+opportunity and outcome, presence and quality of public goods,
+access to those goods, efficiency of consumption, accountability of
+government, level and quality of citizen engagement
+• Etc. etc.
+... and for communities
+It’s really not that hard to tell the
+difference between a low- and
+high-roading establishment/firm
+or community (or region, state,
+nation, or world).
+The transition cost problem
+Competitiveness
+Worker organization and high-road capitalism
+But is it feasible?
+Is it possible to increase productivity
+dramatically?
+Does place still matter economically?Is there a significant amount of costly
+waste that we know how to reduce?
+Political feasibility will be decided by
+our collective consciousness and
+commitment and that’s impossible
+to predict ...
+Does it make economic sense?
+Significant waste we know how to
+reduce?
+3rd quintile ($34,958-$57,967) households
+NB: Housing + transportation + utilities + healthcare ≈ 2/3rds
+(62%) of “average” household consumption
+On average, transportation costs exceed housing costs for
+metro households with $20K-$50K in income
+10-15 miles out
+Average Commuting Distance (Miles)
+% Income
+“Drive ’til you qualify”
+Source: https://flowcharts.llnl.gov/content/energy/energy_archive/energy_flow_2010/LLNLUSEnergy2010.png
+Could we really increase productivity
+dramatically (and quickly)
+How does productivity improvement
+happen?
+• New idea
+• Testing of that idea
+• Application of that idea
+• Improvement in that application
+• Incremental improvements, aka “process
+improvement”
+• Commitment to basic science, application, and
+continuous process improvement
+How can it happen very quickly?
+• Either by getting the whole society committed
+to what was just said
+• Or by deliberately encouraging it
+• Or both
+Within-sector variation in productivity
+An example from a PBS (Performance Benchmarking Survey) sample of Midwest metal-
+stamping (NAICS 332116) establishments
+Metal stamping is a manufacturing process where flat sheet
+metal is formed into specific shapes using a stamping press and
+dies (specialized tools).
+• Here’s how it works. A piece of sheet metal (called a blank) is
+placed between a die and a punch in a stamping press. When
+the press applies force, the metal is cut, bent, or shaped into
+the desired form. It's kind of like using a cookie cutter, but
+with much more force and precision, and it can create
+complex 3D shapes, not just flat cutouts
+• Metal stamping is used to mass-produce parts like:
+– Car body panels and brackets
+– Electronic components and enclosures
+– Appliance parts
+– Metal cans
+– Hinges and fasteners
+Increasing productivity quickly
+Value added per worker
+ranges from $60K to > $400K
+Does place still matter?
+100 US Metros: 75 % of GDP
+The world’s not flat, it’s spiky
+Top 130 cities account for more than a third
+Cities are the future
+70% of WP by 2050
+70% of world product on
+<3% of world surface area,
+<9 of land surface area
+A program of action
+Get smart and unapologetic about cities
+• Incomes rise and investment moves out
+• Revenues decline
+• Public goods deteriorate
+• Middle class flees
+• Tax base erodes
+• Poverty concentrates
+An Iron Law of Urban Decay?
+Or a wasting of obvious assets?
+E.g.: size, location advantages, density, key infrastructure,
+appeal for new industries, eds and meds foundation, more
+skilled workers, younger workers, immigrants, key
+infrastructure, greater energy efficiency, tax base for public
+goods, political tolerance, higher wages and productivity,
+more easily organized
+Cities have leverage
+New York City က븀
+Los Angeles
+Chicago
+Washington DC
+Dallas-Fort Worth
+Philadelphia
+Boston
+Houston
+San Francisco
+Atlanta
++ = $3.51 trillion
+Vermont
+North Dakota
+Wyoming
+Montana
+South Dakota
+Alaska
+Rhode Island
+Maine
+Idaho
+West Virginia
+Hawaii
+New Hampshire
+Delaware
+New Mexico
+Nebraska
+Mississippi
+District Of Columbia
+Minnesota
+Arkansas
+Utah
+Kansas
+Nevada
+Oklahoma
+Iowa
+Oregon
+South Carolina
+Kentucky
+Alabama
+Louisiana
+Connecticut
+Arizona
+Colorado
+Missouri
+Wisconsin
+Tennessee
+= $3.49 trillion
+$3.5 T >
+Switzerland
+Sweden
+Taiwan
+Saudi Arabia
+Austria
+Turkey
+Poland
+Norway
+Indonesia
+Denmark
+South Africa
+= $3.49
+Combined product of ..
+A chance to reshape America’s footprint
+82.0 B new sq ft from
+replacement
+131.4 B new sq ft
+295.6 B sq ft in 2000 427.3 B sq ft in 2030
+213.4 B new sq ft
+If you build cities around cars and traffic ...
+you get cars and traffic and sprawl
+If you build cities around people ...
+you get people
+Getting started
+1. Map your economy and offer a new deal to employers: “We’ll give
+you almost anything to get you on the high road and almost nothing if
+you want to stay on the low-road; in fact, we’re going to make it
+harder, by raising performance standards (though we’ll help you meet
+them)”
+2. Build skills to meet demand for higher-value-adding work; reform
+education system to be seamless, integrated, modularized, open,
+lifelong, demand-driven; provide other services to meet higher
+standards
+3. Lower waste and reduce the cost of living by cutting energy, housing,
+and transportation costs through smarter growth and public goods
+4. Reform government to be cleaner, smarter (evidence-based, more
+experimental), more accountable, more open-source in problem-
+solving; with more engaged citizens throughout
+5. Pay for it all by progressive taxes on the resulting increased income
+and wealth, value capture on productive development, and Pigovian
+taxes on public bads (pollution, sprawl), while spending nothing (zilch,
+nada, zero! ) on things that don’t add to wealth and general welfare
+Review
+Summing up first section of 125
+1) US a big, rich, technologically advanced, violent, racially divided,
+anomalously religious, hyper-capitalist place, with a complex (and
+increasing dysfunctional) liberal pluralist government
+2) Markets are fantastic coordination mechanisms and great for negative
+freedom. But market capitalism always generates objectionable
+inequalities in positive freedom and, if left unguided, will cause
+tremendously costly and unnecessary losses to human welfare. We’ve
+seen this in everything from the environment and transportation to
+consumerism and health care, and just saw it in finance and economic
+development
+3) Markets don’t work at all without rules that they can’t generate
+themselves. The idea of a perfectly “self-regulating” market is as much a
+myth as the idea that markets are always allocatively, much less
+dynamically, efficient.
+Summing up first section (cont.)
+4) Markets’ most important institutional weakness is that they cannot solve
+cooperation problems, on which solution they, and our survival as
+organized life, depends. Market capitalism encourages exit and a norm
+of strategically applied economic rationality, which erodes shared sense
+of the reality of mutual dependence, much less community and shared
+purpose. Markets greatly exacerbate PD (prisoners’ dilemma)-like
+problems, including the FRP (free-rider problem), which are pervasive.
+5) That’s basically why you need government or other democratic
+organizations to save markets from themselves. But as you consider how
+to do that through collective action (not just the state that acts in its
+name), don’t be a fool. Markets are cool tools and often preferable to
+other ways of making decisions. But they are also amoral and short-
+sighted, so they shouldn’t be given society’s keys. And “market
+fundamentalism” is a really horrible religion. (Remember your Blake!
+And your [largely unread] Smith!)

@@ -1,0 +1,227 @@
+Review: Bayesian Inference
+• Conditional Probability & Bayes Rule:
+• Evidence E: what we can observe
+• Hypothesis H: what we’d like to infer from evidence
+– Need to plug in prior, likelihood, etc.
+• Usually do not know these probabilities. How to estimate?
+Samples and Estimation
+• Usually, we don’t know the distribution P
+– Instead, we see a bunch of samples
+• Typical statistics problem: estimate
+distribution from samples
+– Estimate probabilities P(H), P(E), P(E|H)
+– Estimate the mean
+– Estimate parameters
+•
+Samples and Estimation
+Examples: Sample Mean
+• Bernoulli with parameter p
+• See samples
+– Estimate mean with sample mean
+– That is, counting heads
+Break & Quiz
+Break & Quiz
+Break & Quiz
+Estimating Multinomial Parameters
+• k-sized die (special case: k=2 coin)
+• Face i has probability pi, for i=1…k
+• In n rolls, we observe face i showing up ni times
+• Estimate (p1,…, pk) from this data (n1,…, nk)
+Maximum Likelihood Estimate (MLE)
+• The MLE of multinomial parameters
+• Estimate using frequencies
+Break & Quiz
+Q 2.2: You are empirically estimating P(X) for some random
+variable X that takes on 100 values. You see 50 samples. How
+many of your P(X=a) estimates might be 0?
+A. None.
+B. Between 5 and 50, exclusive.
+C. Between 50 and 100, inclusive.
+D. Between 50 and 99, inclusive.
+Break & Quiz
+Q 2.2: You are empirically estimating P(X) for some random
+variable X that takes on 100 values. You see 50 samples. How
+many of your P(X=a) estimates might be 0?
+A. None.
+B. Between 5 and 50, exclusive.
+C. Between 50 and 100, inclusive.
+D. Between 50 and 99, inclusive.
+Break & Quiz
+Q 2.2: You are empirically estimating P(X) for some random
+variable X that takes on 100 values. You see 50 samples. How
+many of your P(X=a) estimates might be 0?
+A. None.
+B. Between 5 and 50, exclusive.
+C. Between 50 and 100, inclusive.
+D. Between 50 and 99, inclusive.
+Break & Quiz
+Q 2.2: You are empirically estimating P(X) for some random
+variable X that takes on 100 values. You see 50 samples. How
+many of your P(X=a) estimates might be 0?
+A. None.
+B. Between 5 and 50, exclusive.
+C. Between 50 and 100, inclusive.
+D. Between 50 and 99, inclusive.
+If you don’t see a
+number at all in the 50
+samples then the
+estimated probability of
+that number is 0.
+You can see up to 50
+different values in 50
+samples. On the other
+hand, all 50 samples
+might have the same
+value in which case 99
+values were never
+seen.
+Regularized Estimate
+• Hyperparameter
+• Avoids zero when n is small
+• Biased, but has smaller variance
+• Equivalent to a specific Maximum A Posteriori (MAP)
+estimate, or smoothing
+Estimating 1D Gaussian Parameters
+Wikipedia: Normal distribution
+Estimating 1D Gaussian Parameters
+• Mean estimate
+• Variance estimates
+– Unbiased
+– MLE
+Estimation Theory
+• Is the sample mean a good estimate of the true
+mean?
+– Law of large numbers
+– Central limit theorems
+Wolfram Demo
+Estimation Errors
+Variance Bias
+Bias / Variance
+Correlation vs. Causation
+• Conditional probabilities only define
+correlation (aka association)
+• P(Y|X) “large” does not mean X causes Y
+• Example: X=yellow finger, Y=lung cancer
+• Common cause: smoking
+https://www.nejm.or
+g/doi/full/10.1056/N
+EJMon1211064
+Linear Algebra: What is it good for?
+• Study of Linear functions: simple, tractable
+• In AI/ML: building blocks for all models
+– e.g., linear regression; part of neural networks
+Stanford CS231n
+Hieu Tran 23
+Basics: Vectors
+24
+Cezanne Camacho
+Basics: Matrices
+25
+Basics: Transposition
+26
+Matrix & Vector Operations
+27
+Matrix & Vector Operations
+• Vector products
+– Inner product (e.g., dot product)
+– Outer product
+28
+Matrix & Vector Operations
+29
+Matrix & Vector Operations
+• Matrices:
+– Addition: Component-wise
+– Commutative, Associative
+– Scalar Multiplication
+– “Stretching” the linear transformation
+30
+Matrix & Vector Operations
+31
+Matrix & Vector Operations
+Ex: feedforward neural networks. Input x.
+• Output of layer k is
+nonlinearity
+Output of layer k: vector
+Output of layer k-1: vector
+Weight matrix for layer k:
+Note: linear transformation!
+Wikipedia
+32
+Matrix & Vector Operations
+Wikipedia
+33
+Identity Matrix
+34
+Break & Quiz
+• Q 1.1: What is ?
+• A. [-1 1 1]T
+• B. [2 1 1]T
+• C. [1 3 1]T
+• D. [1.5 2 1]T
+35
+Break & Quiz
+• Q 1.1: What is ?
+• A. [-1 1 1]T
+• B. [2 1 1]T
+• C. [1 3 1]T
+• D. [1.5 2 1]T
+36
+Break & Quiz
+• Q 1.1: What is ?
+• A. [-1 1 1]T
+• B. [2 1 1]T
+• C. [1 3 1]T
+• D. [1.5 2 1]T
+37
+Break & Quiz
+• Q 1.2: Given matrices
+What are the dimensions of
+• A. n x p
+• B. d x p
+• C. d x n
+• D. Undefined
+38
+Break & Quiz
+• Q 1.2: Given matrices
+What are the dimensions of
+• A. n x p
+• B. d x p
+• C. d x n
+• D. Undefined
+39
+Break & Quiz
+• Q 1.2: Given matrices
+What are the dimensions of
+To rule out (D), check that for
+each pair of adjacent matrices
+XY, the # of columns of X = # of
+rows of Y
+• A. n x p
+• B. d x p
+• C. d x n
+• D. Undefined
+Then, B has d rows so solution
+must have d rows. C^T has p
+columns so solution has p
+columns.
+40
+Break & Quiz
+• Q 1.3: A and B are matrices, neither of which is the
+identity. Is AB = BA?
+• A. Never
+• B. Always
+• C. Sometimes
+41
+Break & Quiz
+• Q 1.3: A and B are matrices, neither of which is the
+identity. Is AB = BA?
+• A. Never
+• B. Always
+• C. Sometimes
+42
+Break & Quiz
+• Q 1.3: A and B are matrices, neither of which is the
+identity. Is AB = BA?
+• A. Never
+• B. Always
+• C. Sometimes

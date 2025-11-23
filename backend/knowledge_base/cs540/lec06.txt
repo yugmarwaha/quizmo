@@ -1,0 +1,299 @@
+CS 540 Introduction to Artificial Intelligence
+Machine Learning Overview
+Spring 2024
+Announcements
+• HW3 due on Thursday 15th at 11 AM
+• Piazza: https://piazza.com/wisc/spring2024/cd71
+CODE: introtoai
+Tuesday, Feb. 13 ML Introduction
+Class roadmap:
+Thursday, Feb. 15 ML Unsupervised I
+Tuesday, Feb. 20 ML Unsupervised II
+Thursday, Feb. 22 Machine Learning:
+Linear Regression
+Machine Learning
+Today’s outline
+• What is machine learning?
+• Supervised Learning
+• Classification
+• Regression
+• Unsupervised Learning
+• Clustering
+• Reinforcement Learning
+Part I: What is machine learning?
+What is machine learning?
+• Arthur Samuel (1959): Machine learning is the field of study that gives the
+computer the ability to learn without being explicitly programmed.
+https://tung-dn.github.io/programming.html
+What is machine learning?
+• Arthur Samuel (1959): Machine learning is the field of study that gives the
+computer the ability to learn without being explicitly programmed.
+• Tom Mitchell (1997): A computer program is said to learn from experience
+E with respect to some class of tasks T and performance measure P, if its
+performance at tasks in T as measured by P, improves with experience E.
+Supervised
+Learning
+Taxonomy of ML
+Unsupervised
+Learning
+Reinforcement
+Learning
+Part II: Supervised Learning
+Example 1: Predict whether a user likes a song or not
+model
+Example 1: Predict whether a user likes a song or not
+Intensity
+User Sharon
+Tempo
+Example 1: Predict whether a user likes a song or not
+Intensity
+User Sharon
+Dislike
+Like
+Relaxed Fast
+Tempo
+Example 1: Predict whether a user likes a song or not
+Intensity
+User Sharon
+Dislike
+Like
+Relaxed Fast
+Tempo
+Example 1: Predict whether a user likes a song or not
+Intensity
+New data
+?
+User Sharon
+Dislike
+Like
+Relaxed Fast
+Tempo
+Example 1: Predict whether a user likes a song or not
+Intensity
+New data
+User Sharon
+Dislike
+Like
+Relaxed Fast
+Tempo
+Example 2: Classify Images http://www.image-net.org/
+Example 2: Classify Images
+Example 2: Classify Images
+How to represent data?
+input data
+𝑥𝑥 ∈ ℝ𝑑𝑑
+𝑑𝑑: feature dimension
+Intensity
+𝑥𝑥
+𝑥𝑥 =
+𝑥𝑥1
+Tempo
+𝑥𝑥2
+Intensity
+There can be many features!
+Relaxed Fast
+Tempo
+How to represent data?
+Label
+𝑦𝑦 ∈ {0,1}
+Intensity
+𝑦𝑦= 1
+Where “supervision”
+comes from
+𝑦𝑦= 0
+Relaxed Fast
+Tempo
+Represent various types of data
+• Image
+- Pixel values
+• Bank account
+- Credit rating, balance, # deposits in last day, week,
+month, year, #withdrawals
+Two Types of Supervised Learning Algorithms
+Classification Regression
+Example of regression: housing price prediction
+Given: a dataset that contains 𝑛𝑛 samples
+(𝑥𝑥1, 𝑦𝑦1), (𝑥𝑥2, 𝑦𝑦2), . . . , (𝑥𝑥𝑛𝑛, 𝑦𝑦𝑛𝑛)
+Price
+Task: if a residence has x squares
+feet, predict the price?
+Square feet
+x
+Example of regression: housing price prediction
+Given: a dataset that contains 𝑛𝑛 samples
+(𝑥𝑥1, 𝑦𝑦1), (𝑥𝑥2, 𝑦𝑦2), . . . , (𝑥𝑥𝑛𝑛, 𝑦𝑦𝑛𝑛)
+Task: if a residence has x squares
+feet, predict the price?
+𝑦𝑦 ∈ ℝ
+Square feet
+Example of regression: housing price prediction
+Input with more features (e.g., lot size)
+(credit: stanford CS229)
+𝑥𝑥
+Supervised Learning: More examples
+x = raw pixels of the image y = bounding boxes
+Russakovsky et al. 2015
+Two Types of Supervised Learning Algorithms
+Classification • the label is a discrete variable 𝑦𝑦 ∈ {1,2,3, . . . , 𝐾𝐾}
+Regression
+• the label is a continuous variable
+𝑦𝑦 ∈ ℝ
+Training Data for Supervised Learning
+Training data is a collection of input instances to the
+learning algorithm:
+(𝑥𝑥1, 𝑦𝑦1), (𝑥𝑥2, 𝑦𝑦2), (𝑥𝑥3, 𝑦𝑦3), . . . , (𝑥𝑥𝑛𝑛, 𝑦𝑦𝑛𝑛)
+input
+label
+The training data is the “experience” given to a learning algorithm
+Goal of Supervised Learning
+Given training data
+(𝑥𝑥1, 𝑦𝑦1), (𝑥𝑥2, 𝑦𝑦2), (𝑥𝑥3, 𝑦𝑦3), . . . , (𝑥𝑥𝑛𝑛, 𝑦𝑦𝑛𝑛)
+Learn a function mapping 𝑓𝑓: 𝑋𝑋 → 𝑌𝑌, such that 𝑓𝑓(𝑥𝑥)
+predicts the label 𝑦𝑦 on future data 𝑥𝑥 (not in training data)
+Goal of Supervised Learning
+Training set error
+• 0-1 loss for classification ℓ=
+𝑛𝑛
+1
+𝑛𝑛 ∑
+(𝑓𝑓(𝐱𝐱𝑖𝑖) ≠ 𝑦𝑦𝑖𝑖)
+𝑖𝑖=1
+𝑛𝑛
+1
+• Squared loss for regression: ℓ=
+𝑛𝑛 ∑
+(𝑓𝑓(𝐱𝐱𝑖𝑖)− 𝑦𝑦𝑖𝑖)2
+𝑖𝑖=1
+A learning algorithm optimizes the training objective
+Details in upcoming
+lectures :)
+𝑓𝑓∗
+= argmin 𝔼𝔼(𝑥𝑥,𝑦𝑦)ℓ(𝑓𝑓(𝑥𝑥), 𝑦𝑦) 
+Quiz Break
+Q1-1: Which is true about feature vectors?
+A. Feature vectors can have at most 10 dimensions
+B. Feature vectors have only numeric values
+C. The raw image can also be used as the feature vector
+D. Text data don’t have feature vectors
+Quiz Break
+Q1-1: Which is true about feature vectors?
+A. Feature vectors can have at most 10 dimensions
+B. Feature vectors have only numeric values
+C. The raw image can also be used as the feature vector
+D. Text data don’t have feature vectors
+A. Feature vectors can be high dimensional
+B. Some feature vectors can have other types of values like strings
+D. Bag-of-words is a type of feature vector for text
+Quiz Break
+Q1-2: Which of the following is not a common task of supervised
+learning?
+A. Object detection (predicting bounding box from raw images)
+B. Classification
+C. Regression
+D. Dimensionality reduction
+Quiz Break
+Q1-2: Which of the following is not a common task of supervised
+learning?
+A. Object detection (predicting bounding box from raw images)
+B. Classification
+C. Regression
+D. Dimensionality reduction
+Part II: Unsupervised Learning
+(no teacher)
+Unsupervised Learning
+• Given: dataset contains no label
+𝑥𝑥1, 𝑥𝑥2, . . . , 𝑥𝑥𝑛𝑛• Goal: discover interesting patterns and structures in the data
+Unsupervised Learning
+• Given: dataset contains no label
+𝑥𝑥1, 𝑥𝑥2, . . . , 𝑥𝑥𝑛𝑛
+• Goal: discover interesting patterns and structures in the data
+Intensity 𝑦𝑦= 1
+𝑦𝑦= 0
+Tempo
+Unsupervised Learning
+• Given: dataset contains no label
+𝑥𝑥1, 𝑥𝑥2, . . . , 𝑥𝑥𝑛𝑛
+• Goal: discover interesting patterns and structures in the data
+Intensity 𝑦𝑦= 1
+Intensity
+𝑦𝑦= 0
+Tempo
+Tempo
+Clustering
+• Given: dataset contains no label
+𝑥𝑥1, 𝑥𝑥2, . . . , 𝑥𝑥𝑛𝑛
+• Output: divides the data into clusters such that there are
+intra-cluster similarity and inter-cluster dissimilarity
+Intensity
+Tempo
+Clustering
+Clustering Irises using three different features
+The colors represent clusters identified by the algorithm, not y’s provided as input
+Clustering
+• You probably have >1000 digital photos stored on your phone
+• After this class you will be able to organize them better
+(based on visual similarity)
+Clustering Genes
+Clustering Words with Similar Meanings
+[Arora-Li-Liang-Ma-Risteski, TACL’17,18]
+How do we perform clustering?
+Many clustering algorithms.
+We will look at the two most frequently used ones:
+• K-means clustering: we specify the desired number of
+clusters, and use an iterative algorithm to find them
+• Hierarchical clustering: we build a binary tree over the
+dataset
+Quiz Break
+Q2-1: Which is true about machine learning?
+A. The process doesn’t involve human inputs
+B. The machine is given the training and test data for learning
+C. In clustering, the training data also have labels for learning
+D. Supervised learning involves labeled data
+Quiz Break
+Q2-1: Which is true about machine learning?
+A. The process doesn’t involve human inputs
+B. The machine is given the training and test data for learning
+C. In clustering, the training data also have labels for learning
+D. Supervised learning involves labeled data
+A. The labels are human inputs
+B. The machine should not have test data for learning
+C. No labels available for clustering
+Quiz Break
+Q2-2: Which is true about unsupervised learning?
+A. There are only 2 unsupervised learning algorithms
+B. Kmeans clustering is a type of hierarchical clustering
+C. Kmeans algorithm automatically determines the number of clusters k
+D. Unsupervised learning is widely used in many applications
+Quiz Break
+Q2-2: Which is true about unsupervised learning?
+A. There are only 2 unsupervised learning algorithms
+B. Kmeans clustering is a type of hierarchical clustering
+C. Kmeans algorithm automatically determines the number of clusters k
+D. Unsupervised learning is widely used in many applications
+Part III: Reinforcement Learning
+(Learning from rewards)
+Reinforcement Learning
+• Given: an agent that can take actions and a reward function
+specifying how good an action is.
+• Goal: learn to choose actions that maximize future reward
+total.
+Google Deepmind
+1. 2. Reinforcement Learning Key Problems
+Problem: actions may have delayed effects.
+• Requires credit-assignment
+Problem: maximal reward action is unknown
+• Exploration-exploitation trade-off
+“..the problem [exploration-exploitation] was
+proposed [by British scientist] to be dropped
+over Germany so that German scientists
+could also waste their time on it.”
+- Peter Whittle
+Multi-armed Bandit
+Today’s recap
+• What is machine learning?
+• Supervised Learning
+• Classification
+• Regression
+• Unsupervised Learning
+• Clustering
+• Reinforcement Learning

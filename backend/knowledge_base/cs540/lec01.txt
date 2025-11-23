@@ -1,0 +1,323 @@
+CS 540 Introduction to Artificial Intelligence
+Probability
+University of Wisconsin-Madison
+Spring 2024
+Announcements
+• HW 1 released:
+– Writing assignment---nothing too stressful
+Thursday Jan. 25 Probability
+Tuesday Jan. 30 Linear Algebra
+Thursday Feb. 1 Statistics
+• Class roadmap:
+Tuesday Feb. 6 Logic
+Thursday Feb. 8 NLP
+Mostly Foundations
+Probability: What is it good for?
+• Language to express uncertainty
+In AI/ML Context
+• Quantify predictions
+* If we know for sure the photo must contain either a lion or a tiger
+Model Data Generation
+• Model complex distributions
+StyleGAN2 (Kerras et al ’20)
+Win At Poker
+• Wisconsin Ph.D. student Ye Yuan 5th in WSOP
+Not unusual: probability began
+as study of gambling techniques
+Cardano
+Liber de ludo aleae
+Book on Games of Chance
+1564!
+pokernews.com
+Outline
+• Basics: definitions, axioms, RVs, joint distributions
+• Independence, conditional probability, chain rule
+• Bayes’ Rule and Inference
+Basics: Outcomes & Events
+• Outcomes: possible results of an experiment
+• Events: subsets of outcomes we’re interested in
+• Always include
+•
+Basics: Probability Distribution
+Basics: Axioms
+• Rules for probability:
+– For all events
+– Always,
+– For disjoint events,
+• Easy to derive other laws. Ex: non-disjoint events
+Visualizing the Axioms: I
+• Axiom 1: for all events
+• Axiom 2:
+Visualizing the Axioms: II
+Visualizing the Axioms: III
+• Axiom 3: disjoint
+Visualizing the Axioms
+• Also, other laws:
+Break & Quiz
+• Q 1.1: We toss a biased coin. If P(heads) = 0.7, then
+P(tails) = ?
+• A. 0.4
+• B. 0.3
+• C. 0.6
+• D. 0.5
+Break & Quiz
+• Q 1.1: We toss a biased coin. If P(heads) = 0.7, then
+P(tails) = ?
+• A. 0.4
+• B. 0.3
+• C. 0.6
+• D. 0.5
+Break & Quiz
+• Q 1.2: There are exactly 3 candidates for a presidential
+election. We know X has a 30% chance of winning, B has
+a 35% chance. What’s the probability that C wins?
+• A. 0.35
+• B. 0.23
+• C. 0.333
+• D. 0.8
+Break & Quiz
+• Q 1.2: There are exactly 3 candidates for a presidential
+election. We know X has a 30% chance of winning, B has
+a 35% chance. What’s the probability that C wins?
+• A. 0.35
+• B. 0.23
+• C. 0.333
+• D. 0.8
+Break & Quiz
+• Q 1.3: What’s the probability of selecting a black
+card or a number 6 from a standard deck of 52
+cards?
+• A. 26/52
+• B. 4/52
+• C. 30/52
+• D. 28/52
+Break & Quiz
+• Q 1.3: What’s the probability of selecting a black
+card or a number 6 from a standard deck of 52
+cards?
+• A. 26/52
+• B. 4/52
+• C. 30/52
+• D. 28/52
+•
+Basics: Random Variables
+Basics: CDF & PDF
+• Can still work with probabilities:
+• Cumulative Distribution Func. (CDF)
+• Density / mass function
+Wikipedia CDF
+Basics: Expectation & Variance
+• Another advantage of RVs are ``summaries’’
+• Expectation:
+– The “average”
+• Variance:
+– A measure of “spread”
+Basics: Joint Distributions
+• Move from one variable to several
+• Joint distribution:
+– Why? Work with multiple types of uncertainty that
+correlate with each other
+Basics: Marginal Probability
+• Given a joint distribution
+– Get the distribution in just one variable:
+– This is the “marginal” distribution.
+Jerry’s super blurry camera
+• One pixel, 1-bit color sensor (green=trees,
+white=snow)
+• Model T: comes with 1-bit temperature
+sensor (hot, cold)
+Basics: Marginal Probability
+green
+white
+150/365
+hot 45/365
+cold
+50/365
+120/365
+Probability Tables
+• Write our distributions as tables
+• # of entries? 4.
+– If we have variables with values, we get entries
+– Big! For a 1080p screen, 12 bit color, size of table:
+– No way of writing down all terms
+Independence
+• Independence between RVs:
+• Why useful? Go from entries in a table to
+• Expresses joint as product of marginals
+• requires domain knowledge
+Conditional Probability
+•
+green
+white
+150/365
+hot 45/365
+cold
+50/365
+120/365
+Conditional independence
+– require domain knowledge
+Chain Rule
+• Apply repeatedly,
+• Note: still big!
+– If some conditional independence, can factor!
+– Leads to probabilistic graphical models
+Break & Quiz
+Q 2.1: Given joint distribution table:
+Sunny
+Cloudy
+150/365
+40/365
+hot 5/365
+cold
+50/365
+60/365
+Rainy
+60/365
+What is the probability the temperature is hot given the
+weather is cloudy?
+A. 40/365
+B. 2/5
+C. 3/5
+D. 195/365
+Break & Quiz
+Q 2.1: Back to our joint distribution table:
+Sunny
+Cloudy
+150/365
+40/365
+hot 5/365
+cold
+50/365
+60/365
+Rainy
+60/365
+What is the probability the temperature is hot given the
+weather is cloudy?
+A. 40/365
+B. 2/5
+C. 3/5
+D. 195/365
+Break & Quiz
+Q 2.2: Of a company’s employees, 30% are women and
+6% are married women. Suppose an employee is selected
+at random. If the employee selected is a woman, what is
+the probability that she is married?
+A. 0.3
+B. 0.06
+C. 0.24
+D. 0.2
+Break & Quiz
+Q 2.2: Of a company’s employees, 30% are women and
+6% are married women. Suppose an employee is selected
+at random. If the employee selected is a woman, what is
+the probability that she is married?
+A. 0.3
+B. 0.06
+C. 0.24
+D. 0.2
+Reasoning With Conditional Distributions
+• Evaluating probabilities:
+– Wake up with a sore throat.
+– Do I have the flu?
+• Logic approach:
+– Too strong.
+• Inference: compute probability given evidence
+– Can be much more complex!
+Using Bayes’ Rule
+• Want:
+• Bayes’ Rule:
+• Parts:
+– Sore throat rate
+– Flu rate
+– Sore throat rate among flu sufferers
+So:
+Using Bayes’ Rule
+• Interpretation
+– Much higher chance of flu than normal rate (0.01).
+– Very different from
+• 90% of folks with flu have a sore throat
+• But, only 9% of folks with a sore throat have flu
+• Idea: update probabilities from
+evidence
+Bayesian Inference
+• Fancy name for what we just did. Terminology:
+• H is the hypothesis
+• E is the evidence
+Bayesian Inference
+• Terminology:
+Prior
+• Prior: estimate of the probability without evidence
+Bayesian Inference
+• Terminology:
+Likelihood
+• Likelihood: probability of evidence given a hypothesis
+Bayesian Inference
+• Terminology:
+Posterior
+• Posterior: probability of hypothesis given evidence.
+Two Envelopes Problem
+• We have two envelopes:
+– E1 has two black balls, E2 has one black, one red
+– The red one is worth $100. Others, zero
+– Open an envelope, see one ball. Then, can switch (or not).
+– You see a black ball. Switch?
+Two Envelopes Solution
+• Let’s solve it.
+• Now plug in:
+So switch!
+Naïve Bayes
+• Conditional Probability & Bayes:
+• If we further make the conditional independence assumption
+(a.k.a. Naïve Bayes)
+46
+Naïve Bayes
+• Expression
+• H: some class we’d like to infer from evidence
+– We know prior P(H)
+– Estimate P(Ei|H) from data! (“training”)
+– Very similar to envelopes problem.
+47
+Break & Quiz
+Q 3.1: 50% of emails are spam. Software has been applied to filter
+spam. A certain brand of software claims that it can detect 99% of
+spam emails, and the probability for a false positive (a non-spam email
+detected as spam) is 5%. Now if an email is detected as spam, then
+what is the probability that it is in fact a nonspam email?
+A. 5/104
+B. 95/100
+C. 1/100
+D. 1/2
+Break & Quiz
+Q 3.1: 50% of emails are spam. Software has been applied to filter
+spam. A certain brand of software claims that it can detect 99% of
+spam emails, and the probability for a false positive (a non-spam email
+detected as spam) is 5%. Now if an email is detected as spam, then
+what is the probability that it is in fact a nonspam email?
+S : Spam
+A. 5/104
+NS: Not Spam
+DS: Detected as Spam
+B. 95/100
+C. 1/100
+D. 1/2
+P(S) = 50 % spam email
+P(NS) = 50% not spam email
+P(DS|NS) = 5% false positive, detected as spam but not spam
+P(DS|S) = 99% detected as spam and it is spam
+Applying Bayes Rule
+P(NS|DS) = (P(DS|NS)*P(NS)) / P(DS) = (P(DS|NS)*P(NS)) / (P(DS|NS)*P(NS) + P(DS|S)*P(S)) =
+5/104
+Break & Quiz
+Q 3.2: A fair coin is tossed three times. Find the
+probability of getting 2 heads and a tail
+A. 1/8
+B. 2/8
+C. 3/8
+D. 5/8
+Break & Quiz
+Q 3.2: A fair coin is tossed three times. Find the
+probability of getting 2 heads and a tail
+A. 1/8
+B. 2/8
+C. 3/8
+D. 5/8

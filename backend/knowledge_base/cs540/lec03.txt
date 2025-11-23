@@ -1,0 +1,179 @@
+CS 540 Introduction to Artificial Intelligence
+Linear Algebra & PCA
+University of Wisconsin-Madison
+Spring 2024 1
+Announcements
+H1 extended until 2/6, HW 2 released:
+– Probability
+Thursday Feb. 1 Linear Algebra and PCA
+Tuesday Feb. 6 Logic
+Thursday Feb. 8 NLP
+Tuesday Fed 13 Machine Learning:
+Introduction
+Class roadmap:
+Thursday Fed 15 Machine Learning:
+Unsupervised Learning I
+Foundations
+Mostly
+Outline
+• Basics: vectors, matrices, operations
+• Dimensionality reduction
+• Principal Components Analysis (PCA)
+Lior Pachter
+3
+Matrix Inverse
+4
+Eigenvalues & Eigenvectors
+Wikipedia
+5
+Dimensionality Reduction
+• Vectors store features. Lots of features!
+• Document classification: thousands of words per doc
+• Netflix surveys: 480189 users x 17770 movies
+• MEG Brain Imaging: 120 locations x 500 time points x 20 objects
+6
+Dimensionality Reduction
+CreativeBloq
+7
+Dimensionality Reduction
+Examples: 3D to 2D
+Andrew Ng
+8
+Break & Quiz
+Q 2.1: What is the inverse of
+A:
+B:
+C: Undefined / A is not invertible
+9
+Break & Quiz
+Q 2.1: What is the inverse of
+A:
+B:
+C: Undefined / A is not invertible
+10
+Break & Quiz
+Q 2.2: What are the eigenvalues of
+A. -1, 2, 4
+B. 0.5, 0.2, 1.0
+C. 0, 2, 5
+D. 2, 5, 1
+11
+Break & Quiz
+Q 2.2: What are the eigenvalues of
+A. -1, 2, 4
+B. 0.5, 0.2, 1.0
+C. 0, 2, 5
+D. 2, 5, 1
+12
+Break & Quiz
+Q 2.2: What are the eigenvalues of
+A. -1, 2, 4
+B. 0.5, 0.2, 1.0
+C. 0, 2, 5
+D. 2, 5, 1
+Solution #1: You may recall from a linear algebra
+course that the eigenvalues of a diagonal matrix (in
+which only diagonal entries are non-zero) are just the
+entries along the diagonal. Hence D is the correct
+answer.
+13
+Break & Quiz
+Q 2.2: What are the eigenvalues of
+A. -1, 2, 4
+B. 0.5, 0.2, 1.0
+C. 0, 2, 5
+D. 2, 5, 1
+14
+Break & Quiz
+Q 2.3: Suppose we are given a dataset with n=10000
+samples with 100-dimensional binary feature vectors.
+Our storage device has a capacity of 50000 bits. What’s
+the lowest compression ratio we can use?
+A. 20X
+B. 100X
+C. 5X
+D. 1X
+15
+Break & Quiz
+Q 2.3: Suppose we are given a dataset with n=10000
+samples with 100-dimensional binary feature vectors.
+Our storage device has a capacity of 50000 bits. What’s
+the lower compression ratio we can use?
+A. 20X
+B. 100X
+C. 5X
+D. 1X
+16
+Break & Quiz
+Q 2.3: Suppose we are given a dataset with n=10000
+samples with 100-dimensional binary feature vectors.
+Our storage device has a capacity of 50000 bits. What’s
+the lower compression ratio we can use?
+A. 20X
+B. 100X
+50,000 bits / 10,000 samples
+means compressed version must
+have 5 bits / sample.
+C. 5X
+Dataset has 100 bits / sample.
+D. 1X
+Must compress 20x smaller to fit on
+device.
+17
+Principal Components Analysis (PCA)
+• A type of dimensionality
+reduction approach
+• For when data is
+approximately lower
+dimensional
+18
+Principal Components Analysis (PCA)
+19
+Projection: An Example
+20
+Projection: An Example
+A random line that goes
+through the origin
+21
+Projection: An Example
+PCA projects data onto
+this line
+22
+Projection: An Example
+23
+Projection: An Example
+The optimal line is called Principal
+Component 1
+The sum of squared distances gets
+smaller as the line fits better
+24
+PCA Procedure
+Victor Powell
+25
+PCA Procedure
+26
+Many Variations
+• PCA, Kernel PCA, ICA, CCA
+– Extract structure from high dimensional dataset
+• Uses:
+– Visualization
+– Efficiency
+– Noise removal
+– Downstream machine learning use
+STHDA 27
+Application: Image Compression
+• Start with image; divide into 12x12 patches
+– That is, 144-D vector
+– Original image:
+28
+Application: Image Compression
+• 6 principal components (as an image)
+29
+Application: Image Compression
+• Project to 6D
+Compressed Original
+30
+Application: Exploratory Data Analysis
+• [Novembre et al. ’08]: Take top two singular vectors of
+people x SNP matrix (POPRES)
+“Genes Mirror Geography in Europe”
