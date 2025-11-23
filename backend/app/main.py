@@ -1,7 +1,9 @@
-from typing import List
+from typing import List, Optional
 
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
+from pypdf import PdfReader
+import io
 
 from app.schemas import (
     GenerateQuizRequest,
@@ -66,6 +68,54 @@ def generate_quiz(req: GenerateQuizRequest):
     )
     return quiz
 
+
+@app.post("/api/upload_and_generate_quiz", response_model=GenerateQuizResponse)
+async def upload_and_generate_quiz(
+    file: UploadFile = File(...),
+    courseId: Optional[str] = Form(None),
+    numQuestions: int = Form(10),
+):
+    """
+    Upload a PDF file and generate a quiz from its content.
+
+    Input (multipart/form-data):
+      - file: PDF file
+      - courseId (optional): Course identifier
+      - numQuestions (optional): Number of questions to generate (default: 10)
+
+    Output (JSON): Same as generate_quiz endpoint
+    """
+    if not file.filename.endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are supported")
+
+    try:
+        # Read the uploaded file
+        contents = await file.read()
+        pdf_file = io.BytesIO(contents)
+
+        # Extract text from PDF
+        pdf_reader = PdfReader(pdf_file)
+        lecture_text = ""
+        for page in pdf_reader.pages:
+            lecture_text += page.extract_text() + "\n"
+
+        if not lecture_text.strip():
+            raise HTTPException(
+                status_code=400, detail="Could not extract text from PDF"
+            )
+
+        # Generate quiz using the extracted text
+        quiz = generate_quiz_agent(
+            lecture_text, course_id=courseId, num_questions=numQuestions
+        )
+        return quiz
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error processing PDF: {str(e)}")
+
+
 @app.post("/api/quizzes", response_model=GenerateQuizResponse)
 def save_quiz_to_profile(
     quiz: GenerateQuizResponse,
@@ -103,6 +153,7 @@ def get_quiz(
             detail="Quiz not found for this user.",
         )
     return quiz
+
 
 @app.post("/api/quizzes", response_model=GenerateQuizResponse)
 def save_quiz_to_profile(

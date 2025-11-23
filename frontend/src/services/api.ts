@@ -40,6 +40,42 @@ export const generateQuiz = async (
   }
 };
 
+export const generateQuizFromFile = async (
+  file: File,
+  courseId?: string,
+  numQuestions?: number
+): Promise<Quiz> => {
+  if (USE_MOCK) {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    return mockQuiz;
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+  if (courseId) {
+    formData.append("courseId", courseId);
+  }
+  if (numQuestions) {
+    formData.append("numQuestions", numQuestions.toString());
+  }
+
+  try {
+    const response = await axios.post<Quiz>(
+      `${API_BASE}/api/upload_and_generate_quiz`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Failed to generate quiz from file", err);
+    throw err;
+  }
+};
+
 export const generateRecommendations = async (
   performanceData: GenerateRecommendationsRequest["performanceData"]
 ): Promise<GenerateRecommendationsResponse> => {

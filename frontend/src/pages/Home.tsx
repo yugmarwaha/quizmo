@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateQuiz } from "../services/api";
+import { generateQuiz, generateQuizFromFile } from "../services/api";
 import type { Quiz } from "../types/quiz";
 import styles from "./Home.module.css";
 
@@ -69,11 +69,24 @@ export function Home({ onQuizGenerated, onViewProfile }: HomeProps) {
     setError("");
 
     try {
-      const quiz = await generateQuiz(
-        lectureText,
-        courseId || undefined,
-        numQuestions
-      );
+      let quiz: Quiz;
+
+      if (selectedFile) {
+        // Use file upload API when a file is selected
+        quiz = await generateQuizFromFile(
+          selectedFile,
+          courseId || undefined,
+          numQuestions
+        );
+      } else {
+        // Use text-based API when text is provided
+        quiz = await generateQuiz(
+          lectureText,
+          courseId || undefined,
+          numQuestions
+        );
+      }
+
       onQuizGenerated(quiz);
     } catch (err) {
       setError("Failed to generate quiz. Make sure your backend is running.");
