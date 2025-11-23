@@ -56,3 +56,33 @@ export const generateRecommendations = async (
     throw err;
   }
 };
+
+export async function saveQuiz(quiz: Quiz): Promise<Quiz> {
+  const res = await fetch(`${API_BASE}/api/quizzes`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(quiz),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to save quiz: ${res.status}`);
+  }
+
+  return res.json();
+}
+
+export async function listQuizzes(): Promise<Quiz[]> {
+  const res = await fetch(`${API_BASE}/api/quizzes`);
+  if (!res.ok) {
+    throw new Error(`Failed to list quizzes: ${res.status}`);
+  }
+  return res.json();
+}
+
+export async function getQuiz(quizId: string): Promise<Quiz> {
+  const res = await fetch(`${API_BASE}/api/quizzes/${quizId}`);
+  if (!res.ok) {
+    throw new Error(`Failed to get quiz: ${res.status}`);
+  }
+  return res.json();
+}
