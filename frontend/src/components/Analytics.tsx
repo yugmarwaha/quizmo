@@ -24,8 +24,8 @@ export function Analytics({ quiz, userAnswers }: AnalyticsProps) {
 
   // Data for Pie Chart (Correct vs Incorrect)
   const pieData = [
-    { name: "Correct", value: correctAnswers, color: "#28a745" },
-    { name: "Incorrect", value: incorrectAnswers, color: "#dc3545" },
+    { name: "Correct", value: correctAnswers, color: "#0066CC" },
+    { name: "Incorrect", value: incorrectAnswers, color: "#28a745" },
   ];
 
   // Data for Bar Chart (Performance by Difficulty)
@@ -94,9 +94,7 @@ export function Analytics({ quiz, userAnswers }: AnalyticsProps) {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, value, percent = 0 }) =>
-                  `${name}: ${value} (${(percent * 100).toFixed(0)}%)`
-                }
+                label={({ name, value }) => `${name}: ${value}`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
@@ -105,7 +103,9 @@ export function Analytics({ quiz, userAnswers }: AnalyticsProps) {
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip />
+              <Tooltip
+                formatter={(value, name) => [`${value} questions`, name]}
+              />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -134,11 +134,19 @@ export function Analytics({ quiz, userAnswers }: AnalyticsProps) {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="correct" fill="#28a745" name="Correct" />
-              <Bar dataKey="incorrect" fill="#dc3545" name="Incorrect" />
+              <Bar dataKey="correct" fill="#0066CC" name="Correct" />
+              <Bar dataKey="incorrect" fill="#28a745" name="Incorrect" />
             </BarChart>
           </ResponsiveContainer>
         </div>
+      </div>
+
+      {/* Summary Text */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <p style={{ color: "#213547", fontSize: "16px" }}>
+          <strong>Summary:</strong> {correctAnswers} correct, {incorrectAnswers}{" "}
+          incorrect out of {quiz.questions.length} questions
+        </p>
       </div>
     </div>
   );

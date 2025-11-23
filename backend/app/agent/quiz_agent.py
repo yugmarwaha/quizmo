@@ -70,6 +70,7 @@ TASK:
   - question (string)
   - options (list for mcq/mcq_multi, null for tf)
   - answer (string for mcq/tf, list for mcq_multi)
+  - explanation (string, brief explanation of the correct answer based on the context)
   - difficulty ("easy", "medium", or "hard")
 - Cover a mix of recall and understanding questions.
 - Do not include explanations in the answer field.
@@ -84,6 +85,7 @@ TASK:
         "question": "...",
         "options": ["A", "B", "C", "D"],
         "answer": "A",
+        "explanation": "Brief explanation of why A is correct based on the context.",
         "difficulty": "medium"
       }},
       {{
@@ -92,6 +94,7 @@ TASK:
         "question": "...",
         "options": null,
         "answer": "True",
+        "explanation": "Brief explanation of why the statement is true.",
         "difficulty": "easy"
       }},
       {{
@@ -100,6 +103,7 @@ TASK:
         "question": "...",
         "options": ["A", "B", "C", "D"],
         "answer": ["A", "C"],
+        "explanation": "Brief explanation of why A and C are the correct options.",
         "difficulty": "hard"
       }},
       ...

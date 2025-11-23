@@ -26,4 +26,5 @@ export interface UserAnswer {
   questionId: string;
   selectedAnswer: string;
   isCorrect: boolean;
+  timeSpent?: number; // in seconds
 }

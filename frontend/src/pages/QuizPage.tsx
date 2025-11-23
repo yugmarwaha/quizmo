@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Quiz, UserAnswer } from "../types/quiz";
 
 interface QuizPageProps {
@@ -14,6 +14,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string[]>
   >({});
+  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const totalQuestions = quiz.questions.length;
@@ -26,6 +27,13 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
   const isSubmitted = userAnswers.some(
     (a) => a.questionId === currentQuestion.id
   );
+
+  // Update question start time when question changes
+  useEffect(() => {
+    if (!isSubmitted) {
+      setQuestionStartTime(Date.now());
+    }
+  }, [currentQuestionIndex, isSubmitted]);
 
   const handleOptionSelect = (option: string) => {
     if (!isSubmitted) {
@@ -52,6 +60,8 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
   const handleSubmitAnswer = () => {
     if (selectedOptionArray.length === 0) return;
 
+    const timeSpent = Math.floor((Date.now() - questionStartTime) / 1000);
+
     let isCorrect = false;
     const selectedAnswer = selectedOptionArray.join(",");
 
@@ -72,6 +82,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
       questionId: currentQuestion.id,
       selectedAnswer,
       isCorrect,
+      timeSpent,
     };
 
     setUserAnswers([...userAnswers, newAnswer]);
@@ -111,7 +122,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
             style={{
               width: `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`,
               height: "100%",
-              backgroundColor: "#007bff",
+              backgroundColor: "#0066CC",
               transition: "width 0.3s ease",
             }}
           />
@@ -151,7 +162,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                 marginBottom: "10px",
                 border: "2px solid",
                 borderColor: selectedOptionArray.includes(option)
-                  ? "#007bff"
+                  ? "#0066CC"
                   : "#dee2e6",
                 borderRadius: "8px",
                 cursor: isSubmitted ? "not-allowed" : "pointer",
@@ -175,7 +186,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                 marginBottom: "10px",
                 border: "2px solid",
                 borderColor: selectedOptionArray.includes(option)
-                  ? "#007bff"
+                  ? "#0066CC"
                   : "#dee2e6",
                 borderRadius: "8px",
                 cursor: isSubmitted ? "not-allowed" : "pointer",
@@ -188,7 +199,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
             >
               <strong>{String.fromCharCode(65 + index)}.</strong> {option}
               {selectedOptionArray.includes(option) && (
-                <span style={{ marginLeft: "10px", color: "#007bff" }}>✓</span>
+                <span style={{ marginLeft: "10px", color: "#0066CC" }}>✓</span>
               )}
             </div>
           ))
@@ -202,7 +213,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                 marginBottom: "10px",
                 border: "2px solid",
                 borderColor: selectedOptionArray.includes(option)
-                  ? "#007bff"
+                  ? "#0066CC"
                   : "#dee2e6",
                 borderRadius: "8px",
                 cursor: isSubmitted ? "not-allowed" : "pointer",
@@ -256,7 +267,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
                 padding: "10px 20px",
                 fontSize: "16px",
                 backgroundColor:
-                  selectedOptionArray.length > 0 ? "#28a745" : "#ccc",
+                  selectedOptionArray.length > 0 ? "#0066CC" : "#ccc",
                 color: "white",
                 border: "none",
                 borderRadius: "4px",
@@ -272,7 +283,7 @@ export function QuizPage({ quiz, onComplete }: QuizPageProps) {
               style={{
                 padding: "10px 20px",
                 fontSize: "16px",
-                backgroundColor: "#007bff",
+                backgroundColor: "#0066CC",
                 color: "white",
                 border: "none",
                 borderRadius: "4px",
