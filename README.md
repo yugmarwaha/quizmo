@@ -1,53 +1,74 @@
 # Quizmo
 
-A full-stack quiz application built with React (frontend) and FastAPI (backend) for generating and taking interactive quizzes with multiple question types including multiple-choice, true/false, and multi-correct options.
+A full-stack AI-powered quiz application built with React (frontend) and FastAPI (backend) for generating and taking interactive quizzes with multiple question types including multiple-choice, true/false, and multi-correct options.
 
 ## Features
 
-- **AI-Powered Quiz Generation**: Generate quizzes from lecture text using Google's Gemini AI
+- **AI-Powered Quiz Generation**: Generate quizzes from lecture text using OpenAI's GPT-5.1
+- **RAG-Enhanced Generation**: Uses Pinecone vector database for context-aware quiz creation from knowledge base
 - **Multiple Question Types**: Support for multiple-choice questions (single correct), true/false questions, and multiple-choice questions (multi-correct)
 - **Difficulty Levels**: Easy, medium, and hard questions
-- **Real-time Quiz Taking**: Interactive quiz interface with immediate feedback
-- **Results Analytics**: Detailed performance breakdown by difficulty and question review
+- **Real-time Quiz Taking**: Interactive quiz interface with progress tracking and time analytics
+- **Personalized Recommendations**: AI-generated study recommendations based on quiz performance
+- **Results Analytics**: Detailed performance breakdown by difficulty with visual charts
+- **User Quiz Management**: Save quizzes to DynamoDB profile and retrieve them later
 - **Responsive Design**: Works on desktop and mobile devices
 
 ## Tech Stack
 
 ### Frontend
 
-- **React 18** with TypeScript
+- **React 19** with TypeScript
 - **Vite** for fast development and building
+- **Axios** for API communication
 - **Recharts** for data visualization
 - **ESLint** for code quality
 
 ### Backend
 
 - **FastAPI** for the REST API
-- **Google Generative AI (Gemini)** for quiz generation
+- **OpenAI GPT-5.1** for quiz generation and personalized recommendations
 - **Pydantic** for data validation
+- **Pinecone** for vector database and semantic search
 - **RAG (Retrieval-Augmented Generation)** for context-aware quiz creation
+- **AWS DynamoDB** for user quiz storage
+- **Boto3** for AWS integration
 
 ## Project Structure
 
 ```
 quizmo/
-├── frontend/          # React frontend application
+├── frontend/              # React frontend application
 │   ├── src/
-│   │   ├── components/  # Reusable UI components
-│   │   ├── pages/       # Page components (Home, Quiz, Results)
-│   │   ├── services/    # API service functions
-│   │   └── types/       # TypeScript type definitions
+│   │   ├── components/    # Reusable UI components (Analytics)
+│   │   ├── pages/         # Page components
+│   │   │   ├── Home.tsx
+│   │   │   ├── GenerateQuiz.tsx
+│   │   │   ├── QuizPage.tsx
+│   │   │   └── ResultsPage.tsx
+│   │   ├── services/      # API service functions
+│   │   │   ├── api.ts
+│   │   │   └── mockData.ts
+│   │   └── types/         # TypeScript type definitions
+│   │       └── quiz.ts
 │   ├── package.json
 │   └── vite.config.ts
-├── backend/           # FastAPI backend application
+├── backend/               # FastAPI backend application
 │   ├── app/
-│   │   ├── main.py       # FastAPI application entry point
-│   │   ├── schemas.py    # Pydantic models
-│   │   ├── rag_store.py  # RAG implementation for knowledge base
-│   │   └── agent/        # AI agent for quiz generation
-│   │       └── quiz_agent.py
-│   ├── requirements.txt  # Python dependencies
-│   └── venv/            # Virtual environment (created locally)
+│   │   ├── main.py        # FastAPI application entry point
+│   │   ├── schemas.py     # Pydantic models
+│   │   ├── auth.py        # User authentication (demo mode)
+│   │   ├── rag_store.py   # RAG implementation with Pinecone
+│   │   ├── agent/         # AI agent for quiz generation
+│   │   │   └── quiz_agent.py
+│   │   ├── db/            # Database layer
+│   │   │   └── quizzes_db.py  # DynamoDB operations
+│   │   └── game/          # Game state management
+│   │       └── state.py
+│   ├── knowledge_base/    # Course materials for RAG
+│   │   ├── cs540/         # Computer Science course
+│   │   └── soc125/        # Sociology course
+│   └── requirements.txt   # Python dependencies
 └── README.md
 ```
 
@@ -57,7 +78,9 @@ quizmo/
 
 - **Node.js** (v18 or higher)
 - **Python** (v3.8 or higher)
-- **Google AI API Key** (for Gemini AI)
+- **OpenAI API Key** (for GPT-5.1)
+- **Pinecone API Key** (for vector database)
+- **AWS Account** (for DynamoDB storage)
 
 ### Backend Setup
 
@@ -91,14 +114,33 @@ quizmo/
    ```
 
 5. Set up environment variables:
-   Create a `.env` file in the project root or `backend/` directory with:
+   Create a `.env` file in the `backend/` directory with:
 
    ```
-   GEMINI_API_KEY=your_google_ai_api_key_here
+   OPENAI_API_KEY=your_openai_api_key_here
+   PINECONE_API_KEY=your_pinecone_api_key_here
+   PINECONE_INDEX_HOST=your_pinecone_index_host_here
+   PINECONE_INDEX_NAME=quiz-questions
+   AWS_REGION=us-east-2
+   DDB_QUIZZES_TABLE=UserQuizzes
    ```
 
-6. (Optional) Add course materials:
-   Place text files in `backend/knowledge_base/` for RAG context.
+6. Set up Pinecone:
+
+   - Create a Pinecone account at https://www.pinecone.io/
+   - Create a new index named `quiz-questions` with dimension 1536 (for OpenAI embeddings)
+   - Copy the index host URL to your `.env` file
+
+7. Set up AWS DynamoDB:
+
+   - Create a DynamoDB table named `UserQuizzes`
+   - Set partition key as `userId` (String) and sort key as `quizId` (String)
+   - Configure AWS credentials on your system
+
+8. (Optional) Add course materials:
+   Place text files in `backend/knowledge_base/<course_id>/` for RAG context. Example:
+   - `backend/knowledge_base/cs540/lec01.txt`
+   - `backend/knowledge_base/soc125/lec01.txt`
 
 ### Frontend Setup
 
@@ -163,7 +205,8 @@ quizmo/
         "question": "What is the capital of France?",
         "options": ["London", "Paris", "Berlin", "Madrid"],
         "answer": "Paris",
-        "difficulty": "easy"
+        "difficulty": "easy",
+        "explanation": "Paris is the capital city of France."
       },
       {
         "id": "q2",
@@ -191,11 +234,84 @@ quizmo/
 - `tf`: True/False questions
 - `mcq_multi`: Multiple choice with multiple correct answers (select all that apply)
 
+### Generate Recommendations
+
+- **POST** `/api/generate_recommendations`
+- **Body**:
+  ```json
+  {
+    "performanceData": {
+      "quiz": { "id": "...", "title": "...", "questions": [...] },
+      "userAnswers": [
+        {
+          "questionId": "q1",
+          "selectedAnswer": "Paris",
+          "isCorrect": true,
+          "timeSpent": 15
+        }
+      ],
+      "totalTime": 300,
+      "scorePercentage": 75.0
+    }
+  }
+  ```
+- **Response**: Personalized recommendations:
+  ```json
+  {
+    "recommendations": [
+      {
+        "type": "study_focus",
+        "title": "Focus on Hard Questions",
+        "description": "You struggled with hard questions...",
+        "priority": "high"
+      }
+    ],
+    "overallAssessment": "Good performance with room for improvement...",
+    "improvementAreas": ["Time management", "Hard question practice"]
+  }
+  ```
+
+### User Quiz Management
+
+- **POST** `/api/quizzes` - Save a quiz to user profile
+- **GET** `/api/quizzes` - List all quizzes for current user
+- **GET** `/api/quizzes/{quiz_id}` - Get a specific quiz by ID
+
+## Key Features Explained
+
+### RAG (Retrieval-Augmented Generation)
+
+The application uses RAG to enhance quiz generation with relevant course content:
+
+1. **Knowledge Base**: Course materials are stored in `backend/knowledge_base/` organized by course ID
+2. **Text Chunking**: Lecture files are automatically chunked (1500 chars with 200 char overlap)
+3. **Embeddings**: Each chunk is embedded using OpenAI's `text-embedding-3-small` model
+4. **Vector Storage**: Embeddings are stored in Pinecone for fast semantic search
+5. **Context Retrieval**: When generating a quiz, relevant chunks are retrieved and provided to GPT-5.1
+
+### Personalized Recommendations
+
+After completing a quiz, users receive AI-generated recommendations:
+
+- **Performance Analysis**: Analyzes scores by difficulty level and question types
+- **Time Management**: Evaluates time spent per question
+- **Study Focus Areas**: Identifies weak topics and suggests improvement strategies
+- **Learning Strategies**: Provides actionable study tips tailored to performance
+- **Priority Levels**: Recommendations are categorized as high, medium, or low priority
+
+### Quiz Flow
+
+1. **Generate**: User inputs lecture text → System queries knowledge base → GPT-5.1 generates questions
+2. **Take Quiz**: Interactive interface with progress tracking and time analytics
+3. **View Results**: Detailed breakdown with performance charts, correct answers, and explanations
+4. **Get Recommendations**: AI analyzes performance and provides personalized study guidance
+5. **Save Progress**: Quizzes can be saved to user profile in DynamoDB
+
 ## Development
 
 ### Frontend Scripts
 
-- `npm run dev` - Start development server
+- `npm run dev` - Start development server (default: http://localhost:5173)
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
@@ -204,6 +320,26 @@ quizmo/
 
 - `python -m uvicorn app.main:app --reload` - Start development server
 - API documentation available at `http://localhost:8000/docs` (Swagger UI)
+- Interactive API docs at `http://localhost:8000/redoc` (ReDoc)
+
+### Configuration
+
+**Frontend** (`frontend/src/services/api.ts`):
+
+- `API_BASE`: Backend API URL (default: `http://localhost:8000`)
+- `USE_MOCK`: Toggle between mock and real API (default: `false`)
+
+**Backend** (`backend/app/agent/quiz_agent.py`):
+
+- `MODEL_NAME`: OpenAI model for quiz generation (default: `gpt-5.1-chat-latest`)
+- `EMBED_MODEL`: OpenAI embedding model (default: `text-embedding-3-small`)
+
+**RAG Configuration** (`backend/app/rag_store.py`):
+
+- `chunk_size`: 1500 characters per chunk
+- `overlap`: 200 characters between chunks
+- `max_chunks_per_file`: 10 chunks per file
+- `top_k`: 5 relevant chunks retrieved per query
 
 ## Contributing
 
@@ -217,8 +353,42 @@ quizmo/
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Environment Variables Reference
+
+### Backend Required Variables
+
+| Variable              | Description                | Example                                      |
+| --------------------- | -------------------------- | -------------------------------------------- |
+| `OPENAI_API_KEY`      | OpenAI API key for GPT-5.1 | `sk-...`                                     |
+| `PINECONE_API_KEY`    | Pinecone API key           | `your-pinecone-key`                          |
+| `PINECONE_INDEX_HOST` | Pinecone index host URL    | `https://quiz-questions-xxx.svc.pinecone.io` |
+| `PINECONE_INDEX_NAME` | Pinecone index name        | `quiz-questions`                             |
+| `AWS_REGION`          | AWS region for DynamoDB    | `us-east-2`                                  |
+| `DDB_QUIZZES_TABLE`   | DynamoDB table name        | `UserQuizzes`                                |
+
+## Troubleshooting
+
+### Backend Issues
+
+- **"OPENAI_API_KEY not set"**: Ensure `.env` file exists in `backend/` directory with valid API key
+- **"PINECONE_INDEX_HOST not set"**: Create Pinecone index and add host URL to `.env`
+- **DynamoDB errors**: Verify AWS credentials are configured (`aws configure`) and table exists
+- **Import errors**: Ensure virtual environment is activated and dependencies installed
+
+### Frontend Issues
+
+- **CORS errors**: Verify backend is running on `http://localhost:8000`
+- **API connection fails**: Check `API_BASE` in `frontend/src/services/api.ts`
+- **Mock mode**: Set `USE_MOCK = true` in `api.ts` to test without backend
+
+### RAG Issues
+
+- **Knowledge base not found**: Ensure `backend/knowledge_base/` directory exists with course folders
+- **No relevant chunks**: Add more content to knowledge base or reduce `top_k` in search
+
 ## Acknowledgments
 
 - Built for hackathon purposes
-- Uses Google's Gemini AI for intelligent quiz generation
+- Uses OpenAI's GPT-5.1 for intelligent quiz generation and personalized recommendations
+- Leverages Pinecone for vector search and RAG implementation
 - Inspired by modern educational technology trends
