@@ -22,6 +22,8 @@ export function ResultsPage({
   const correctAnswers = userAnswers.filter((a) => a.isCorrect).length;
   const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
+  const [isSaved, setIsSaved] = useState(false);
+
   // Calculate performance by difficulty
   const performanceByDifficulty = {
     easy: { correct: 0, total: 0 },
@@ -42,6 +44,29 @@ export function ResultsPage({
   // Calculate time analytics
   const totalTime = userAnswers.reduce((sum, a) => sum + (a.timeSpent || 0), 0);
   const averageTime = totalTime / totalQuestions;
+
+  const handleSaveQuiz = () => {
+    const savedQuiz = {
+      id: `${quiz.id}-${Date.now()}`,
+      quiz,
+      userAnswers,
+      scorePercentage,
+      totalTime,
+      dateTaken: new Date().toISOString(),
+    };
+
+    // Load existing saved quizzes
+    const existing = localStorage.getItem("savedQuizzes");
+    const savedQuizzes = existing ? JSON.parse(existing) : [];
+
+    // Add new quiz to the beginning
+    savedQuizzes.unshift(savedQuiz);
+
+    // Save back to localStorage
+    localStorage.setItem("savedQuizzes", JSON.stringify(savedQuizzes));
+
+    setIsSaved(true);
+  };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -464,13 +489,36 @@ export function ResultsPage({
       </div>
 
       {/* Actions */}
-      <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          textAlign: "center",
+          display: "flex",
+          gap: "15px",
+          justifyContent: "center",
+        }}
+      >
+        <button
+          onClick={handleSaveQuiz}
+          disabled={isSaved}
+          style={{
+            padding: "12px 24px",
+            fontSize: "16px",
+            backgroundColor: isSaved ? "#28a745" : "#0066CC",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: isSaved ? "default" : "pointer",
+            opacity: isSaved ? 0.8 : 1,
+          }}
+        >
+          {isSaved ? "✓ Saved to Profile" : "Save to Profile"}
+        </button>
         <button
           onClick={onBackToHome}
           style={{
             padding: "12px 24px",
             fontSize: "16px",
-            backgroundColor: "#0066CC",
+            backgroundColor: "#6c757d",
             color: "white",
             border: "none",
             borderRadius: "4px",

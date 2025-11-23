@@ -5,6 +5,7 @@ import styles from "./Home.module.css";
 
 interface HomeProps {
   onQuizGenerated: (quiz: Quiz) => void;
+  onViewProfile: () => void;
 }
 
 const COURSES = [
@@ -13,7 +14,7 @@ const COURSES = [
   { id: "", name: "Custom / Not in list" },
 ];
 
-export function Home({ onQuizGenerated }: HomeProps) {
+export function Home({ onQuizGenerated, onViewProfile }: HomeProps) {
   const [lectureText, setLectureText] = useState("");
   const [numQuestions, setNumQuestions] = useState(10);
   const [courseId, setCourseId] = useState<string>("cs540");
@@ -47,7 +48,31 @@ export function Home({ onQuizGenerated }: HomeProps) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>AI Quiz Generator</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
+          <h1 className={styles.title}>AI Quiz Generator</h1>
+          <button
+            onClick={onViewProfile}
+            className={styles.profileButton}
+            style={{
+              padding: "10px 20px",
+              fontSize: "14px",
+              backgroundColor: "#0066CC",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            My Profile
+          </button>
+        </div>
         <p className={styles.subtitle}>
           Paste your lecture notes or transcript below
         </p>
@@ -118,9 +143,7 @@ export function Home({ onQuizGenerated }: HomeProps) {
       {/* Loading Message */}
       {isLoading && (
         <div className={styles.loadingMessage}>
-          <p>
-            🤖 AI is analyzing your text and generating questions...
-          </p>
+          <p>🤖 AI is analyzing your text and generating questions...</p>
           <p>This may take 10-20 seconds depending on text length.</p>
         </div>
       )}

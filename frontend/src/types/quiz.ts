@@ -59,3 +59,12 @@ export interface GenerateRecommendationsResponse {
   overallAssessment: string;
   improvementAreas: string[];
 }
+
+export interface SavedQuiz {
+  id: string;
+  quiz: Quiz;
+  userAnswers: UserAnswer[];
+  scorePercentage: number;
+  totalTime: number;
+  dateTaken: string;
+}
