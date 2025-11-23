@@ -29,6 +29,16 @@ export function ResultsPage({
     hard: { correct: 0, total: 0 },
   };
 
+  quiz.questions.forEach((question) => {
+    const userAnswer = userAnswers.find((a) => a.questionId === question.id);
+    if (userAnswer) {
+      performanceByDifficulty[question.difficulty].total++;
+      if (userAnswer.isCorrect) {
+        performanceByDifficulty[question.difficulty].correct++;
+      }
+    }
+  });
+
   // Calculate time analytics
   const totalTime = userAnswers.reduce((sum, a) => sum + (a.timeSpent || 0), 0);
   const averageTime = totalTime / totalQuestions;
