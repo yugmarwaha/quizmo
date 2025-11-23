@@ -1,11 +1,11 @@
 # Quizmo
 
-A full-stack quiz application built with React (frontend) and FastAPI (backend) for generating and taking interactive quizzes.
+A full-stack quiz application built with React (frontend) and FastAPI (backend) for generating and taking interactive quizzes with multiple question types including multiple-choice, true/false, and multi-correct options.
 
 ## Features
 
 - **AI-Powered Quiz Generation**: Generate quizzes from lecture text using Google's Gemini AI
-- **Multiple Question Types**: Support for multiple-choice questions (MCQ)
+- **Multiple Question Types**: Support for multiple-choice questions (single correct), true/false questions, and multiple-choice questions (multi-correct)
 - **Difficulty Levels**: Easy, medium, and hard questions
 - **Real-time Quiz Taking**: Interactive quiz interface with immediate feedback
 - **Results Analytics**: Detailed performance breakdown by difficulty and question review
@@ -147,10 +147,48 @@ quizmo/
   ```json
   {
     "lectureText": "Your lecture content here...",
-    "courseId": "optional-course-identifier"
+    "courseId": "optional-course-identifier",
+    "numQuestions": 10
   }
   ```
-- **Response**: Quiz object with questions
+- **Response**: Quiz object with questions of different types:
+  ```json
+  {
+    "id": "quiz-123",
+    "title": "Generated Quiz",
+    "questions": [
+      {
+        "id": "q1",
+        "type": "mcq",
+        "question": "What is the capital of France?",
+        "options": ["London", "Paris", "Berlin", "Madrid"],
+        "answer": "Paris",
+        "difficulty": "easy"
+      },
+      {
+        "id": "q2", 
+        "type": "tf",
+        "question": "Paris is the capital of France.",
+        "options": null,
+        "answer": "True",
+        "difficulty": "easy"
+      },
+      {
+        "id": "q3",
+        "type": "mcq_multi",
+        "question": "Which of these are programming languages?",
+        "options": ["Python", "HTML", "JavaScript", "CSS"],
+        "answer": ["Python", "JavaScript"],
+        "difficulty": "medium"
+      }
+    ]
+  }
+  ```
+
+**Question Types:**
+- `mcq`: Multiple choice with single correct answer
+- `tf`: True/False questions
+- `mcq_multi`: Multiple choice with multiple correct answers (select all that apply)
 
 ## Development
 
