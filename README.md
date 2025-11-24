@@ -366,26 +366,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 | `AWS_REGION`          | AWS region for DynamoDB    | `us-east-2`                                  |
 | `DDB_QUIZZES_TABLE`   | DynamoDB table name        | `UserQuizzes`                                |
 
-## Troubleshooting
-
-### Backend Issues
-
-- **"OPENAI_API_KEY not set"**: Ensure `.env` file exists in `backend/` directory with valid API key
-- **"PINECONE_INDEX_HOST not set"**: Create Pinecone index and add host URL to `.env`
-- **DynamoDB errors**: Verify AWS credentials are configured (`aws configure`) and table exists
-- **Import errors**: Ensure virtual environment is activated and dependencies installed
-
-### Frontend Issues
-
-- **CORS errors**: Verify backend is running on `http://localhost:8000`
-- **API connection fails**: Check `API_BASE` in `frontend/src/services/api.ts`
-- **Mock mode**: Set `USE_MOCK = true` in `api.ts` to test without backend
-
-### RAG Issues
-
-- **Knowledge base not found**: Ensure `backend/knowledge_base/` directory exists with course folders
-- **No relevant chunks**: Add more content to knowledge base or reduce `top_k` in search
-
 ## Acknowledgments
 
 - Built for hackathon purposes
