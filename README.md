@@ -1,4 +1,4 @@
-# Quizmo
+# Questify AI
 
 A full-stack AI-powered quiz application built with React (frontend) and FastAPI (backend) for generating and taking interactive quizzes with multiple question types including multiple-choice, true/false, and multi-correct options.
 
